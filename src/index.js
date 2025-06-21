@@ -2,6 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import './index.css';
+import Home from './Pages/Home';
+import { FormProvider } from './context/FormContext';
+// Importing the FormProvider from context/FormContext
+// to provide form state management to the Home component
+// and its children components.
+// This allows us to manage form state globally within the application.
+// The FormProvider wraps the Home component to ensure that
+// all components within Home can access the form context.  
 
 import reportWebVitals from './reportWebVitals';
 
@@ -12,6 +20,9 @@ root.render(
       <h1>Hello, World!</h1>
       <p>This is a simple React application.</p>
     </div>
+    <FormProvider>
+        <Home/>
+      </FormProvider>
 
   </React.StrictMode>
 );

@@ -21,3 +21,17 @@
 ### Next Steps
    -  to repeat ourselves one more time. Transfer or rebuild. One by one to find where our project loses support, as in indivual compondents. 
    - Attempt to remove the unsupported files to see if we can get it to run.
+
+
+## 2025-06-20 (Friday Night)
+
+- What I worked on
+    transfered main files, Home page is commmented out, we just need to correctly connect everything. file paths and correct minor bugs like Line 51:5: "Expected an assignment or function call and instead saw an expression" pd.jsx.
+
+- Problems faced
+    file paths mainly, easy fix. slight bugs, too late in the night for me to fix right now.
+- Solutions/Resources
+    Me and old files
+- Next steps
+    Fix bug in the project display (pd.jsx), or comment it out  completely. Continue to build the hone page. 
+
