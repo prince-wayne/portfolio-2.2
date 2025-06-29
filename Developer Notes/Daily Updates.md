@@ -35,3 +35,11 @@
 - Next steps
     Fix bug in the project display (pd.jsx), or comment it out  completely. Continue to build the hone page. 
 
+## 20205-06-27
+
+- What I worked on
+
+
+- Problems faced
+- Solutions/Resources
+- Next steps

@@ -1,14 +1,20 @@
 # Working Notes
 
-## Purpose
+### Purpose
 Personal notes for learning and tracking progress in React and related tools.
 
-## Topics
+### Topics
 - Concepts I’m learning
 - Code snippets and experiments
 - Questions and research
 
-## Notes
+###  Notes
 - [Date] What I tried, what worked, what didn’t, resources used, etc.
 
 I got Ice cream
+
+
+## 2025-06-27
+
+the home page has the content, not the function.
+we have a 

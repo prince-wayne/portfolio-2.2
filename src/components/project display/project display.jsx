@@ -15,8 +15,8 @@ async function loadDataFile(path) {
 }
 
 export default function ProjectDisplay(props) {
-  const [status, setStatus] = useState(false);
-  const projectData = useRef(null);
+  const [status, setStatus] = useState(false); // checks once our file has loaded
+  const projectData = useRef(null); 
   const [dataInvalid, setDataInvalid] = useState(false);
   const [selection, setSelction] = useState(0);
   const [dots, setDots] = useState([
@@ -31,67 +31,47 @@ export default function ProjectDisplay(props) {
       projectData.current = res;
       setSelction(0);
       setStatus(true);
-      if (Array.isArray(res) && res.length == 0) {
+      if (Array.isArray(res) && res.length === 0) {
         setDataInvalid(true);
+        console.log("data invalidated")
+      } else {
+        console.log("data loaded")
       }
     });
   }, []);
 
   // sets the  dot status in relation to the project selection
+  // issue is here.
+  
   useEffect(() => {
     let carry = [1, 2, 3, 4]; // carries the incoming value
     carry.fill("inactive", 0, 4); // in order for it to work we need a current length of four, we'll look closer during day hours with internt access.
-    let length = projectData.current.length - 1; // readability
-    let relation = [
-      selection == 0,
-      selection == 1,
-      selection == length - 1,
-      selection == length - 2,
-    ]; // corresponding t/f
-    relation.every((ele) => ele == false) ? (relation[2] = true) : null; // check for middle ground
-    let transfer = relation.indexOf(true);
-    carry[transfer] = "active";
+    // let length = projectData.current.length - 1; // readability
+    // if (length) console.log(true);
+    // let relation = [
+    //   selection === 0,
+    //   selection === 1,
+    //   selection === length - 1,
+    //   selection === length - 2,
+    // ]; // corresponding t/f
+
+    // relation.every((ele) => ele == false) ? (relation[2] = true) : null; // check for middle ground
+    // if (relation.every((ele) => ele == false)) {
+    //   relation[2] = true;
+    // }
+    // let transfer = relation.indexOf(true);
+    // carry[transfer] = "active";
     setDots(carry);
   }, [selection]);
 
+
   function handleLoad() {
-    const {group} = props;
-    if (status) {
-      if (group) {
-        projectData.current.filter((project) => project == group);
-      } else {
-        // line below should handle removing any data used for test, might not be the best practice, noting now
-        projectData.current.filter((project) => project.group !== "test-data");
-      }
+    const { group } = props;
+    console.log()
+    if (projectData.current) {
 
-      const { image, title, tags, link, description } =
-        projectData.current[selection];
-      const { project, codebase } = link;
-
-      return (
-        <div className="card-container">
-          <img src={image} alt={description.short} />
-
-          <h4>{title}</h4>
-          <p>{description.long}</p>
-
-          <ul>
-            {tags.map((ele, index) => (
-              <li key={index}> {ele} </li>
-            ))}
-          </ul>
-
-          <a href={project}>
-            <button> Veiw Project </button>
-          </a>
-
-          <a href={codebase}>
-            <button> View Codebase </button>
-          </a>
-        </div>
-      );
     }
-    if (dataInvalid && status) {
+      if (dataInvalid && status) {
       return (
         <div className="invalid-data">
           <h3>
@@ -104,9 +84,48 @@ export default function ProjectDisplay(props) {
     } else {
       return <h4 className="wait">Please Wait</h4>;
     }
+    if (status) {
+      if (group) {
+        projectData.current.filter((project) => project == group);
+      } else {
+        // line below should handle removing any data used for test, might not be the best practice, noting now
+        projectData.current.filter((project) => project.group !== "test-data");
+      }
+      const { image, title, tags, link, description } =
+        projectData.current[selection];
+      const { project, codebase } = link;
+
+      return (
+         <p>Test text</p>
+        // <div className="card-container">
+        //   <img src={image} alt={description.short} />
+
+        //   <h4>{title}</h4>
+        //   <p>{description.long}</p>
+
+        //   <ul>
+        //     {tags.map((ele, index) => (
+        //       <li key={index}> {ele} </li>
+        //     ))}
+        //   </ul>
+
+        //   <a href={project}>
+        //     <button> Veiw Project </button>
+        //   </a>
+
+        //   <a href={codebase}>
+        //     <button> View Codebase </button>
+        //   </a>
+        // </div>
+      );
+    }
+  
   }
 
   function handleBtnClick(btn) {
+    if (projectData == null) {
+      return;
+    }
     if (btn === "back") {
       if (selection === 0) {
         setSelction(projectData.current.length - 1);
@@ -125,18 +144,40 @@ export default function ProjectDisplay(props) {
 
   return (
     <section className="projects-section">
-      {Children}
-      <img data-testid="Back-btn"  src="" alt="last project" onClick={handleBtnClick("back")} />
+      {/* {Children} */} {/* issue with the object render was here. we're on break and can't doc everything rn */}
+      {/* <img
+        data-testid="Back-btn"
+        src={null}
+        alt="last project"
+        // onClick={handleBtnClick("back")}
+      /> */}
       {/* left button */}
       {handleLoad()}
-      <img data-testid="Next-btn" src="" alt="next project" onClick={handleBtnClick("next")} />
+      {/* <img
+        data-testid="Next-btn"
+        src={null}
+        alt="next project"
+        // onClick={handleBtnClick("next")}
+      /> */}
       {/* right btn */}
       <div className="dot-inditicators">
         {/* stlyed by class conditional */}
-        <div data-testid="dot dot-0" className={`dot dot-inditicator ${dots[0]}`}></div>
-        <div data-testid="dot dot-1" className={`dot dot-inditicator ${dots[1]}`}></div>
-        <div data-testid="fot dot-2" className={`dot-inditicator ${dots[2]}`}></div>
-        <div data-testid="dot dot-3" className={`dot-inditicator ${dots[3]}`}></div>
+        <div
+          data-testid="dot dot-0"
+          className={`dot dot-inditicator ${dots[0]}`}
+        ></div>
+        <div
+          data-testid="dot dot-1"
+          className={`dot dot-inditicator ${dots[1]}`}
+        ></div>
+        <div
+          data-testid="fot dot-2"
+          className={`dot-inditicator ${dots[2]}`}
+        ></div>
+        <div
+          data-testid="dot dot-3"
+          className={`dot-inditicator ${dots[3]}`}
+        ></div>
       </div>
     </section>
   );

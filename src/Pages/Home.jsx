@@ -34,7 +34,7 @@ export default function Home() {
       </section>
 
       <section id="introduction" data-testid="introduction">
-        <img src="" alt="" />
+        <img src={null} alt="" />
         <h2>Hi, I'm Tyshawn, a Passionate Front-End developer</h2>
         <p>
           I craft clean, responsive, and dynamic websitesthat bring ideas to
@@ -65,12 +65,12 @@ export default function Home() {
           skills that enable me to adapt to diverse challenges.
         </p>
       </section>
-      {/* 
+      
       <ProjectDisplay data-testid="project-display">
-        <h2>Recent Projects & Learning Highlights</h2>
+        {/* <h2>Recent Projects & Learning Highlights</h2> */}
       </ProjectDisplay>
 
-      */}
+     
 
       <section id="contact-section" data-testid="contact-section">
         <h2>Let's Work Together</h2>
