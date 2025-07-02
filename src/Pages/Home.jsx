@@ -67,7 +67,7 @@ export default function Home() {
       </section>
       
       <ProjectDisplay data-testid="project-display">
-        {/* <h2>Recent Projects & Learning Highlights</h2> */}
+        <h2>Recent Projects & Learning Highlights</h2>
       </ProjectDisplay>
 
      

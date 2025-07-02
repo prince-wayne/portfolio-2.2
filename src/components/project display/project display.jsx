@@ -5,7 +5,9 @@ async function loadDataFile(path) {
   // If I used random number I could easily have log infomation every 1/10 runs.
   try {
     const response = await fetch(path);
+    console.log(response);
     const data = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.error("Error loading data: ", error);
@@ -15,6 +17,7 @@ async function loadDataFile(path) {
 }
 
 export default function ProjectDisplay(props) {
+  const {children} = props;
   const [status, setStatus] = useState(false); // checks once our file has loaded
   const projectData = useRef(null); 
   const [dataInvalid, setDataInvalid] = useState(false);
@@ -27,7 +30,7 @@ export default function ProjectDisplay(props) {
   ]);
 
   useEffect(() => {
-    loadDataFile("/public/data/projects.json").then((res) => {
+    loadDataFile("/data/projects.json").then((res) => {
       projectData.current = res;
       setSelction(0);
       setStatus(true);
@@ -46,21 +49,26 @@ export default function ProjectDisplay(props) {
   useEffect(() => {
     let carry = [1, 2, 3, 4]; // carries the incoming value
     carry.fill("inactive", 0, 4); // in order for it to work we need a current length of four, we'll look closer during day hours with internt access.
-    // let length = projectData.current.length - 1; // readability
-    // if (length) console.log(true);
-    // let relation = [
-    //   selection === 0,
-    //   selection === 1,
-    //   selection === length - 1,
-    //   selection === length - 2,
-    // ]; // corresponding t/f
-
+    let length = 0;
+    let relation = [];
+    if (projectData.current) {
+      length = projectData.current.length - 1; // readability
+      relation = [
+        selection === 0,
+        selection === 1,
+        selection === length - 1,
+        selection === length - 2,
+      ]; // corresponding t/f
+    } else {
+      console.error("project data, needs an input array") 
+    }
     // relation.every((ele) => ele == false) ? (relation[2] = true) : null; // check for middle ground
-    // if (relation.every((ele) => ele == false)) {
-    //   relation[2] = true;
-    // }
-    // let transfer = relation.indexOf(true);
-    // carry[transfer] = "active";
+    
+    if (relation.every((ele) => ele == false)) {
+      relation[2] = true;
+    }
+    let transfer = relation.indexOf(true);
+    carry[transfer] = "active";
     setDots(carry);
   }, [selection]);
 
@@ -69,7 +77,7 @@ export default function ProjectDisplay(props) {
     const { group } = props;
     console.log()
     if (projectData.current) {
-
+      console.log(projectData.current);
     }
       if (dataInvalid && status) {
       return (
@@ -81,10 +89,9 @@ export default function ProjectDisplay(props) {
           <p> If this continues please let us know and we'll fix it soon.</p>
         </div>
       );
-    } else {
+    } else if (!status && !dataInvalid){
       return <h4 className="wait">Please Wait</h4>;
-    }
-    if (status) {
+    } else if (status && !dataInvalid) {
       if (group) {
         projectData.current.filter((project) => project == group);
       } else {
@@ -94,6 +101,8 @@ export default function ProjectDisplay(props) {
       const { image, title, tags, link, description } =
         projectData.current[selection];
       const { project, codebase } = link;
+
+      // I beleve there was an error here as i was working through the problems.
 
       return (
          <p>Test text</p>
@@ -144,14 +153,14 @@ export default function ProjectDisplay(props) {
 
   return (
     <section className="projects-section">
-      {/* {Children} */} {/* issue with the object render was here. we're on break and can't doc everything rn */}
       {/* <img
         data-testid="Back-btn"
         src={null}
         alt="last project"
         // onClick={handleBtnClick("back")}
-      /> */}
+        /> */}
       {/* left button */}
+        {children}
       {handleLoad()}
       {/* <img
         data-testid="Next-btn"
