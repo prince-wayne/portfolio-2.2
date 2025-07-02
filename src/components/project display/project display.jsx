@@ -1,5 +1,5 @@
 // we gotta load in the projects, our old portfolio should have the data file.
-import { useState, useEffect, useRef, Children } from "react";
+import { useState, useEffect, useRef, children } from "react";
 
 async function loadDataFile(path) {
   // If I used random number I could easily have log infomation every 1/10 runs.
@@ -17,9 +17,9 @@ async function loadDataFile(path) {
 }
 
 export default function ProjectDisplay(props) {
-  const {children} = props;
+  // const { children } = props;
   const [status, setStatus] = useState(false); // checks once our file has loaded
-  const projectData = useRef(null); 
+  const projectData = useRef(null);
   const [dataInvalid, setDataInvalid] = useState(false);
   const [selection, setSelction] = useState(0);
   const [dots, setDots] = useState([
@@ -36,16 +36,16 @@ export default function ProjectDisplay(props) {
       setStatus(true);
       if (Array.isArray(res) && res.length === 0) {
         setDataInvalid(true);
-        console.log("data invalidated")
+        console.log("data invalidated");
       } else {
-        console.log("data loaded")
+        console.log("data loaded");
       }
     });
   }, []);
 
   // sets the  dot status in relation to the project selection
   // issue is here.
-  
+
   useEffect(() => {
     let carry = [1, 2, 3, 4]; // carries the incoming value
     carry.fill("inactive", 0, 4); // in order for it to work we need a current length of four, we'll look closer during day hours with internt access.
@@ -60,11 +60,11 @@ export default function ProjectDisplay(props) {
         selection === length - 2,
       ]; // corresponding t/f
     } else {
-      console.error("project data, needs an input array") 
+      console.error("project data, needs an input array");
     }
     // relation.every((ele) => ele == false) ? (relation[2] = true) : null; // check for middle ground
-    
-    if (relation.every((ele) => ele == false)) {
+
+    if (relation.every((ele) => ele === false)) {
       relation[2] = true;
     }
     let transfer = relation.indexOf(true);
@@ -72,14 +72,13 @@ export default function ProjectDisplay(props) {
     setDots(carry);
   }, [selection]);
 
-
   function handleLoad() {
     const { group } = props;
-    console.log()
+    console.log();
     if (projectData.current) {
       console.log(projectData.current);
     }
-      if (dataInvalid && status) {
+    if (dataInvalid && status) {
       return (
         <div className="invalid-data">
           <h3>
@@ -89,46 +88,60 @@ export default function ProjectDisplay(props) {
           <p> If this continues please let us know and we'll fix it soon.</p>
         </div>
       );
-    } else if (!status && !dataInvalid){
+    } else if (!status && !dataInvalid) {
       return <h4 className="wait">Please Wait</h4>;
     } else if (status && !dataInvalid) {
       if (group) {
-        projectData.current.filter((project) => project == group);
+        projectData.current.filter((project) => project === group);
       } else {
         // line below should handle removing any data used for test, might not be the best practice, noting now
         projectData.current.filter((project) => project.group !== "test-data");
       }
-      const { image, title, tags, link, description } =
-        projectData.current[selection];
-      const { project, codebase } = link;
 
+      let { image, title, tags, link, description } =
+        projectData.current[selection];
+      // destructuring the project data, this is a bit of a mess but it works.
+
+      let { project, codebase } = link;
       // I beleve there was an error here as i was working through the problems.
 
+      if (!image || !title || !tags || !link || !description) {
+        console.log("project data is missing some information");
+        console.log("Handling missing data with a placeholder, or basic text");
+        image = image || "https://via.placeholder.com/150";
+        title = title || "No title available";
+        description = description || { short: "No description available" };
+        tags = tags || ["No tags available"];
+        project = project || "#";
+        codebase = codebase || "#";
+        // this is a placeholder for the image, title, description, project link, and codebase link.
+        // Tags defined above
+        // this is a bit of a mess but it works.
+      }
+
       return (
-         <p>Test text</p>
-        // <div className="card-container">
-        //   <img src={image} alt={description.short} />
+        <div className="card-container">
+          <img src={image} alt={description.short} />
 
-        //   <h4>{title}</h4>
-        //   <p>{description.long}</p>
+          <h4>{title}</h4>
+          <p>{description.long ? description.long : description.short}</p>
 
-        //   <ul>
-        //     {tags.map((ele, index) => (
-        //       <li key={index}> {ele} </li>
-        //     ))}
-        //   </ul>
+          <ul>
+            {tags.map((ele, index) => (
+              <li key={index}> {ele} </li>
+            ))}
+          </ul>
 
-        //   <a href={project}>
-        //     <button> Veiw Project </button>
-        //   </a>
+          <a href={project}>
+            <button> Veiw Project </button>
+          </a>
 
-        //   <a href={codebase}>
-        //     <button> View Codebase </button>
-        //   </a>
-        // </div>
+          <a href={codebase}>
+            <button> View Codebase </button>
+          </a>
+        </div>
       );
     }
-  
   }
 
   function handleBtnClick(btn) {
@@ -160,7 +173,7 @@ export default function ProjectDisplay(props) {
         // onClick={handleBtnClick("back")}
         /> */}
       {/* left button */}
-        {children}
+      {children}
       {handleLoad()}
       {/* <img
         data-testid="Next-btn"
