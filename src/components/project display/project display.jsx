@@ -5,7 +5,6 @@ async function loadDataFile(path) {
   // If I used random number I could easily have log infomation every 1/10 runs.
   try {
     const response = await fetch(path);
-    console.log(response);
     const data = await response.json();
     console.log(data);
     return data;
@@ -36,33 +35,28 @@ export default function ProjectDisplay(props) {
       setStatus(true);
       if (Array.isArray(res) && res.length === 0) {
         setDataInvalid(true);
-        console.log("data invalidated");
-      } else {
-        console.log("data loaded");
+        console.error("data invalidated");
       }
     });
   }, []);
 
   // sets the  dot status in relation to the project selection
-  // issue is here.
 
   useEffect(() => {
     let carry = [1, 2, 3, 4]; // carries the incoming value
     carry.fill("inactive", 0, 4); // in order for it to work we need a current length of four, we'll look closer during day hours with internt access.
     let length = 0;
     let relation = [];
+    // 
     if (projectData.current) {
       length = projectData.current.length - 1; // readability
       relation = [
         selection === 0,
         selection === 1,
-        selection === length - 1,
-        selection === length - 2,
-      ]; // corresponding t/f
-    } else {
-      console.error("project data, needs an input array");
+        (selection <= length - 1) * (selection > 1), 
+        selection === length - 2
+      ]; 
     }
-    // relation.every((ele) => ele == false) ? (relation[2] = true) : null; // check for middle ground
 
     if (relation.every((ele) => ele === false)) {
       relation[2] = true;
@@ -74,10 +68,6 @@ export default function ProjectDisplay(props) {
 
   function handleLoad() {
     const { group } = props;
-    console.log();
-    if (projectData.current) {
-      console.log(projectData.current);
-    }
     if (dataInvalid && status) {
       return (
         <div className="invalid-data">
@@ -100,25 +90,45 @@ export default function ProjectDisplay(props) {
 
       let { image, title, tags, link, description } =
         projectData.current[selection];
+      let project;
+      let codebase;
       // destructuring the project data, this is a bit of a mess but it works.
-
-      let { project, codebase } = link;
+      if (link) {
+        project = link.project;
+        codebase = link.codebase;
+      }
       // I beleve there was an error here as i was working through the problems.
 
       if (!image || !title || !tags || !link || !description) {
-        console.log("project data is missing some information");
-        console.log("Handling missing data with a placeholder, or basic text");
         image = image || "https://via.placeholder.com/150";
         title = title || "No title available";
         description = description || { short: "No description available" };
         tags = tags || ["No tags available"];
         project = project || "#";
         codebase = codebase || "#";
-        // this is a placeholder for the image, title, description, project link, and codebase link.
-        // Tags defined above
-        // this is a bit of a mess but it works.
       }
 
+      // We want to adjust this function to load a group based on input, using screen size or a prop.
+      /* 
+        Example of the data structure:
+        [
+          {
+            "image": "https://example.com/image.jpg",
+            "title": "Project Title",
+            "tags": ["HTML", "CSS", "JavaScript"],
+            "link": {
+              "project": "https://example.com/project",
+              "codebase": "https://example.com/codebase"
+              }
+            },
+            obj 2
+            obj 3
+              
+        ]
+
+        
+
+      */
       return (
         <div className="card-container">
           <img src={image} alt={description.short} />
@@ -144,18 +154,33 @@ export default function ProjectDisplay(props) {
     }
   }
 
+  function handleBtnLoad(btn) {
+    if (status && !dataInvalid) {
+      return (
+        <>
+          <img
+            data-testid="Back-btn"
+            src={null}
+            alt={`${btn} button`}
+            onClick={() => handleBtnClick(btn)}
+          />
+        </>
+      );
+    } else {
+      console.error("status or data invalidated");
+    }
+  }
+
   function handleBtnClick(btn) {
     if (projectData == null) {
       return;
-    }
-    if (btn === "back") {
+    } else if (btn === "back") {
       if (selection === 0) {
         setSelction(projectData.current.length - 1);
       } else {
         setSelction((c) => c - 1);
       }
-    }
-    if (btn === "next") {
+    } else if (btn === "next") {
       if (selection === projectData.current.length - 1) {
         setSelction(0);
       } else {
@@ -166,21 +191,11 @@ export default function ProjectDisplay(props) {
 
   return (
     <section className="projects-section">
-      {/* <img
-        data-testid="Back-btn"
-        src={null}
-        alt="last project"
-        // onClick={handleBtnClick("back")}
-        /> */}
       {/* left button */}
-      {children}
+      {children} {/* This is meant to be for headers only. */}
+      {handleBtnLoad("back")}
       {handleLoad()}
-      {/* <img
-        data-testid="Next-btn"
-        src={null}
-        alt="next project"
-        // onClick={handleBtnClick("next")}
-      /> */}
+      {handleBtnLoad("next")}
       {/* right btn */}
       <div className="dot-inditicators">
         {/* stlyed by class conditional */}

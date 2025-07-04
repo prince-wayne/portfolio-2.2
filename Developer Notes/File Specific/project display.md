@@ -23,7 +23,11 @@
 
     - them changing like the ones we did in the learning project might not be effective for a front facing site. (changes in place, slight delay on first load, above solution might solve this as well)
 
+- Build a dymatic dropdown for our group selector, front facing.
+
 ## Current status
+
+**7/2/2025 (12am+)**
 
  We have A functioning return, apparently we set it to just a text block, 
  Moving onto the function of loading the projects contents. 
@@ -35,7 +39,31 @@ We want:
 
 current step, list projects as a whole. Done (kinda, it selects one, but make sure we can adjust that before moving on.)
 
+**7/2/2025 day**
 
+Functioning program, our handle btn click is our issue. It's reading length from a null property. shouldn't be hard to fix. 
 
-**7/2/2025**
+btn looks fixed with the load. 
 
+btn is function, next step: maybe try using [1, 2, 3] as selectors of the projects we want. 
+
+**7/3/2025**
+
+A quick hour to work: 
+    Goal selectable group size, 
+    it will later be based on screen size. 
+
+above note should explain this well enough, our old pokemon joke project does this.
+
+idea step, 
+
+data imported 
+data grouped 
+
+okay, update after quick research, it doesn't make sense to use a singlarly update. (showing only the next one, but instead showing the next gruop). 
+
+time's up, not much done, but decisions made, 
+build the slider to slide into the next group of projects.
+this could be done but having an offset, or a react hook array, 
+
+Wouldn't mind double checking our code, since we have a few renders in the system before our data is loaded. which outputs to the console. A solution could be just a true error check affer everything has loaded, unsure in the moment but hopefully that changes soon. 

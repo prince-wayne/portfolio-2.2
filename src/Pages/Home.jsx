@@ -13,7 +13,7 @@ export default function Home() {
     <>
 
       <section id="home-hero-section" className="hero-section" data-testid="home-hero-section">
-        <img />{" "}
+        {/* <img /> */}
         {/* background image could just use the css property or could make the overlay absolute. */}
         <div id="hero-section-overlay" className="overlay">
           <h1>Turning Ideas into Interactive Experiences.</h1>
