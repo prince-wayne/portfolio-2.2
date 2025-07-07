@@ -127,7 +127,17 @@ export default function ProjectDisplay(props) {
         ]
 
         
+        thinking of using code like this
 
+        setSetlection([1, 2, 3]) // handle btn click
+
+        return
+          selection.map((ele) => {
+              same code that builds our current card. 
+            })
+        
+
+        ALSO FILTER THE DATA TO EXCLUDE THE TEST DATA.
       */
       return (
         <div className="card-container">
@@ -192,7 +202,7 @@ export default function ProjectDisplay(props) {
   return (
     <section className="projects-section">
       {/* left button */}
-      {children} {/* This is meant to be for headers only. */}
+      {children} {/* This is meant to be for headers and possilbe sub headers. */}
       {handleBtnLoad("back")}
       {handleLoad()}
       {handleBtnLoad("next")}

@@ -67,3 +67,13 @@ build the slider to slide into the next group of projects.
 this could be done but having an offset, or a react hook array, 
 
 Wouldn't mind double checking our code, since we have a few renders in the system before our data is loaded. which outputs to the console. A solution could be just a true error check affer everything has loaded, unsure in the moment but hopefully that changes soon. 
+
+**7/4/25**
+
+json file changed, we initialy used section, we converted accidentally, now were using `sections` to filiter them.
+
+attempting to handle that group size task we had, bs hour call at work today...
+
+Short term gain, or long term wealth. 
+
+change group to selections and adjust for the filters to include array logic. if filter tag within array logic is true, hard to speak and think right now. but hopefully future you already knows what we're looking for

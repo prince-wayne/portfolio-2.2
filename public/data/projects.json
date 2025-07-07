@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Generator Page",
-    "section": "study",
+    "sections": ["Study", "Featured"],
     "image": "/images/project previews/gen page.png",
     "link": {
         "project" :"Projects/generator-page/index.html",
@@ -11,12 +11,13 @@
     "description": {
       "short": "A dynamic generator with custom inputs, designed for beginners learning the DOM API.",
       "long": "The Generator Page is a hands-on project aimed at novice developers looking to enhance their JavaScript skills through practical application of DOM manipulation. Featuring custom inputs, this project combines functionality with a touch of humor, making it an engaging learning experience."
-    }
+    },
+    "tags" : ["HTML", "JS", "STUDY"]
   },
   {
     "id": 2,
     "title": "Single Price Grid Component",
-    "section": "study",
+    "sections": ["Study"],
     "image": "/images/project previews/pricing gird card.png",
     "link": {
         "project": "Projects/single-price-grid-component-master/index.html", 
@@ -25,17 +26,18 @@
     "description": {
       "short": "A responsive single price grid component for desktop.",
       "long": "The Single Price Grid Component project showcases my proficiency in creating responsive designs for desktop environments. With a focus on clarity and visual appeal, this component provides a straightforward pricing display suitable for various applications."
-    }
+    },
+    "tags" : ["HTML", "JS", "CSS", "STUDY"]
   },
   {
     "id" : false,
     "title" : "test data",
-    "group" : "test-data"
-  },
+    "sections" : ["test-data"]
+  }, 
   {
     "id": 3,
     "title": "QR Code Component",
-    "section": "study",
+    "sections": ["study"],
     "image": "/images/project previews/qr code.png",
     "link": {
             "project" : "Projects/qr-code-component-main/index.html",
@@ -44,12 +46,13 @@
     "description": {
       "short": "A simple QR code component.",
       "long": "The QR Code Component project serves as a quick warm-up exercise, emphasizing simplicity and functionality. Designed to generate QR codes effortlessly, it lays the groundwork for more complex coding challenges and project undertakings."
-    }
+    },
+    "tags" : ["HTML", "JS", "CSS", "STUDY"]
   },
   {
     "id": 4,
     "title": "Blog Preview Card",
-    "section": "study",
+    "sections": ["study"],
     "image": "/images/project previews/blog post.png",
     "link": {
         "project": "Projects/blog-preview-card-main/index.html",
@@ -58,12 +61,13 @@
     "description": {
       "short": "A preview card for blog posts.",
       "long": "The Blog Preview Card project demonstrates my ability to create visually appealing blog post previews. With a clean layout and concise information presentation, this project enhances user engagement by offering a glimpse into featured content before exploration."
-    }
+    },
+    "tags" : ["HTML", "JS", "CSS", "STUDY"] 
   },
   {
     "id": 5,
     "title": "Testimonials Grid Section",
-    "section": "study",
+    "sections": ["study"],
     "image": "/images/project previews/testimonial.png",
     "link": {
         "project" : "Projects/testimonials-grid-section-main/index.html",
@@ -77,7 +81,7 @@
   {
     "id": 6,
     "title": "Product Preview Card",
-    "section": "study",
+    "sections": ["study"],
     "image": "/images/project previews/product card.png",
     "link": {
         "project" : "Projects/product-preview-card-component-main/index.html",
