@@ -27,7 +27,9 @@
 
 ## Current status
 
-**7/2/2025 (12am+)**
+### Week x - z
+
+#### **7/2/2025 (12am+)**
 
  We have A functioning return, apparently we set it to just a text block, 
  Moving onto the function of loading the projects contents. 
@@ -39,7 +41,7 @@ We want:
 
 current step, list projects as a whole. Done (kinda, it selects one, but make sure we can adjust that before moving on.)
 
-**7/2/2025 day**
+#### **7/2/2025 day**
 
 Functioning program, our handle btn click is our issue. It's reading length from a null property. shouldn't be hard to fix. 
 
@@ -47,7 +49,7 @@ btn looks fixed with the load.
 
 btn is function, next step: maybe try using [1, 2, 3] as selectors of the projects we want. 
 
-**7/3/2025**
+#### **7/3/2025**
 
 A quick hour to work: 
     Goal selectable group size, 
@@ -68,7 +70,7 @@ this could be done but having an offset, or a react hook array,
 
 Wouldn't mind double checking our code, since we have a few renders in the system before our data is loaded. which outputs to the console. A solution could be just a true error check affer everything has loaded, unsure in the moment but hopefully that changes soon. 
 
-**7/4/25**
+#### **7/4/25**
 
 json file changed, we initialy used section, we converted accidentally, now were using `sections` to filiter them.
 
@@ -77,3 +79,124 @@ attempting to handle that group size task we had, bs hour call at work today...
 Short term gain, or long term wealth. 
 
 change group to selections and adjust for the filters to include array logic. if filter tag within array logic is true, hard to speak and think right now. but hopefully future you already knows what we're looking for
+
+#### **7/9/25**
+
+Going to the range was amazing, I'm happy asl. Remember to ask how many points we have. 
+
+current thought: let's see how fast and accurate we could get our multi card section running. (adjustable based on screen size <- accepts card count into function.)
+
+trying to use a map like eariler but  per caed
+
+steops, 
+- convert the selection into a selection of groups
+- map through the array that groups them,
+- display each card within list
+
+function(size) = {
+    // selection defaults to 0;
+    // we need the first one to get 0 and still move
+    if (selection > 0) {
+        list = [0, 1, 2]
+    } else {
+        list = [selection *  1, selection * 2, selection * 3]
+    }
+
+    **button next**
+    { 
+        selection++ / selection-- 
+    }
+
+
+In theory, 
+    [0, 1, 2] => [1, 2, 3] => [2, 4, 6] // that's broken still. 
+
+We want 
+    [0, 1, 2] => [3, 4, 5] => [6, 7, 8] // that's broken still. 
+    [selection * (base - 1), seltion (base + 1), selection + (base + 2)] => []
+    
+
+
+wrote on paper, a clasic
+
+let current = .current//  (the data)
+cards = [Selection * size, Selection * size + 1, Selection * Size + 2]; 
+
+We now decide if where the logic goes, 
+
+- withing the return or withing the code (do we a use a function to handle the group of cards in relation to the inputed size, or do we place the code within the return statement) 
+
+}
+
+#### 7/11/2025 
+
+We haven't worked directly on the code but have writen how we should do it on a piece of paper, which we should put into this doc once we have the time. 
+
+
+### Week 29
+
+#### 7/14/25
+
+we might've lost that piece of paper; going from memory now. 
+
+thankful to our notes we've recovered them;
+
+Weird thing going, likely giving list an undefined project
+
+wrapping up, we're stuck with three and it removes them instead of roting them at the end
+
+our solution will be to give map number sizes, and place the number of list to the number of .current
+
+list.map()
+
+{values} = .current[ele]
+if .current !ele return or use the reminder function to loop the array / place the list value at the front instead;
+
+#### 7/15/25
+
+Good news plus bad news, we have the list semi working, it does loop but we only see three, which are removed one by one before emtpy followed by a reset. 
+
+Likely due to the numbering of selction within the list, might be because we are going in the wrong direction
+
+when we're back, 
+- change list to be index numbers instead of objects
+- change map to select the number of .current;
+- use % to get the end of loop method and possibly remove the reset;
+
+#### 7/17/25 (past 12am making it so)
+
+Thought about it, it makes more sense to keep as is and load the objects directly
+
+formula should be
+`[(selection * size), (selection * size) + 1....]`
+
+or with the for loop
+
+list[i] = (selection * size) + i;
+
+**Good news** it was the placement that was causeing the issue, because we had it in an `useEffect()` block it was behaving stange, 
+
+**Next** we should try to make it loop to the start of the .current array instead of showing empty, a reset wouldn't work becuase any odd number would cause the array to cut itself off. 
+
+-> quick typing to think (we are doing this after a 12 hour shift forgive my mess please)
+
+    size = 3, 
+
+**Completed tasks**, with the exception of the fliter, our display is functioning correctly. 
+
+Once the filter is done, we should be able to move on. 
+We completely forgot to write the test frist but the functionality should be correct and pass all the test we would have writen anyways;
+-> does next bring the next? yes;
+-> does back btn load the last? yes;
+-> does it correctly handle empy cards? yes;
+-> does it correctly fill in missing data? yes;
+-> does it handle moving past the boundries of the array (data array)? yes;
+-> **Next tests** try different screen sizes and max the amount of cards that can appear;
+
+##### For next seesion
+
+Work on getting that filter working, so we can exclude test data and things like that. 
+
+Test different sizes and set the max cards to like 5
+
+**We're so close to this being done; just continue multiple short sessions and down time sessions (we work 60 hours a week at our day job, don't judge me)

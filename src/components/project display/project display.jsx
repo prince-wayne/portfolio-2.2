@@ -1,12 +1,12 @@
 // we gotta load in the projects, our old portfolio should have the data file.
-import { useState, useEffect, useRef, children } from "react";
+import { useState, useEffect, useRef } from "react";
+import "../Styles/project display.css";
 
 async function loadDataFile(path) {
   // If I used random number I could easily have log infomation every 1/10 runs.
   try {
     const response = await fetch(path);
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error("Error loading data: ", error);
@@ -16,7 +16,7 @@ async function loadDataFile(path) {
 }
 
 export default function ProjectDisplay(props) {
-  // const { children } = props;
+  const { children } = props;
   const [status, setStatus] = useState(false); // checks once our file has loaded
   const projectData = useRef(null);
   const [dataInvalid, setDataInvalid] = useState(false);
@@ -27,10 +27,20 @@ export default function ProjectDisplay(props) {
     "inactive",
     "inactive",
   ]);
+  let dataLength = useRef(null); // later assign the length of data once we get it;
+  let size = Math.floor(window.innerWidth / 400);
+  let list = []; // this is used to handle the number of projects displayed at once.
+
+  if (list.length === 0 && status && !dataInvalid) {
+    for (let i = 0; i < size; i++) {
+      list[i] = projectData.current[size * (selection + i)];
+    }
+  }
 
   useEffect(() => {
     loadDataFile("/data/projects.json").then((res) => {
       projectData.current = res;
+      dataLength.current = projectData.current.length;
       setSelction(0);
       setStatus(true);
       if (Array.isArray(res) && res.length === 0) {
@@ -47,15 +57,14 @@ export default function ProjectDisplay(props) {
     carry.fill("inactive", 0, 4); // in order for it to work we need a current length of four, we'll look closer during day hours with internt access.
     let length = 0;
     let relation = [];
-    // 
     if (projectData.current) {
       length = projectData.current.length - 1; // readability
       relation = [
         selection === 0,
         selection === 1,
-        (selection <= length - 1) * (selection > 1), 
-        selection === length - 2
-      ]; 
+        (selection <= length - 1) * (selection > 1),
+        selection === length - 2,
+      ];
     }
 
     if (relation.every((ele) => ele === false)) {
@@ -82,83 +91,82 @@ export default function ProjectDisplay(props) {
       return <h4 className="wait">Please Wait</h4>;
     } else if (status && !dataInvalid) {
       if (group) {
-        projectData.current.filter((project) => project === group);
+        projectData.current.filter(
+          (project) => project.sections.includes(group) === group
+        );
       } else {
         // line below should handle removing any data used for test, might not be the best practice, noting now
-        projectData.current.filter((project) => project.group !== "test-data");
+        projectData.current.filter(
+          (project) => project.sections.includes(group) !== "test-data"
+        );
       }
 
-      let { image, title, tags, link, description } =
-        projectData.current[selection];
-      let project;
-      let codebase;
-      // destructuring the project data, this is a bit of a mess but it works.
-      if (link) {
-        project = link.project;
-        codebase = link.codebase;
-      }
-      // I beleve there was an error here as i was working through the problems.
+      for (let i = 0; i < list.length; i++) {
+        let value = size * selection + i;
+        console.log("selection: ", selection);
+        console.log("size", size);
+        console.log("i", i);
+        console.log("value", value);
+        console.log("data length", dataLength.current);
+        console.log("\n");
 
-      if (!image || !title || !tags || !link || !description) {
-        image = image || "https://via.placeholder.com/150";
-        title = title || "No title available";
-        description = description || { short: "No description available" };
-        tags = tags || ["No tags available"];
-        project = project || "#";
-        codebase = codebase || "#";
+        if (value < dataLength.current) {
+          list[i] = projectData.current[value];
+        } else {
+          list[i] = projectData.current[value % dataLength.current];
+        }
       }
 
-      // We want to adjust this function to load a group based on input, using screen size or a prop.
-      /* 
-        Example of the data structure:
-        [
-          {
-            "image": "https://example.com/image.jpg",
-            "title": "Project Title",
-            "tags": ["HTML", "CSS", "JavaScript"],
-            "link": {
-              "project": "https://example.com/project",
-              "codebase": "https://example.com/codebase"
-              }
-            },
-            obj 2
-            obj 3
-              
-        ]
-
-        
-        thinking of using code like this
-
-        setSetlection([1, 2, 3]) // handle btn click
-
-        return
-          selection.map((ele) => {
-              same code that builds our current card. 
-            })
-        
-
-        ALSO FILTER THE DATA TO EXCLUDE THE TEST DATA.
-      */
+      
       return (
         <div className="card-container">
-          <img src={image} alt={description.short} />
+          {/* We want to map the selections to handle the code of each card */}
+          {list.map((ele, index) => {
+            if (!ele) {
+              return;
+            }
+            let { title, tags, link, description } = ele;
+            let image = ele.image || null; // if no image is provided, use a placeholder
+            let project;
+            let codebase;
+            if (link) {
+              project = link.project;
+              codebase = link.codebase;
+            }
 
-          <h4>{title}</h4>
-          <p>{description.long ? description.long : description.short}</p>
+            if (!image || !title || !tags || !link || !description) {
+              image = image || "https://via.placeholder.com/150";
+              title = title || "No title available";
+              description = description || {
+                short: "No description available",
+              };
+              tags = tags || ["No tags available"];
+              project = project || "#";
+              codebase = codebase || "#";
+            }
+            return (
+              <div className="card" key={index}>
+                <img src={null} alt={description.short} />
 
-          <ul>
-            {tags.map((ele, index) => (
-              <li key={index}> {ele} </li>
-            ))}
-          </ul>
+                <h4>{title}</h4>
+                <p>{description.long ? description.long : description.short}</p>
 
-          <a href={project}>
-            <button> Veiw Project </button>
-          </a>
+                <ul>
+                  {tags.map((ele, index) => (
+                    <li key={index}> {ele} </li>
+                  ))}
+                </ul>
 
-          <a href={codebase}>
-            <button> View Codebase </button>
-          </a>
+                <a href={project}>
+                  <button> Veiw Project </button>
+                </a>
+
+                <a href={codebase}>
+                  <button> View Codebase </button>
+                </a>
+              </div>
+            );
+          })}
         </div>
       );
     }
@@ -176,8 +184,6 @@ export default function ProjectDisplay(props) {
           />
         </>
       );
-    } else {
-      console.error("status or data invalidated");
     }
   }
 
@@ -185,24 +191,19 @@ export default function ProjectDisplay(props) {
     if (projectData == null) {
       return;
     } else if (btn === "back") {
-      if (selection === 0) {
-        setSelction(projectData.current.length - 1);
-      } else {
-        setSelction((c) => c - 1);
-      }
+      setSelction((c) => c - 1);
     } else if (btn === "next") {
-      if (selection === projectData.current.length - 1) {
-        setSelction(0);
-      } else {
-        setSelction((c) => c + 1);
-      }
+      setSelction((c) => c + 1);
     }
   }
+
+  // we need to remove the reset part for our desired affect of looping / connecting the ends;
 
   return (
     <section className="projects-section">
       {/* left button */}
-      {children} {/* This is meant to be for headers and possilbe sub headers. */}
+      {children}
+      {/* This is meant to be for headers and possilbe sub headers. */}
       {handleBtnLoad("back")}
       {handleLoad()}
       {handleBtnLoad("next")}
