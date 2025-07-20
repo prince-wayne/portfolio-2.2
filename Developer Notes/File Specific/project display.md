@@ -200,3 +200,20 @@ Work on getting that filter working, so we can exclude test data and things like
 Test different sizes and set the max cards to like 5
 
 **We're so close to this being done; just continue multiple short sessions and down time sessions (we work 60 hours a week at our day job, don't judge me)
+
+**uncovered error/bug** selection doesn't work when negative. using absolute vales should work
+
+if select < 0 abs(value)
+
+### Week 30
+
+**summary of last week** 
+
+We worked in between shifts; a lot of shattered focus but we managed to stay within our project display which seems functional besides a few test we still should run; Fliter isn't functioning property, gave it no attention due to other issues; we sure ensure that the screen size correctly gives our cards; 
+
+Hopefully we can move on to the next compondent, I don't see us spending a week on these minor issues;
+
+#### 7/20/2025 (Sunday)
+
+first target: Fliter; 
+Saving current process before moving to protect the current version. 
