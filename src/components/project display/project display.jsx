@@ -27,7 +27,10 @@ export default function ProjectDisplay(props) {
     "inactive",
     "inactive",
   ]);
+  let dottracker = useRef(0); // this is used to track the current dot status, we can use it to set the dots in relation to the selection.
+
   let dataLength = useRef(null); // later assign the length of data once we get it;
+
   let size = Math.floor(window.innerWidth / 400);
   let list = []; // this is used to handle the number of projects displayed at once.
 
@@ -40,7 +43,7 @@ export default function ProjectDisplay(props) {
   useEffect(() => {
     loadDataFile("/data/projects.json").then((res) => {
       projectData.current = res;
-      dataLength.current = projectData.current.length;
+      dataLength.current = projectData.current.length - 1;
       setSelction(0);
       setStatus(true);
       if (Array.isArray(res) && res.length === 0) {
@@ -53,25 +56,10 @@ export default function ProjectDisplay(props) {
   // sets the  dot status in relation to the project selection
 
   useEffect(() => {
-    let carry = [1, 2, 3, 4]; // carries the incoming value
+    let carry = []; // carries the incoming value
     carry.fill("inactive", 0, 4); // in order for it to work we need a current length of four, we'll look closer during day hours with internt access.
-    let length = 0;
-    let relation = [];
-    if (projectData.current) {
-      length = projectData.current.length - 1; // readability
-      relation = [
-        selection === 0,
-        selection === 1,
-        (selection <= length - 1) * (selection > 1),
-        selection === length - 2,
-      ];
-    }
+  
 
-    if (relation.every((ele) => ele === false)) {
-      relation[2] = true;
-    }
-    let transfer = relation.indexOf(true);
-    carry[transfer] = "active";
     setDots(carry);
   }, [selection]);
 
@@ -88,41 +76,46 @@ export default function ProjectDisplay(props) {
         </div>
       );
     } else if (!status && !dataInvalid) {
-      return <h4 className="wait">Please Wait</h4>;
+      return <h4 className="wait-message">Please Wait</h4>;
     } else if (status && !dataInvalid) {
       if (group) {
-        projectData.current.filter(
+        projectData.current = projectData.current.filter(
           (project) => project.sections.includes(group) === group
         );
+        dataLength.current = projectData.current.length - 1;
       } else {
         // line below should handle removing any data used for test, might not be the best practice, noting now
-        projectData.current.filter(
-          (project) => project.sections.includes(group) !== "test-data"
+
+        projectData.current = projectData.current.filter(
+          (project) => project.sections.includes("test-data") === false
         );
+
+        dataLength.current = projectData.current.length - 1;
       }
 
       for (let i = 0; i < list.length; i++) {
         let value = size * selection + i;
-        console.log("selection: ", selection);
-        console.log("size", size);
-        console.log("i", i);
-        console.log("value", value);
-        console.log("data length", dataLength.current);
-        console.log("\n");
 
-        if (value < dataLength.current) {
-          list[i] = projectData.current[value];
-        } else {
-          list[i] = projectData.current[value % dataLength.current];
+        if (value < -dataLength.current) {
+          value = Math.abs(value) % dataLength.current;
+        } else if (value < 0) {
+          value = projectData.current.length + value;
+        } else if (value < dataLength.current) {
+          // value = value; // no change needed but keeping for clarity
+        } else if (value >= dataLength.current) {
+          value = value % dataLength.current;
         }
+        if (i === Math.floor(list.length / 2)) {
+          dottracker.current = value; // this is used to track the current dot status, we can use it to set the dots in relation to the selection.
+        }
+        list[i] = projectData.current[value];
       }
-
-      
       return (
         <div className="card-container">
           {/* We want to map the selections to handle the code of each card */}
           {list.map((ele, index) => {
             if (!ele) {
+              console.warn(`No data found for index ${index}.`);
               return;
             }
             let { title, tags, link, description } = ele;
@@ -212,19 +205,23 @@ export default function ProjectDisplay(props) {
         {/* stlyed by class conditional */}
         <div
           data-testid="dot dot-0"
+          id="dot-0"
           className={`dot dot-inditicator ${dots[0]}`}
         ></div>
         <div
           data-testid="dot dot-1"
+          id="dot-1"
           className={`dot dot-inditicator ${dots[1]}`}
         ></div>
         <div
-          data-testid="fot dot-2"
-          className={`dot-inditicator ${dots[2]}`}
+          data-testid="dot dot-2"
+          id="dot-2"
+          className={`dot dot-inditicator ${dots[2]}`}
         ></div>
         <div
           data-testid="dot dot-3"
-          className={`dot-inditicator ${dots[3]}`}
+          id="dot-3"
+          className={`dot dot-inditicator ${dots[3]}`}
         ></div>
       </div>
     </section>

@@ -44,4 +44,30 @@
 - Solutions/Resources
 - Next steps
 
+## Week 30 
 
+### 2025-07-20
+
+**What I've Done**
+
+Added branches for clafity 
+Dev - for all dev work
+Project display - specific to project display and it's functionality
+
+worked on project display functionality, mostly ready and running;
+
+**Issues for later**
+
+Styles on home don't seem to be linking through; very strange linked the exact same way as project display which seems to get it;
+
+**Solutions** -> purely within our project display notes
+
+**Next steps** 
+
+1) dots functionallity; just the visual aid we are building for display placement; build test to ensure it works (we will start doing test driven building after this although it would be new.)
+
+2) Next major compondent; either focus on a complex component or just the next on the home page; 
+
+3) Build basic nav bar, we appearently completely left that out; *a quick discription*: it needs both a back ground to block out everything, and a overlay that softens the transition from background of page to the nav bar / header
+
+**Note** We don't want to stay and make this perfect; we want to get the site running then start refactoring and fixing minor bugs, 

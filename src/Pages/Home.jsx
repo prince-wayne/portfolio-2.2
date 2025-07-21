@@ -8,6 +8,9 @@ import ProjectDisplay from "../components/project display/project display.jsx";
 // import Overlay from '../components/popups/Overlay.jsx';
 // import ContactForm from '../components/popups/contact.jsx';
 
+// Styles
+import "../../src/Styles/Home.css";
+
 export default function Home() {
   return (
     <>

@@ -1,4 +1,30 @@
+/* these are just visual aids for my development  */
 .card {
     border : red 1px solid;
     margin : 10px 0;
+
+    width: 400px;
+}
+
+.card-container {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.dot .active{
+    background-color: blue;
+    width: 50px;
+    border-radius: 10px;
+}
+.dot .inactive{
+    background-color: grey;
+    border-radius: 50%;
 }

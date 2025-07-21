@@ -217,3 +217,25 @@ Hopefully we can move on to the next compondent, I don't see us spending a week 
 
 first target: Fliter; 
 Saving current process before moving to protect the current version. 
+
+Added branches for clafity 
+Dev - for all dev work
+Project display - specific to project display and it's functionality
+
+Filter - now working; but the looping feels off, we're testing it now; we want it to display a constant number of cards; 
+
+Our to dos) 
+
+dots don't align wit selection (expected due to change)
+cards don't show three -> 
+    not a direct bad thing, but it would look and feel better if they did consisently, could be a range thing, pull a number back one or push it ahead one
+
+our three cards -> with our return function we exit when no cards appears; we would have to write a dymanic way to get a reference number. 
+
+option one: sending the `value` all the way down. [ele, value]
+option two: how about a secondary hashmap? .set .has => 
+
+well turned out to be an indexing issue, we would always get an undeifined at the end because it would loop an index past where it would end
+
+Thank god we didn't code uneccesary blocks
+
