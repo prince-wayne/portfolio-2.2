@@ -20,7 +20,7 @@ export default function ProjectDisplay(props) {
   const [status, setStatus] = useState(false); // checks once our file has loaded
   const projectData = useRef(null);
   const [dataInvalid, setDataInvalid] = useState(false);
-  const [selection, setSelction] = useState(0);
+  const [selection, setSelection] = useState(0);
   const [dots, setDots] = useState([
     "active",
     "inactive",
@@ -44,7 +44,7 @@ export default function ProjectDisplay(props) {
     loadDataFile("/data/projects.json").then((res) => {
       projectData.current = res;
       dataLength.current = projectData.current.length - 1;
-      setSelction(0);
+      setSelection(0);
       setStatus(true);
       if (Array.isArray(res) && res.length === 0) {
         setDataInvalid(true);
@@ -57,9 +57,16 @@ export default function ProjectDisplay(props) {
 
   useEffect(() => {
     let carry = []; // carries the incoming value
-    carry.fill("inactive", 0, 4); // in order for it to work we need a current length of four, we'll look closer during day hours with internt access.
-  
-
+    if (dottracker.current >= 0 && dottracker.current < dataLength.current/4) {
+      carry = ["active", "inactive", "inactive", "inactive"];
+    } else if ( dottracker.current >= dataLength.current/4 && dottracker.current < dataLength.current/2) {
+      carry = ["inactive", "active", "inactive", "inactive"];
+    } else if (dottracker.current >= dataLength.current/2 && dottracker.current < (dataLength.current * 3)/4) {
+      carry = ["inactive", "inactive", "active", "inactive"];
+    } else if (dottracker.current >= (dataLength.current * 3)/4 && dottracker.current <= dataLength.current) {
+      carry = ["inactive", "inactive", "inactive", "active"];
+    }
+    
     setDots(carry);
   }, [selection]);
 
@@ -151,7 +158,7 @@ export default function ProjectDisplay(props) {
                 </ul>
 
                 <a href={project}>
-                  <button> Veiw Project </button>
+                  <button> View Project </button>
                 </a>
 
                 <a href={codebase}>
@@ -184,9 +191,9 @@ export default function ProjectDisplay(props) {
     if (projectData == null) {
       return;
     } else if (btn === "back") {
-      setSelction((c) => c - 1);
+      setSelection((c) => c - 1);
     } else if (btn === "next") {
-      setSelction((c) => c + 1);
+      setSelection((c) => c + 1);
     }
   }
 

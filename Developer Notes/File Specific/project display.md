@@ -239,3 +239,41 @@ well turned out to be an indexing issue, we would always get an undeifined at th
 
 Thank god we didn't code uneccesary blocks
 
+#### 7/23/2025 (Wednesday)
+
+Paydays always feel good don't they? 
+
+Let's get the dots and test up and walking (running doesn't make sense, why's it running?)
+
+Okay dot's are functional, but since our projects are limited the functionality seems off, could be an issue but we could reduce the dots, two might work better for now. However, our dots are perfect for mobile (phone) size since we would only load card at a time; also weird behavior, dots[0] should be active on first load, it isn't
+
+Also, if we wanted scalablity we could min dots to two, max to five or something reasonable, then use an useEffect to load them. keeping or logic by changing to be divisable by dots. Just use math. What coach say, "just get up" (inside joke)
+
+options for picking up after break:
+- move onto next compondent
+- hange dots to be dymanic (length * screen size chages how many dots we have)
+- Write Tests, just updating and ensuring we have coverage from our old ones,
+
+
+**Good news, Bad news?** 
+
+we are staying and handling our dot problem. we have function, but due to short list size (datalength) and screen sizing, we have a visually unnatural dot indicator element, where we go from dot: 1, 4, 2, 1, 3; instead of 1, 2, 3, 4. also weird load behavior, instead of dot 1 being active on load, 4 is, then it gets into correct slighing. 
+
+long break coming up but our steps to fix this is: 
+
+on mount
+clicks = length / size + (length % size > 0 ? 1 : 0);
+
+logic to limit dots to x (undecided) 
+
+for (clicks) {
+    dots classes  
+}
+
+dot active list updated to dots we have, 
+divisable by current dots, ie current is for 4, dots are slipt into quarters. 
+
+^ will require a formula to dymanically place range of dots and clicks
+
+there could be a save the logic so the math doesn't have to repeat. 
+

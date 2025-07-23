@@ -71,3 +71,24 @@ Styles on home don't seem to be linking through; very strange linked the exact s
 3) Build basic nav bar, we appearently completely left that out; *a quick discription*: it needs both a back ground to block out everything, and a overlay that softens the transition from background of page to the nav bar / header
 
 **Note** We don't want to stay and make this perfect; we want to get the site running then start refactoring and fixing minor bugs, 
+
+### 2025-07-23 (Wednesday)
+
+We updated the logic for dots to realise it wouldn't work with our current count of projects, 5 displayed, size for 1440 laptop 3 cards, 2 clicks to cycle, So four dots with the active state being based on the middle card makes the active dot jump everywhere which might confuse the user. 
+
+our solution for later development (upcoming break) 
+
+clicks const
+dot count based on clicks
+logic preventing too many dots rendering
+updating current logic to match the range of dots (five dots means we divide the range into five) 
+
+*getting closer to a finished component*
+
+we also added in some tags for our projects in our data json file. 
+
+for once we're back: 
+
+Dots as mentioned above
+Tests
+Next Component
