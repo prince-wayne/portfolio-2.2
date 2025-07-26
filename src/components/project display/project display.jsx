@@ -1,6 +1,7 @@
 // we gotta load in the projects, our old portfolio should have the data file.
 import { useState, useEffect, useRef } from "react";
 import "../Styles/project display.css";
+import { click } from "@testing-library/user-event/dist/click";
 
 async function loadDataFile(path) {
   // If I used random number I could easily have log infomation every 1/10 runs.
@@ -28,18 +29,14 @@ export default function ProjectDisplay(props) {
     "inactive",
   ]);
   let dottracker = useRef(0); // this is used to track the current dot status, we can use it to set the dots in relation to the selection.
-
+  const clicks = useRef(0); // this is used to track the number of clicks, we can use it to set the dots in relation to the selection.
   let dataLength = useRef(null); // later assign the length of data once we get it;
-
-  let size = Math.floor(window.innerWidth / 400);
+  const [size, setSize] = useState(Math.floor(window.innerWidth / 350)); // this is used to set the size of the project display, we can use it to set the dots in relation to the selection.
   let list = []; // this is used to handle the number of projects displayed at once.
-
-  if (list.length === 0 && status && !dataInvalid) {
-    for (let i = 0; i < size; i++) {
-      list[i] = projectData.current[size * (selection + i)];
-    }
-  }
-
+  let once = useRef(true); // use to set the clicks once the data loads, without rendering andseting clicks every time. aka, sets clicks once.
+  
+   
+  // This is for our data loading. we want to keep this at the top of our file so it can load as son as possible.
   useEffect(() => {
     loadDataFile("/data/projects.json").then((res) => {
       projectData.current = res;
@@ -52,23 +49,58 @@ export default function ProjectDisplay(props) {
       }
     });
   }, []);
+  
+  if (list.length === 0 && status && !dataInvalid) {
+    for (let i = 0; i < size; i++) {
+      list[i] = projectData.current[size * (selection + i)];
+    }
+  } // check during refactoring, we might need this anymore. 
+
+  if (dataLength.current > 0 && once.current) {
+    // once the length is over zero, out data is valid. (should be)
+    clicks.current = Math.floor(dataLength.current / size) + (dataLength.current % size > 0 ? 1 : 0);
+    once.current = false; // we only want to set the clicks once.
+  }
+
+  // Handles the resizing the screen
+  useEffect(() => {
+  const handleResize = () => {
+    const checkSize = Math.floor(window.innerWidth / 350) > 5 ? 5 : Math.floor(window.innerWidth / 350);
+    setSize(checkSize); // Update size based on window width limiting to a maximum of 5
+
+    clicks.current = Math.floor(dataLength.current / size) + (dataLength.current % size > 0 ? 1 : 0); // updates the clicks based on the new size
+
+    console.log(`Window resized\n`);
+  };
+
+  window.addEventListener("resize", handleResize);
+
+  // Cleanup to prevent memory leaks
+  return () => {
+    window.removeEventListener("resize", handleResize);
+  };
+}, []);
+
+console.log(`Current size: ${size}, Clicks: ${clicks.current}`);
+
+ 
 
   // sets the  dot status in relation to the project selection
 
-  useEffect(() => {
-    let carry = []; // carries the incoming value
-    if (dottracker.current >= 0 && dottracker.current < dataLength.current/4) {
-      carry = ["active", "inactive", "inactive", "inactive"];
-    } else if ( dottracker.current >= dataLength.current/4 && dottracker.current < dataLength.current/2) {
-      carry = ["inactive", "active", "inactive", "inactive"];
-    } else if (dottracker.current >= dataLength.current/2 && dottracker.current < (dataLength.current * 3)/4) {
-      carry = ["inactive", "inactive", "active", "inactive"];
-    } else if (dottracker.current >= (dataLength.current * 3)/4 && dottracker.current <= dataLength.current) {
-      carry = ["inactive", "inactive", "inactive", "active"];
-    }
+  // useEffect(() => {
+  //   let carry = []; // carries the incoming value
+  //   if (dottracker.current >= 0 && dottracker.current < dataLength.current/4) {
+  //     carry = ["active", "inactive", "inactive", "inactive"];
+  //   } else if ( dottracker.current >= dataLength.current/4 && dottracker.current < dataLength.current/2) {
+  //     carry = ["inactive", "active", "inactive", "inactive"];
+  //   } else if (dottracker.current >= dataLength.current/2 && dottracker.current < (dataLength.current * 3)/4) {
+  //     carry = ["inactive", "inactive", "active", "inactive"];
+  //   } else if (dottracker.current >= (dataLength.current * 3)/4 && dottracker.current <= dataLength.current) {
+  //     carry = ["inactive", "inactive", "inactive", "active"];
+  //   }
     
-    setDots(carry);
-  }, [selection]);
+  //   setDots(carry);
+  // }, [selection]);
 
   function handleLoad() {
     const { group } = props;
@@ -123,7 +155,7 @@ export default function ProjectDisplay(props) {
           {list.map((ele, index) => {
             if (!ele) {
               console.warn(`No data found for index ${index}.`);
-              return;
+              return null;
             }
             let { title, tags, link, description } = ele;
             let image = ele.image || null; // if no image is provided, use a placeholder
@@ -210,7 +242,7 @@ export default function ProjectDisplay(props) {
       {/* right btn */}
       <div className="dot-inditicators">
         {/* stlyed by class conditional */}
-        <div
+        {/* <div
           data-testid="dot dot-0"
           id="dot-0"
           className={`dot dot-inditicator ${dots[0]}`}
@@ -229,7 +261,7 @@ export default function ProjectDisplay(props) {
           data-testid="dot dot-3"
           id="dot-3"
           className={`dot dot-inditicator ${dots[3]}`}
-        ></div>
+        ></div> */}
       </div>
     </section>
   );

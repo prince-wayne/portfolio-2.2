@@ -277,3 +277,37 @@ divisable by current dots, ie current is for 4, dots are slipt into quarters.
 
 there could be a save the logic so the math doesn't have to repeat. 
 
+#### 7/26/2025 (Saturday)
+
+dots; card size; tests
+
+"Smart dots" 
+
+1) clicks = cards on screen / data length; only changes on resize
+2) dots logic built through for loop limited to five based on clicks
+3) dots render with map and active class added in on true index
+
+What's changing: 
+
+useEffect() that only rerenders on selection change; this contains the logic. 
+^ we might be able to get rid of this actually, since the array logic is taking over. We should be able to
+
+the actual render of the dots in our final return value for the compondent
+    this will become a mapped value not a static or fixed vale
+
+After Math or something
+
+we fixed the resizing issue, introduced five more (jokingly) 
+
+we can now resize the screen and get the cards to change as we do (3 cards become 5, 5 cards become 1, 1 becomes 5, etc) while limiting it to five cards max. 
+
+**weird issue** 
+
+clicks doesn't change like size does, but size is a state and clicks are a ref, possible that we'd need to convert it but we shouldn't need to. 
+
+**Next Steps**
+
+1) Fix clicks reassignments
+2) add dot logic array
+3) render dots with logic array .map
+4) write the tests of doom. 

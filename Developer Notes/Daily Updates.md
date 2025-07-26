@@ -74,7 +74,7 @@ Styles on home don't seem to be linking through; very strange linked the exact s
 
 ### 2025-07-23 (Wednesday)
 
-We updated the logic for dots to realise it wouldn't work with our current count of projects, 5 displayed, size for 1440 laptop 3 cards, 2 clicks to cycle, So four dots with the active state being based on the middle card makes the active dot jump everywhere which might confuse the user. 
+We updated the logic for dots to realise it wouldn't work with our current count of projects, 5 cards total, size for 1440 laptop 3 cards, 2 clicks to cycle, So four dots with the active state being based on the middle card makes the active dot jump everywhere which might confuse the user. 
 
 our solution for later development (upcoming break) 
 
@@ -92,3 +92,22 @@ for once we're back:
 Dots as mentioned above
 Tests
 Next Component
+
+### 2025-07-26 (Saturday)
+In case of confusion: We've been in project display.jsx for the past forever, to avoid future WTFs' I'd start noting what files we worked on. 
+
+So, we want three cards on desktop/laptop, appearantly our code gives us 2 on our personal laptop; of course that means **changing our calculation for cards**
+
+but picking up: 
+
+Dots, Test; 
+
+first process, dymanic dots including the logic. 
+
+For deeper notes look into project display dated for today
+
+**Issues for later** 
+
+1) clicks reasignment
+
+Then we can move onto the dot array logic loop, and the dots render function.
