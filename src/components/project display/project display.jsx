@@ -1,5 +1,5 @@
 // we gotta load in the projects, our old portfolio should have the data file.
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, use } from "react";
 import "../Styles/project display.css";
 import { click } from "@testing-library/user-event/dist/click";
 
@@ -36,12 +36,64 @@ export default function ProjectDisplay(props) {
   const resize = useRef(false); // tracks if a resize has happened. triggers a recalculation of clicks.
   let list = []; // this is used to handle the number of projects displayed at once.
 
+  const [, forceRender] = useState(); // this is used to force a rerender, we can use it to set the dots in relation to the selection.
+  // DEVELOPMENT AIDS
+
   if (resize.current) {
     clicks.current =
       Math.floor(dataLength.current / size) +
       (dataLength.current % size > 0 ? 1 : 0); // updates the clicks based on the new size
     resize.current = false; // reset the resize to false so we don't infinity render this value. (calulate every rerender)
   } // sets the clicks only on rerender when the clicks are changed... we
+
+  // Temporary debuging assistant
+  // log working data to console
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "d") {
+        console.log(
+          "Project Data: ",
+          projectData.current || "No data loaded yet."
+        );
+      }
+    };
+    window.removeEventListener("keydown", handleKeyDown);
+    return () => window.addEventListener("keydown", handleKeyDown);
+  }, []);
+  // n => next 10 times
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "n") {
+        let count = 0;
+        const intervalId = setInterval(() => {
+          handleBtnClick("next");
+          count++;
+          if (count >= 10) clearInterval(intervalId);
+        }, 1000); // 1 seconds
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+  // b => back 10 times
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "b") {
+        let count = 0;
+        const intervalId = setInterval(() => {
+          handleBtnClick("back");
+          count++;
+          if (count >= 10) clearInterval(intervalId);
+        }, 1000); // 2 seconds
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+// END OF DEVELOPMENT AIDS
 
   // This is for our data loading.
   useEffect(() => {
@@ -85,33 +137,25 @@ export default function ProjectDisplay(props) {
     // console.clear();
     const dots = clicks.current > 5 ? 5 : clicks.current;
     let transfer = new Array(dots).fill(false);
-    let DLAMinValue = 0;
     let value = dottracker.current; // this is used to track the current dot status, we can use it to set the dots in relation to the selection.
-    // for (let i = 0; i < dots; i++) {
 
-    //   const condition1 = DLAMinValue < value; // 0 < 1 -> true, 1 < 1 -> false, etc.
-    //   DLAMinValue = Math.floor(clicks.current * (i + 1 / dots));
-    //   const condition2 = value <= DLAMinValue; // 1 <= 1 -> true, 1 <= 2 -> true, etc.
-
-    //   if (condition1 && condition2) {
-    //     transfer[i] = true;
-    //   } else {
-    //     transfer[i] = false;
-    //   }
-    // }
     for (let i = 0; i < dots; i++) {
       // dataLength.current
       const lowerBound = Math.floor(dataLength.current * (i / dots));
       const upperBound = Math.floor(dataLength.current * ((i + 1) / dots));
-      console.log(`Dot ${i}: ${lowerBound} < x: ${value} <= ${upperBound}`);
-      console.log('lowerBound:', lowerBound, 'upperBound:', upperBound);
-      console.log(`lower`, lowerBound < value, `upper`, value <= upperBound);
 
-      transfer[i] = lowerBound < value && value <= upperBound;
+      console.log(
+        `Dot ${i} range: ${lowerBound} - ${upperBound}, current value: ${value}`
+      );
+        if (i < dots - 1) {
+        transfer[i] = lowerBound <= value && value < upperBound; // in between dots
+      } else {
+        transfer[i] = lowerBound <= value; // last dot
+      }
     }
-
+    console.log("Dot Logic Array: ", transfer);
     setDotLogicArray(transfer);
-  }, [selection, status, dataInvalid]);
+  }, [selection, status, dataInvalid, resize.current]);
 
   function handleLoad() {
     const { group } = props;

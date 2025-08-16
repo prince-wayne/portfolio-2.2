@@ -161,3 +161,22 @@ handle first dot logic (0 <= x ! 0 < x)
 handle final dot logic, slightly weird, unlocked at, should be working (data length * 5/5 should be datalength)
 
 test some more, pray that everything works, test again, thank God twice
+
+good news, it's functional, bad news, it's functional. 
+
+shouldn't have made that joke. Only correct on laptop, mobile seems to stick the value
+
+Yeah, quick little scare for a little misplacement, assignment for last dot was within the mid dot conditionals
+
+#### What we've done today
+
+1) fixed our logic array to correctly and dymanically map dots and state
+2) included edge statements
+
+#### What we need once we're back
+
+1) make resize rerender the dots, there's probably a function or call to directly do that. just lookded, there isn't, figure it out pretty boy
+
+2) ensure complete compondent
+3) Write test for compondent
+4) move on
