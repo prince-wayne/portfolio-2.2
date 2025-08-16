@@ -111,3 +111,53 @@ For deeper notes look into project display dated for today
 1) clicks reasignment
 
 Then we can move onto the dot array logic loop, and the dots render function.
+
+### Week 31 (8/3/2025) Sunday 
+
+## 2025-08-02 (Saturday) 
+
+It's saturday but we are too close to week 31 to call it anything else. 
+
+Blurry memory to be honest, but we are trying to pick up on the dot rendering, and it's likely done already. 
+
+## Week 33
+
+### Before we continue
+
+these notes have unoffically become the daily update notes, but we will begin to make an intentional effort to work the daily update file to it's original purpose. 
+
+### 2025-08-16 (Saturday)
+
+
+#### file -> project display
+
+**What I can remember** 
+
+We are strugling with the formula that builds our dots logic for active status, but we progress slightly, there we didn't get no dots becasue the conditional assignment would assign dots to zero, but now we get false positives where both dots can be true, false, or true and false. *the issue* is that only one should ever be true at a time.
+
+**What I'm seeing**
+
+good so far, reasonable path to visble possible within thought, no dots on first render, which is weird but likely easy to fix. feel like something else in this project had the same issue. 
+
+first render issue, resolved, state is required for objects that require rerenders or renders based on value, because a useRef won't trigger a rerender when updated + useEffect() won't trigger rerenders but runs post render. 
+
+##### Logic array logic issues:
+
+1: mobile stops at dot 2 reguardless
+2: incorrect range calculations
+
+2: for some reason, when we compare our middle cards index value to our clicks well get ones that aren't within either range. 
+
+debugging attempt, condition 1 and two logged separately
+**issue** our multiplier causes the conditional values to be shewed, for our two click laptop (two clicks to travel complete list), we test all values to be within 0-1 1-2, so when project 4 comes in, we get false values
+
+**haha**, so, our issue was using clicks which changed everytime even though we wasn't comparing it (we was unintentionally), when we wanted a sliding coverage from dot 0 through dot 5* 
+
+**first render**; no true status imeditately, which should have been fixed eariler unless we accidently undid it (crl + z). 
+
+**When we're back from break 30 mins** 
+
+handle first dot logic (0 <= x ! 0 < x)
+handle final dot logic, slightly weird, unlocked at, should be working (data length * 5/5 should be datalength)
+
+test some more, pray that everything works, test again, thank God twice
