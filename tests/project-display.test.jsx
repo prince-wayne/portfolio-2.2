@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import ProjectDisplay from "../src/components/project display/project display.jsx";
+import ProjectDisplay from "../src/components/project display/project-display.jsx";
 import projects from '../src/data/projects.json'; 
 
 const projectsStudyGroup = projects.concat().filter((ele) => ele.trim == "study");

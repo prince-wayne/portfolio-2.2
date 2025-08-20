@@ -26,5 +26,5 @@ export default function SocialIcons() {
 
 // why the autofill seem to want something other than the windows 11 icon? LOL like sign after sign not to use them. 
 
-  return <IconGroup isGrid={true} skills={icons} />;
+  return <IconGroup isGrid={false} skills={icons} />;
 }

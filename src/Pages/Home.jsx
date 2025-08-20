@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 // import "./index.css";
 import reportWebVitals from "../reportWebVitals.js";
 
-import ProjectDisplay from "../components/project display/project display.jsx"; 
-// import SocialIcons from "./src/components/icon groups/Social Icons.jsx";
+import ProjectDisplay from "../components/project display/project-display.jsx"; 
+import SocialIcons from "../components/icon groups/Social Icons.jsx";
 // import Overlay from '../components/popups/Overlay.jsx';
 // import ContactForm from '../components/popups/contact.jsx';
 
@@ -53,9 +53,9 @@ export default function Home() {
           Here are the technologies and tools I use to create functional and
           engaging websites:
         </p>
-        {/* 
-        <skillGroups isGrid={false} />
-         */}
+        
+        {/* <skillGroups isGrid={false} /> */}
+        
 
         <p>
           I bring a versatile skill set to front-end development, combining
@@ -88,7 +88,7 @@ export default function Home() {
           className="inline-icons"
           data-testid="social-icons"
         >
-          {/* <SocialIcons /> */}
+          <SocialIcons />
         </div>
         <div id="contact-btn">
           {/* contact overlay */}

@@ -1,5 +1,5 @@
 // we gotta load in the projects, our old portfolio should have the data file.
-import { useState, useEffect, useRef, use } from "react";
+import { useState, useEffect, useRef, use, useReducer } from "react";
 import "../Styles/project display.css";
 import { click } from "@testing-library/user-event/dist/click";
 
@@ -29,14 +29,13 @@ export default function ProjectDisplay(props) {
 
   let dottracker = useRef(0); // this is used to track the current dot status, we can use it to set the dots in relation to the selection.
   let [dotLogicArray, setDotLogicArray] = useState([]); // this is used to handle the dots, we can use it to set the dots in relation to the selection.
-  let initalLoadDotOnly = true; // this is used to handle the initial load of the dots, we can use it to set the dots in relation to the selection.
-  const dotArrayLogicMinValue = useRef(0); // this is used to handle the dots, we can use it to set the dots in relation to the selection.
+  let initalLoadDotOnly = useRef(true); // this is used to handle the initial load of the dots, we can use it to set the dots in relation to the selection.
+  let dotsHaveChanged = useRef(false); // this is used to handle the initial load of the dots, we can use it to set the dots in relation to the selection.
 
   const clicks = useRef(); // this is used to track the number of clicks, we can use it to set the dots in relation to the selection.
   const resize = useRef(false); // tracks if a resize has happened. triggers a recalculation of clicks.
   let list = []; // this is used to handle the number of projects displayed at once.
 
-  const [, forceRender] = useState(); // this is used to force a rerender, we can use it to set the dots in relation to the selection.
   // DEVELOPMENT AIDS
 
   if (resize.current) {
@@ -46,7 +45,8 @@ export default function ProjectDisplay(props) {
     resize.current = false; // reset the resize to false so we don't infinity render this value. (calulate every rerender)
   } // sets the clicks only on rerender when the clicks are changed... we
 
-  // Temporary debuging assistant
+  // DEVELOPMENT AIDS
+
   // log working data to console
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -93,9 +93,9 @@ export default function ProjectDisplay(props) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-// END OF DEVELOPMENT AIDS
+  // END OF DEVELOPMENT AIDS
 
-  // This is for our data loading.
+  // loading data file
   useEffect(() => {
     loadDataFile("/data/projects.json").then((res) => {
       projectData.current = res;
@@ -121,6 +121,7 @@ export default function ProjectDisplay(props) {
           : Math.floor(window.innerWidth / 350);
       setSize(checkSize); // Update size based on window width limiting to a maximum of 5
       resize.current = true; // set the resize to true so we can update the clicks.
+      dotsHaveChanged.current = true; // set the dots have changed to true so we can update the dots.
       console.log(`Window resized\n`);
     };
 
@@ -131,31 +132,6 @@ export default function ProjectDisplay(props) {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  // if the useEffect doesn't initalially run based on the selection we might have to put it into a different section of the code. Or initentally change the selection within initally ran code.
-  useEffect(() => {
-    // console.clear();
-    const dots = clicks.current > 5 ? 5 : clicks.current;
-    let transfer = new Array(dots).fill(false);
-    let value = dottracker.current; // this is used to track the current dot status, we can use it to set the dots in relation to the selection.
-
-    for (let i = 0; i < dots; i++) {
-      // dataLength.current
-      const lowerBound = Math.floor(dataLength.current * (i / dots));
-      const upperBound = Math.floor(dataLength.current * ((i + 1) / dots));
-
-      console.log(
-        `Dot ${i} range: ${lowerBound} - ${upperBound}, current value: ${value}`
-      );
-        if (i < dots - 1) {
-        transfer[i] = lowerBound <= value && value < upperBound; // in between dots
-      } else {
-        transfer[i] = lowerBound <= value; // last dot
-      }
-    }
-    console.log("Dot Logic Array: ", transfer);
-    setDotLogicArray(transfer);
-  }, [selection, status, dataInvalid, resize.current]);
 
   function handleLoad() {
     const { group } = props;
@@ -174,16 +150,16 @@ export default function ProjectDisplay(props) {
     } else if (status && !dataInvalid) {
       if (group) {
         projectData.current = projectData.current.filter(
-          (project) => project.sections.includes(group) === group
+          (project) =>
+            project.sections.includes(group) === group ||
+            project.sections.includes("test-data")
         );
         dataLength.current = projectData.current.length - 1;
       } else {
-        // line below should handle removing any data used for test, might not be the best practice, noting now
-
+        // removes test data if no group is specified.
         projectData.current = projectData.current.filter(
           (project) => project.sections.includes("test-data") === false
         );
-
         dataLength.current = projectData.current.length - 1;
       }
 
@@ -199,11 +175,41 @@ export default function ProjectDisplay(props) {
         } else if (value >= dataLength.current) {
           value = value % dataLength.current;
         }
+        // pulls the midlle card for comparison to position of data.
         if (i === Math.floor(list.length / 2)) {
-          dottracker.current = value; // this is used to track the current dot status, we can use it to set the dots in relation to the selection.
+          dottracker.current = value;
         }
         list[i] = projectData.current[value];
       }
+
+      // dot logic
+      const dots = clicks.current > 5 ? 5 : clicks.current;
+      let transfer = new Array(dots).fill(false);
+      let value = dottracker.current;
+
+      for (let i = 0; i < dots; i++) {
+        const lowerBound = Math.floor(dataLength.current * (i / dots));
+        const upperBound = Math.floor(dataLength.current * ((i + 1) / dots));
+
+        if (i < dots - 1) {
+          transfer[i] = lowerBound <= value && value < upperBound;
+        } else {
+          transfer[i] = lowerBound <= value; // last dot
+        }
+      }
+
+      // forces a render once we get the data
+      if (initalLoadDotOnly.current) {
+        console.log("Inital Load Dot Only");
+        setDotLogicArray(transfer);
+        initalLoadDotOnly.current = false;
+      }
+      // prevents infinity loop of renders, by checking if we need one / if the dots require an update
+      if (dotsHaveChanged.current) {
+        setDotLogicArray(transfer);
+        dotsHaveChanged.current = false;
+      }
+
       return (
         <div className="card-container">
           {/* We want to map the selections to handle the code of each card */}
@@ -282,13 +288,16 @@ export default function ProjectDisplay(props) {
     } else if (btn === "next") {
       setSelection((c) => c + 1);
     }
+
+    dotsHaveChanged.current = true; // set the dots have changed to true so we can update the dots.
   }
 
-  if (list.length === 0 && status && !dataInvalid) {
+  // Handles loading the sets of cards
+  if (status && !dataInvalid) {
     for (let i = 0; i < size; i++) {
       list[i] = projectData.current[size * (selection + i)];
     }
-  } // check during refactoring, we might need this anymore.
+  }
 
   return (
     <section className="projects-section">

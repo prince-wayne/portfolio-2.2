@@ -180,3 +180,30 @@ Yeah, quick little scare for a little misplacement, assignment for last dot was 
 2) ensure complete compondent
 3) Write test for compondent
 4) move on
+
+### 2025-08-19
+
+#### Files interacted with
+
+- project display.jsx &rarr; complete file unless testing fails
+- Icon group & Social Icons &rarr; these work together. 
+
+#### Pre review
+
+Plan to test our `project display.jsx` to ensure completion, then write test to ensure continuous functionallity as we add projects or integrate Docker and APIs. 
+
+likely that we focus on moving on without Docker until we've learned it and got a good understanding. 
+
+#### As we work
+
+dots now rerender during changed states (resized or btn click). 
+Debating writing test 
+
+Issues running test, moving on, see if someone can see our issues with this
+
+#### File #2 
+
+a weird 'icon not defined within props' but we don't use icon within the file
+Also after slight addjustment we realized we were still on the branch for project display. 
+
+okay a few more changes made outside of branch scope but no much, currently a link issue, merging back to main, then starting our other branch.
