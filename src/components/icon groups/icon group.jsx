@@ -12,6 +12,7 @@ export default function IconGroup(props) {
   const { icons, skills, isGrid, link } = props;
   if (link && !load) {
     hasLoaded(true);
+    console.log("link prop detected, load set to true");
   }
   // check icon
   if (!icons && isGrid) {
@@ -49,15 +50,26 @@ export default function IconGroup(props) {
       >
         {/* note that our input would be an array or an object,  */}
 
-        {link
+        {/* {link
           ? skills.map((ele, index) => (
               <a href={ele.link} key={index} target="_blank" rel="noopener noreferrer">
                 <img className="skill-icon " src={ele.image} />
+                {console.log("link-image rendered")}
               </a>
             ))
           : skills.map((ele, index) => (
+            <>
               <img className="skill-icon " src={ele.image} key={index} />
-            ))}
+              {console.log("image rendered")}
+            </>
+            ))} */}
+
+          {
+            skills.map((ele, index) => {
+              console.log("link", link, load);
+            })
+              
+          }
 
         {/* Above line renders both times instead of once */}
       </div>

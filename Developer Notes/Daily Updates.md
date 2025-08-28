@@ -207,3 +207,14 @@ a weird 'icon not defined within props' but we don't use icon within the file
 Also after slight addjustment we realized we were still on the branch for project display. 
 
 okay a few more changes made outside of branch scope but no much, currently a link issue, merging back to main, then starting our other branch.
+
+Now on the next branch, unsure if we should call it `Feature/Icon-Group but it's a solo project so we should be okay aside from external reviews. 
+
+## Week 35
+
+**Summary** 
+
+We 
+
+### 2025-08-26 (tuesday)
+
