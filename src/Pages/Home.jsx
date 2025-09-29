@@ -4,12 +4,16 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "../reportWebVitals.js";
 
 import ProjectDisplay from "../components/project display/project-display.jsx"; 
-import SocialIcons from "../components/icon groups/Social Icons.jsx";
+
+import Socials from "../components/Icons Static/social icons.jsx";
+// import SocialIcons from "../components/icon groups/Social Icons.jsx";
+
 // import Overlay from '../components/popups/Overlay.jsx';
 // import ContactForm from '../components/popups/contact.jsx';
 
 // Styles
 import "../../src/Styles/Home.css";
+
 
 export default function Home() {
   return (
@@ -88,7 +92,8 @@ export default function Home() {
           className="inline-icons"
           data-testid="social-icons"
         >
-          <SocialIcons />
+          {/* <SocialIcons /> */}
+          <Socials />
         </div>
         <div id="contact-btn">
           {/* contact overlay */}

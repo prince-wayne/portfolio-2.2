@@ -9,15 +9,10 @@ body {
 
     text-align: center;
 
-    color: #fd0000;
     
 }
 
 :root 
 {
-    --primary-color: #fd0000;
-    --secondary-color: #f4f4f4;
-    --text-color: #333;
 
-    color: red;
 }

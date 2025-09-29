@@ -200,7 +200,7 @@ export default function ProjectDisplay(props) {
 
       // forces a render once we get the data
       if (initalLoadDotOnly.current) {
-        console.log("Inital Load Dot Only");
+        // console.log("Inital Load Dot Only");
         setDotLogicArray(transfer);
         initalLoadDotOnly.current = false;
       }

@@ -214,7 +214,90 @@ Now on the next branch, unsure if we should call it `Feature/Icon-Group but it's
 
 **Summary** 
 
-We 
+We lost our computer, lucky we found it, unknowledgable of where we left off but I remember debating our restart of our `Icon group.jsx`. 
 
 ### 2025-08-26 (tuesday)
 
+The day we lost our computer
+
+## Week 36
+
+### 2025-09-04 (Thursday)
+
+debating if we should 
+a) rebuild the compondent
+b) adjust the compondent to load in the links once they come,
+c) build static link compondent (they load in basically hard coded but repeatable/reusable)
+
+## Week 37 
+
+### 2025-09-09 (Tuesday)
+
+we are going to use krita or figma to map out visual how these compondents work together. 
+
+## Week 38 
+
+### 2025-09-19 (Friday)
+
+#### Morning Shift
+
+Files: 
+- `project display.jsx` only reference in notes
+- All current icon components, moved to an archive like folder. (unmade, check further notes or repo directory if not mentioned here)
+
+We stumbled but hopful our new system of working could make things easier. To refresh and update future me, we basically stopped after finishing our `project display.jsx` file. But, we faced a weird issue that we are in too much of a rush to handle currently, (we could spend more time trying to fix this small issue than we would if we just used mostly static compondents). 
+
+That said, we should work towards indivual reuseable elements and save a "layered" component system for later once we have an actively runing site. 
+
+My first step, drawing the indivual components (visually) in my notebook. Then, we can translate it into code, shouldn't be hard, I'm an artst. (jokingly)
+
+**7:11 AM**
+
+As I hope my tone isn't seen as "unprofessional", I notice I've drawn this before, just with a different goal in mind. So, we either continue goal above, or make a last attempt to fix things neatly without losing too much more time. Best middle ground I can think of is attempting to solve within 30 mins... Don't think it could be solved that fast.
+
+a) review, 15 mins
+b) attempt, 30 mins,
+c) either we're finished or we move on to originally goal (rewriting) 
+
+reviw notes: 
+
+Structure/Flow - 
+    Icon group -> social icons (static with links)
+    Icon group -> skill groups (dymanic)
+    skill group, gird or in line. 
+
+an untouched issue, we are passing in strings instead of images for our skill groups, although this is more of a placeholder filled component it's worth mention. 
+
+Forgot about my test today, but basically we might be able to fix these issues with an useEffect() and forced rerender. ({}, [hasLoaded]) should allow a State change which rerenders once data is loaded. But, we really don't need the data, just direct prop checking should work just fine. 
+
+before we go: 
+
+We removed/commented out all intentional error throws because seeing what goes on withing our personal errors happening should give us more insight.
+
+**10:50 AM**
+
+My life could be an instagram reel page, if you've made it this far either you're very deciated or very bored, but I'm thankful and pround of your determination. So, we will now attempt to pick up where we were a few hours ago. 
+
+&rarr; direct proping and checking, no rerender after load. 
+The one piece is real. (coming back soon... again.)
+
+
+## Week 40
+
+### 2025-09-29 (Monday)
+
+**Important** 
+
+We more than likely need to go through these notes to one) condense them into a readable and clear format, and two) remove all of the unnecessary lines of chaos.
+
+**Before we start**
+
+Apologies to anyone following my process or reading through these notes, I will try to improve them as we go. So, to start our main focus will be giving our icon groups a raw static compondent instead of the layers we attempted. 
+
+This will be for the moment to get our site complete, and it should be one of few immediate topics for us to revisit post public production (day to market comparsition)
+
+**Before we go**
+
+Not much accomplished, but enough to finish during next session. We make basic static copies of our code which will likely replace the other in the end game with few adjustments. 
+
+not much else done, **new rule** no phone calls during codes unless important, don't get arrested. 

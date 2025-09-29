@@ -1,5 +1,9 @@
 # Improvement Ideas
 
+## Docs/Notes
+
+we need to review and clean them up, we have no true reason to keep them how they all and they could easily be filtered through, combimed, removed (jokes, failed/dragged out solutions, etc.)
+
 ## Project display
 
 **Pre-render code execution** 

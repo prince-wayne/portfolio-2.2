@@ -25,7 +25,7 @@ export default function IconGroup(props) {
   // Check skills.
   if (!skills || !Array.isArray(skills) || skills.length === 0) {
     console.error("missing skills prop, not an array or empty");
-    throw new Error("skills prop is missing, not an array, or empty");
+    //throw new Error("skills prop is missing, not an array, or empty");
   }
 
   if (!link) {

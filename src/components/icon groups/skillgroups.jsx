@@ -25,8 +25,8 @@ export default function SkillGroups(props) {
   const {isGrid} = props;
 
   // will generate an array from the object keys.
+  let result = [];
   if (isGrid) {
-    let result = [];
     Object.keys(icons).forEach((ele) => {
       icons[ele].skills.forEach((skill) => {
         result.push(skill);
