@@ -5,14 +5,7 @@ import "./social icons static.css"
 // This is the static version of our social icons. Once we hit production we will revisit and make this a dynamic component which can be used for other icons as well. (in this case it will be used along side two others)
 
 export default function Socials(props) {
-  const Instagram = 0;
-  const LinkedIn = 1;
-  const GitHub = 2;
 
-  const Twitter = 3;
-  const Facebook = 4;
-  const YouTube = 5;
-  const Blog = 6;
 
   const icons = [
     {

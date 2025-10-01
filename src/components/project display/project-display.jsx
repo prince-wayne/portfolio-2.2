@@ -1,7 +1,6 @@
 // we gotta load in the projects, our old portfolio should have the data file.
-import { useState, useEffect, useRef, use, useReducer } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../Styles/project display.css";
-import { click } from "@testing-library/user-event/dist/click";
 
 async function loadDataFile(path) {
   // If I used random number I could easily have log infomation every 1/10 runs.
