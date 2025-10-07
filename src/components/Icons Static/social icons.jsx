@@ -4,6 +4,8 @@ import "./social icons static.css"
 
 // This is the static version of our social icons. Once we hit production we will revisit and make this a dynamic component which can be used for other icons as well. (in this case it will be used along side two others)
 
+// Finished - it should've been the last push. 
+
 export default function Socials(props) {
 
 
@@ -25,7 +27,6 @@ export default function Socials(props) {
       image: "https://img.icons8.com/ios-filled/50/000000/github.png",
     },
   ];
-  console.info("link-image rendered");
 
   return (
     <>

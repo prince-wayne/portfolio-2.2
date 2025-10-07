@@ -301,3 +301,18 @@ This will be for the moment to get our site complete, and it should be one of fe
 Not much accomplished, but enough to finish during next session. We make basic static copies of our code which will likely replace the other in the end game with few adjustments. 
 
 not much else done, **new rule** no phone calls during codes unless important, don't get arrested. 
+
+**^ I lied, there was actual work done, it just doesn't look like much due to complexitity of other components**
+
+### 2025-10-01 (Wednesday) 
+
+**Before we start** 
+
+we want to finish the build out of the icon groups and ensure proper linkage. We have two hours, if we finish with enough time we want to follow downward of the home page, we only did project display first because it was the most complex at face value. 
+
+Also we will be starting a naming convention to help us with cleanliness and readablitity. 
+
+**As we work** 
+
+
+
