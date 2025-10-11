@@ -1,0 +1,127 @@
+/* Container for all skill groups */
+.skill-group-inline__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+/* ------------------------
+   Frontend / Backend / Tools
+------------------------- */
+.frontend-section,
+.backend-skills,
+.tools {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #1c1c1c;
+  border-radius: 16px;
+  padding: 1.5rem;
+  width: fit-content;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Header image / text placeholder */
+.frontend-section > img {
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  margin: 5px;
+  background-color: blue;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.frontend-section__skills,
+.backend-skills,
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ------------------------
+   Individual skill items
+------------------------- */
+.skill-icon__box {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Skill image */
+.skill-icon__box img,
+.skill {
+  width: 75px;
+  height: 75px;
+  margin: 10px;
+  padding: 5px;
+  background-color: #000;
+  border-radius: 10px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* Hover effect for all skills */
+.skill:hover {
+  transform: scale(1.05);
+  background-color: #222;
+}
+
+/* ------------------------
+   Level indicator dots
+------------------------- */
+.skill-icon__level-dot {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #111;
+}
+
+/* Level colors */
+.lv-0 {
+  background-color: gray;
+}
+.lv-1 {
+  background-color: yellow;
+}
+.lv-2 {
+  background-color: limegreen;
+}
+.lv-3 {
+  background-color: dodgerblue;
+}
+
+/* ------------------------
+   Hover or tooltip potential
+------------------------- */
+.skill-icon__box:hover .skill-icon__level-dot {
+  box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.4);
+}
+
+/* Example tooltip (optional for later use)
+.skill-icon__tooltip {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.skill-icon__box:hover .skill-icon__tooltip {
+  opacity: 1;
+}
+*/

@@ -312,7 +312,44 @@ we want to finish the build out of the icon groups and ensure proper linkage. We
 
 Also we will be starting a naming convention to help us with cleanliness and readablitity. 
 
-**As we work** 
+There was no work, we had something come up. 
+
+## Week 41 
+
+### 2025-10-10 (Friday)
+
+Today we began a new routine, for whatever reason it's been difficult to sit and start, so we will attempt separating things or having a routine anchor to get us back to working consistently. 
+
+**What we will attempt today**
+
+- Our icon groups
+
+Soical "done" 
+skill - in line "in process"
+Skill - grid "on deck" (a wrestling term for next)
 
 
+**skills - inline**
 
+we have this basically done, just missing the icons and using placeholders, be sure to go back and remove things marked with `temp` or simliar. 
+We have repeating code, but the trade off between readibilitity and scalabitity are to great for me to rationalize building it that way - code that runs through the entire object instead of the sections one by one. 
+
+Logic - if our backend skills display funny only adjust that part; we don't have to add our headers (literal h2/h3 etc.) into the object value; 
+
+for resizing at scale, we should do a max and just allow the icons to srink, but this isn't worth doing currently, we won't have twenty plus icons here a week past production
+
+instead of using `level: 1, 2, 3` we used `lv-1 -2 -3`
+
+**before we leave** 
+
+all we did was, review, note, map function for icons. pretty straghtforward but double check for bugs laters.
+
+**Once we're back**
+
+build them into there structures and add that hover affect to give slight details of skill level. 
+place our headers and wrappers along with our group icons.
+neat things up some. 
+
+(this is only meant to be a fifthteen mintue break, stay disipliee)
+
+**...** we didn't leave but we are now, so same level of adjustment, get ready to remove in line styles and add the structure into the other sections (tools & backend) then the filling in the icons and making things nice again. 

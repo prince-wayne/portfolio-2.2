@@ -1,18 +1,23 @@
 import React, { Suspense, lazy } from "react";
-import ReactDOM from "react-dom/client";
-// import "./index.css";
-import reportWebVitals from "../reportWebVitals.js";
-
-import ProjectDisplay from "../components/project display/project-display.jsx"; 
-
-import Socials from "../components/Icons Static/social icons.jsx";
-// import SocialIcons from "../components/icon groups/Social Icons.jsx";
-
-// import Overlay from '../components/popups/Overlay.jsx';
-// import ContactForm from '../components/popups/contact.jsx';
+// import ReactDOM from "react-dom/client";
+// import reportWebVitals from "../reportWebVitals.js";
 
 // Styles
 import "../../src/Styles/Home.css";
+
+
+// import SocialIcons from "../components/icon groups/Social Icons.jsx";
+
+
+
+// Components
+// import SkillGroupsInline from "../components/Icons Static/skill groups inline.jsx";
+import SkillGroupsInline from "../../src/components/Icons Static/skill groups inline.jsx";
+import ProjectDisplay from "../components/project display/project-display.jsx"; 
+import Socials from "../components/Icons Static/social icons.jsx";
+
+// import Overlay from '../components/popups/Overlay.jsx';
+// import ContactForm from '../components/popups/contact.jsx';
 
 
 export default function Home() {
@@ -59,6 +64,8 @@ export default function Home() {
         </p>
         
         {/* <skillGroups isGrid={false} /> */}
+        <SkillGroupsInline />
+
         
 
         <p>
@@ -89,10 +96,10 @@ export default function Home() {
         </p>
         <div
           id="contact-section-social-media-icon-box"
-          className="inline-icons"
-          data-testid="social-icons"
+          className="inline-icons" // We will need to come back to this
+          data-testid="social-icons" // addional change needed
         >
-          {/* <SocialIcons /> */}
+          {/* <SocialIcons /> */} 
           <Socials />
         </div>
         <div id="contact-btn">
