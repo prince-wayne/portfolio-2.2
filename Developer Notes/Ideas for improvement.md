@@ -1,6 +1,8 @@
 # Improvement Ideas
 
-## Code readibility and scalibility
+## Global Improvement
+
+### Code readibility and scalibility
 
 we should find the time to learn and use custom pathing/ with:
 
@@ -17,14 +19,33 @@ we should find the time to learn and use custom pathing/ with:
 <br>}
 
 
-## Docs/Notes
+### Docs/Notes
 
 we need to review and clean them up, we have no true reason to keep them how they all and they could easily be filtered through, combimed, removed (jokes, failed/dragged out solutions, etc.)
 
-## Project display
+## File / Component Specific
+
+### Project display
 
 **Pre-render code execution**
 
 we have a lot of code that requires an inital wasted render (sort of, barely noticeable) and a prerender would save resources (waste scales with users/traffic)
 
 a swipe gesture for mobile users.
+
+### A leetcode display
+
+**In short** we can use: https:// leetcode-stats-api.herokuapp.com/YOUR_USERNAME, to get our stats for a component. 
+
+**what we'd need** if we chose to do this with efficency in mind:
+
+Fetch data from https://leetcode-stats-api.herokuapp.com/<username> using Bash.
+Cache response to src/data/leetcode.json.
+Display cached data in React component for speed and reliability.
+Update cache daily/weekly via Bash script or GitHub Action.
+(Optional) Keep live fetch behind flag for development use.
+
+Benefit: consistent uptime, no rate limits, static performance, low maintenance.
+
+as for now, if we do it within this week or a week from live, a static one-time pull should be fine. but as we grow, we should use this format: week, day, hour. 
+but that's more dependant on how often I complete leetcode problems. 

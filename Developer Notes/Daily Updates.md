@@ -365,12 +365,49 @@ commenting out stlyes (in case style breaks our component visually during moval 
 
 applying final structure <!-- done, we have one that actively works as intended with placeholders, no polish (for later stages of development)-->
 
-filling in icons <!-- in progress -->
+filling in icons <!-- done -->
 
 ^ **ran into issue** instead of things just working textbook style, our pathfinding doesn't see anything anywhere in any predictable manner. **our incomplete solution** &rarrw; [Installing module that allows the same allias as vite](https://www.npmjs.com/package/module-alias)
 
 **starting break @ 1AM** <!-- don't judge me I'm used to a nightshift "day" job -->
+**Having lunch @ 2AM** <!-- We did chores, and reheated a meal, decent break vibes -->
+**Starting back up? @2:30 AM** <!-- attempting to began again. not unwillfully but the "should I" is creeping in -->
 
-adding icon level stylle (the colored dots) <!-- todo  -->
+attempting to add [CRACO](https://github.com/dilanx/craco), the other one wasn't a true solution, it would've done the same ironically. For future me and those wondering, both the current environment(raw create react app - cra) and the node module linked before can only do this within the src folder as it needs to be compiled/bundled for intented usage and the public / external files are only copy and pasted meaning the bundler (as is) can't "see" the path we're trying to shorthand / clean. 
+
+I would like to call bullshit, pardon my french, public folder doesn't exist post bundle, we forgot that. 
+
+But at the least we have a new tool to use for larger projects where this mistake could pay off. 
+
+**the next issue** we didn't save the group icons in the right color, go back and get the sever, display, and toolbox in #121212 I believe. 
+
+**fixed** 
+
+adding icon level style (the colored dots) <!-- close, we just need to evaluate our skill levels  --> 
+Just the colors, it already works as intented aside form color scale.
+
+This is basically complete, literally just changing colors;
+
+
 
 adding hover affect <!-- todo  -->
+
+
+
+issues in case of miss
+
+-) node.js icon doesn't fit well due to dark on dark. &rarr; replace with a white text node.js icon <!-- fixed -->
+-) due to adjustments and forgetfullness (the headers) we have three light colors with to little difference to work together, &rarr; change the color(header), group icon and background (skill group), to be the group icon color. rbga (white, 0.1) <!-- acceptably fixed -->
+
+remaining tasks from earlier:
+
+-) level evaluation, where would peers place you.
+-) hover affect, just a basic tooltip text showing where I am on the skill / tool. things like my usage or understanding
+-) adding the gmail icon for emails
+
+#### Things to finsh the home page,
+
+-) our current component
+-) hero image plus overlay box (only interactive buttons, not like our other ones)
+-) introduction section (header, img, paragraph)
+-) contact handler conpontent - header, img, paragraph, btn (opens overlay, which is our interactive handler)
