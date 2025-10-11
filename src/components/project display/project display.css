@@ -9,6 +9,17 @@
   box-sizing: border-box;
 }
 
+/* -----------------
+  Cards | Container 
+--------------------- */
+
+.card-container {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  gap: 15px;
+}
+
 .card {
   border: red 1px solid;
   margin: 15px 0;
@@ -22,12 +33,16 @@
 
 }
 
-.card-container {
-  display: flex;
-  /* flex-direction: column; */
-  align-items: center;
-  gap: 15px;
+.card > ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
+
+
+/* 
+  Dot Indicators
+*/
 
 .dot-indicators {
   background-color: whitesmoke;
@@ -56,6 +71,8 @@
   width: 15px;
   border-radius: 50%;
 }
+
+
 
 /* these are just visual aids for my development  */
 /* #dot-0 {

@@ -353,3 +353,24 @@ neat things up some.
 (this is only meant to be a fifthteen mintue break, stay disipliee)
 
 **...** we didn't leave but we are now, so same level of adjustment, get ready to remove in line styles and add the structure into the other sections (tools & backend) then the filling in the icons and making things nice again. 
+
+
+**We're back boys** 
+
+unrelated but definetly worth mention, 6:1:4 is pretty good for coffee without favor (carmel/mocha)
+
+**starting back up**
+
+commenting out stlyes (in case style breaks our component visually during moval to sheet)  <!-- done, only change was the blue background on the frontend skills group icon section -->
+
+applying final structure <!-- done, we have one that actively works as intended with placeholders, no polish (for later stages of development)-->
+
+filling in icons <!-- in progress -->
+
+^ **ran into issue** instead of things just working textbook style, our pathfinding doesn't see anything anywhere in any predictable manner. **our incomplete solution** &rarrw; [Installing module that allows the same allias as vite](https://www.npmjs.com/package/module-alias)
+
+**starting break @ 1AM** <!-- don't judge me I'm used to a nightshift "day" job -->
+
+adding icon level stylle (the colored dots) <!-- todo  -->
+
+adding hover affect <!-- todo  -->

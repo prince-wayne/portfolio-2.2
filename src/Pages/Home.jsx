@@ -3,7 +3,8 @@ import React, { Suspense, lazy } from "react";
 // import reportWebVitals from "../reportWebVitals.js";
 
 // Styles
-import "../../src/Styles/Home.css";
+import "../../src/Styles/Main.css"; // Global styles
+import "../../src/Styles/Home.css"; // Home page specific styles
 
 
 // import SocialIcons from "../components/icon groups/Social Icons.jsx";
@@ -58,10 +59,6 @@ export default function Home() {
       </section>
       <section id="Skills" data-testid="Skills">
         <h2>Skills and Expertise</h2>
-        <p>
-          Here are the technologies and tools I use to create functional and
-          engaging websites:
-        </p>
         
         {/* <skillGroups isGrid={false} /> */}
         <SkillGroupsInline />
