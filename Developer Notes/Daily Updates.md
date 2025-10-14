@@ -8,22 +8,22 @@
 
 ---
 
-## 2025-06-18 (Tusday Night)
+### 2025-06-18 (Tusday Night)
 
-### What I worked on
+#### What I worked on
     This was day one, I needed to see if the code would function, why it wasn't, and what my opitons were. 
 
-### Problems Fixed
+#### Problems Fixed
     None, not directly, we need to transfer our files from the original to see if it boots (opens and runs)
 
-### Solutions
+#### Solutions
     Transfer or Rebuild, our files should work in theory if they're moved to this version. 
-### Next Steps
+#### Next Steps
    -  to repeat ourselves one more time. Transfer or rebuild. One by one to find where our project loses support, as in indivual compondents. 
    - Attempt to remove the unsupported files to see if we can get it to run.
 
 
-## 2025-06-20 (Friday Night)
+### 2025-06-20 (Friday Night)
 
 - What I worked on
     transfered main files, Home page is commmented out, we just need to correctly connect everything. file paths and correct minor bugs like Line 51:5: "Expected an assignment or function call and instead saw an expression" pd.jsx.
@@ -35,7 +35,7 @@
 - Next steps
     Fix bug in the project display (pd.jsx), or comment it out  completely. Continue to build the hone page. 
 
-## 20205-06-27
+### 20205-06-27
 
 - What I worked on
 
@@ -112,9 +112,9 @@ For deeper notes look into project display dated for today
 
 Then we can move onto the dot array logic loop, and the dots render function.
 
-### Week 31 (8/3/2025) Sunday 
+## Week 31 (8/3/2025) Sunday 
 
-## 2025-08-02 (Saturday) 
+### 2025-08-02 (Saturday) 
 
 It's saturday but we are too close to week 31 to call it anything else. 
 
@@ -157,7 +157,7 @@ debugging attempt, condition 1 and two logged separately
 
 **When we're back from break 30 mins** 
 
-handle first dot logic (0 <= x ! 0 < x)
+handle first dot logic (0 <= x ! 0 <- x)
 handle final dot logic, slightly weird, unlocked at, should be working (data length * 5/5 should be datalength)
 
 test some more, pray that everything works, test again, thank God twice
@@ -348,11 +348,7 @@ all we did was, review, note, map function for icons. pretty straghtforward but 
 
 build them into there structures and add that hover affect to give slight details of skill level. 
 place our headers and wrappers along with our group icons.
-neat things up some. 
-
-(this is only meant to be a fifthteen mintue break, stay disipliee)
-
-**...** we didn't leave but we are now, so same level of adjustment, get ready to remove in line styles and add the structure into the other sections (tools & backend) then the filling in the icons and making things nice again. 
+neat things up some.then the filling in the icons and making things nice again. 
 
 
 **We're back boys** 
@@ -401,13 +397,78 @@ issues in case of miss
 
 remaining tasks from earlier:
 
--) level evaluation, where would peers place you.
--) hover affect, just a basic tooltip text showing where I am on the skill / tool. things like my usage or understanding
--) adding the gmail icon for emails
+-) level evaluation, where would peers place you. ✅
+-) hover affect, just a basic tooltip text showing where I am on the skill / tool. things like my usage or understanding ✅  
+-) adding the gmail icon for emails 🗑️
 
 #### Things to finsh the home page,
 
--) our current component
+-) our current component 
 -) hero image plus overlay box (only interactive buttons, not like our other ones)
 -) introduction section (header, img, paragraph)
 -) contact handler conpontent - header, img, paragraph, btn (opens overlay, which is our interactive handler)
+
+
+## Week 42 
+
+### 2025-10-13 (Monday) & 10-14 (Tuesday)
+
+###### Notes section 1 
+
+as we get in here, we might not do much coding, but we will be reviewing and planning. To start, we will have a new system to keep track of tasks, we will mark the files with to dos, then call them complete once finished. 
+In short, our tack system will require us to build a rough file with placeholder code, then tack places where things will go, and call a file complete once those are removed. I think this will help with quick view of what we need within files for when we come back.
+
+**Tasks** <!-- active task will be mared todo -->
+<!-- For copy and paste  -->
+✅  
+- Builidng a external data source, why? because for scale, icons/skill are shared and if we wanted to change them in x, we'd have to follow with y and z. ✅
+- Gauging our level in our perspective skills, ✅
+
+- Adding the gmail Icon to our socials 🗑️
+- Hover effects / tooltip ✅  
+- Build a data file similar to our `projects.json` to load our icons in so we can share them and allow easiler edits / scale. ✅
+
+**Home page tasks**
+
+- Hero section, image and overlay
+- Introduction, no image
+- contact handler, 
+
+**For us later,**
+
+Do those from bottom to top, then worry about building our progress tracker; I am happy with the ammount we've done considering how little it feels like we've worked on it. But, we should finish soon if we can provide a consisent effort instead of a few pushes like before.
+
+**Acknowledging Actions within first two hours of work**
+
+We have been looking at and slightly coding a tool to help us give more consistent notes, we will be back shortly and this tool is something that could help future coworkers with reading my notes through means of automated structures. 
+
+###### Non important to repo
+
+This system would take my regular notes and convert them into a template structure (of my design) to help others view quickly and follow smoothly, in a way more optimized for others. 
+
+__At a glace
+
+- We continue our style of structed notes, 
+- bash checks headers, compares diff, then sends the file with listed difference to an Ai call,
+- Ai reads and corrects typos, summarizes conent, places into a structured template i.e "Summary, What was worked on, files involved, issues we faced, how we solved them/attempted to, etc." 
+- bash recieves Ai response, appends to file. 
+- bash then runs git commit, commit + push, and other tags. 
+
+there will be layers to prevent double appending the same note, and flags(bash) + tags(notes) to allow a resync. 
+
+We've externaled enough back to business
+
+###### Notes section 2
+
+-0 added the json file and successfully loaded the data into a usable format. 
+-1 task at hand (tah) convert usage of SKILLGROUPS obj and GROUP_IMAGES obj
+-2 Used emotes to help visuall separate logs, though unprofressional faster than additional code, line 1 still in progress.
+-1.1
+    Data mount conditional render ✅ 
+    Object used instead ✅
+    Data (hard) removed ✅
+-x &rarr; y, 
+    build hover affect/tooptip
+    Skill ratings based on AI evaluation benchmarked against industry peers (~1,000 developer dataset)
+    Decided not to use gmail because we have a current contact box (in process)
+    

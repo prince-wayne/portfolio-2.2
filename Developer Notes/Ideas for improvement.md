@@ -2,6 +2,17 @@
 
 ## Global Improvement
 
+### Prerender, suspend, lazy
+
+**Summary:** A prerender would save upwards of 3 renders per loadfile call, roughly, and lazy loading is a simple improvement that reduces inital time along side memory usage. 
+
+prerenders as of **10/14/25** 
+- project display, 
+- skills (both inline and grid)
+
+
+
+
 ### Code readibility and scalibility
 
 we should find the time to learn and use custom pathing/ with:

@@ -14,17 +14,17 @@ export default function Socials(props) {
       name: "instagram",
       link: "https://www.instagram.com/the_quiet_artist007/", // done
       image:
-        "https://img.icons8.com/?size=50&id=32323&format=png&color=000000",
+        "Images/Social Icons/icons8-instagram-48.png",
     },
     {
       name: "LinkedIn",
       link: "https://www.linkedin.com/in/tyshawn-a-119bb924a", // done
-      image: "https://img.icons8.com/ios-filled/50/000000/linkedin.png",
+      image: "Images/Social Icons/icons8-linkedin-48.png",
     },
     {
       name: "GitHub",
       link: "https://github.com/prince-wayne", // done
-      image: "https://img.icons8.com/ios-filled/50/000000/github.png",
+      image: "Images/Social Icons/icons8-github-48.png",
     },
   ];
 
