@@ -4,9 +4,14 @@ Root and Variables
 
 :root {
   /* Backgrounds / Colors */
-  --skill-group-bg-color: rgba(255,255,255, 0.1); /* Dark background for skill groups */
+  --skill-group-bg-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Dark background for skill groups */
   /* --skill-group-header-color: var(--skill-group-bg-color);  */
-  --skill-group-header-color: white; 
+  --skill-group-header-color: white;
   /* Skill Icons */
   --skill-group-icon-size: 40px;
   --skill-icon-size: 40px;
@@ -53,7 +58,6 @@ Root and Variables
   /* gap: 2rem; */
 }
 
-
 /* Group Icons */
 .skill-group-inline__group-icon {
   height: var(--skill-group-icon-size);
@@ -81,7 +85,9 @@ Root and Variables
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
-  background-color: var(--skill-group-bg-color); /* black behind this gives us a decent sub tone */
+  background-color: var(
+    --skill-group-bg-color
+  ); /* black behind this gives us a decent sub tone */
   border-radius: 15px;
 }
 
@@ -145,6 +151,27 @@ Root and Variables
 ------------------------- */
 .skill-icon__box:hover .skill-icon__level-dot {
   box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.4);
+}
+
+.tooltip__box .tooltip__text {
+  display: inline-block;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+
+  width: max-content;
+  font-size: small;
+  padding: 5px 8px;
+  border-radius: 15px;
+
+  visibility: hidden;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+}
+.tooltip__box:hover .tooltip__text {
+  visibility: visible;
+  opacity: 90;
+  transition: fadeIn 1s ease-in-out;
 }
 
 /* Example tooltip (optional for later use)

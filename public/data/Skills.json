@@ -1,0 +1,64 @@
+{
+  "GroupImages": {
+    "frontend": "Images/Icons/icons8-pro-display-xdr-96.png",
+    "backend": "Images/Icons/icons8-server-96 (1).png",
+    "tools": "Images/Icons/icons8-toolbox-100.png"
+  },
+  "frontend": {
+    "html": {
+      "NAME": "html",
+      "IMAGE": "Images/Icons/icons8-html-5-100.png",
+      "LEVEL": "lv-4",
+      "TOOLTIP": "I've been working with this since 2015"
+    },
+    "css": {
+      "NAME": "css",
+      "IMAGE": "Images/Icons/icons8-css3-100.png",
+      "LEVEL": "lv-3"
+    },
+    "javascript": {
+      "NAME": "javascript",
+      "IMAGE": "Images/Icons/icons8-javascript-100.png",
+      "LEVEL": "lv-3"
+    },
+    "react": {
+      "NAME": "react",
+      "IMAGE": "Images/Icons/icons8-react-native-100.png",
+      "LEVEL": "lv-3"
+    }
+  },
+  "backend": {
+    "nodejs": {
+      "NAME": "nodejs",
+      "IMAGE": "Images/Icons/icons8-nodejs-96.png",
+      "LEVEL": "lv-2"
+    },
+    "mondodb": {
+      "NAME": "mongodb",
+      "IMAGE": "Images/Icons/icons8-mongodb-100.png",
+      "LEVEL": "lv-2"
+    }
+  },
+  "tools": {
+    "git": {
+      "NAME": "git",
+      "IMAGE": "Images/Icons/icons8-git-100.png",
+      "LEVEL": "lv-3"
+    },
+    "bash": {
+      "NAME": "bash",
+      "IMAGE": "Images/Icons/icons8-bash-100.png",
+      "LEVEL": "lv-3"
+    },
+    "powershell": {
+      "NAME": "powershell",
+      "IMAGE": "Images/Icons/icons8-powershell-100.png",
+      "LEVEL": "lv-2"
+    },
+    "docker": {
+      "NAME": "docker",
+      "IMAGE": "Images/Icons/icons8-docker-logo-96.png",
+      "LEVEL": "lv-1"
+    }
+  }
+}

@@ -6,26 +6,31 @@ import React, { Suspense, lazy } from "react";
 import "../../src/Styles/Main.css"; // Global styles
 import "../../src/Styles/Home.css"; // Home page specific styles
 
-
 // import SocialIcons from "../components/icon groups/Social Icons.jsx";
-
-
 
 // Components
 // import SkillGroupsInline from "../components/Icons Static/skill groups inline.jsx";
 import SkillGroupsInline from "../../src/components/Icons Static/skill groups inline.jsx";
-import ProjectDisplay from "../components/project display/project-display.jsx"; 
+import ProjectDisplay from "../components/project display/project-display.jsx";
 import Socials from "../components/Icons Static/social icons.jsx";
 
 // import Overlay from '../components/popups/Overlay.jsx';
 // import ContactForm from '../components/popups/contact.jsx';
 
-
 export default function Home() {
   return (
     <>
+      {/* to do */}
+      {/* 
+          background image
+          Call to action buttons - a basic overlay box with a header, short paragraph, and two buttons.
 
-      <section id="home-hero-section" className="hero-section" data-testid="home-hero-section">
+       */}
+      <section
+        id="home-hero-section"
+        className="hero-section"
+        data-testid="home-hero-section"
+      >
         {/* <img /> */}
         {/* background image could just use the css property or could make the overlay absolute. */}
         <div id="hero-section-overlay" className="overlay">
@@ -47,7 +52,7 @@ export default function Home() {
       </section>
 
       <section id="introduction" data-testid="introduction">
-        <img src={null} alt="" />
+        <img src={null} alt="" /> {/* to do */}
         <h2>Hi, I'm Tyshawn, a Passionate Front-End developer</h2>
         <p>
           I craft clean, responsive, and dynamic websitesthat bring ideas to
@@ -59,11 +64,8 @@ export default function Home() {
       </section>
       <section id="Skills" data-testid="Skills">
         <h2>Skills and Expertise</h2>
-        
-        {/* <skillGroups isGrid={false} /> */}
-        <SkillGroupsInline />
 
-        
+        <SkillGroupsInline />
 
         <p>
           I bring a versatile skill set to front-end development, combining
@@ -76,12 +78,10 @@ export default function Home() {
           skills that enable me to adapt to diverse challenges.
         </p>
       </section>
-      
+
       <ProjectDisplay data-testid="project-display">
         <h2>Recent Projects & Learning Highlights</h2>
       </ProjectDisplay>
-
-     
 
       <section id="contact-section" data-testid="contact-section">
         <h2>Let's Work Together</h2>
@@ -92,14 +92,15 @@ export default function Home() {
           out.
         </p>
         <div
+          /* to do */
           id="contact-section-social-media-icon-box"
           className="inline-icons" // We will need to come back to this
           data-testid="social-icons" // addional change needed
         >
-          {/* <SocialIcons /> */} 
           <Socials />
         </div>
         <div id="contact-btn">
+          {/* to do */}
           {/* contact overlay */}
           {/* 
           <Overlay>
@@ -107,7 +108,6 @@ export default function Home() {
           </Overlay>
             */}
         </div>
-
       </section>
     </>
   );
