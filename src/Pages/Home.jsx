@@ -52,7 +52,7 @@ export default function Home() {
       </section>
 
       <section id="introduction" data-testid="introduction">
-        <img src={null} alt="" /> {/* to do */}
+        <img src={null} alt="" />
         <h2>Hi, I'm Tyshawn, a Passionate Front-End developer</h2>
         <p>
           I craft clean, responsive, and dynamic websitesthat bring ideas to
@@ -64,7 +64,8 @@ export default function Home() {
       </section>
       <section id="Skills" data-testid="Skills"> {/* if this is a flex it will allow the mobile and desktop to work without change to structure */}
         <h2>Skills and Expertise</h2>
-
+        
+        {/* <skillGroups isGrid={false} /> */}
         <SkillGroupsInline />
 
         <p>
@@ -78,7 +79,7 @@ export default function Home() {
           skills that enable me to adapt to diverse challenges.
         </p>
       </section>
-
+      
       <ProjectDisplay data-testid="project-display">
         <h2>Recent Projects & Learning Highlights</h2>
       </ProjectDisplay>
@@ -92,7 +93,6 @@ export default function Home() {
           out.
         </p>
         <div
-          /* to do */
           id="contact-section-social-media-icon-box"
           className="inline-icons" // We will need to come back to this
           data-testid="social-icons" // addional change needed
