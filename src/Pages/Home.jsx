@@ -28,7 +28,7 @@ export default function Home() {
        */}
       <section
         id="home-hero-section"
-        className="hero-section"
+        className="hero-section heoro-section-background"
         data-testid="home-hero-section"
       >
         {/* <img /> */}
@@ -62,7 +62,7 @@ export default function Home() {
           talent, I’m here to help build your vision.
         </p>
       </section>
-      <section id="Skills" data-testid="Skills">
+      <section id="Skills" data-testid="Skills"> {/* if this is a flex it will allow the mobile and desktop to work without change to structure */}
         <h2>Skills and Expertise</h2>
 
         <SkillGroupsInline />

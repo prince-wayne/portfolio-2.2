@@ -1,2 +1,18 @@
 /* Home.css */
 /* Page style */
+
+/* image0 2 - temp file*/
+.hero-section__background {
+  position: absolute;
+  width: 945.97px;
+  height: 900px;
+  left: calc(50% - 945.97px / 2 - 0.02px);
+  top: 0px;
+
+  background: linear-gradient(
+      0deg,
+      rgba(255, 251, 251, 0.05),
+      rgba(255, 251, 251, 0.05)
+    ),
+    url(../Images/Home\ Page/Hero\ -\ mobile.png);
+}

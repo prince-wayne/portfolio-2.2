@@ -466,9 +466,39 @@ We've externaled enough back to business
 -1.1
     Data mount conditional render ✅ 
     Object used instead ✅
-    Data (hard) removed ✅
+    Data (hard) removed
 -x &rarr; y, 
     build hover affect/tooptip
     Skill ratings based on AI evaluation benchmarked against industry peers (~1,000 developer dataset)
     Decided not to use gmail because we have a current contact box (in process)
-    
+
+
+###### Review results
+
+**Qualifications**
+
+-) Skills are displayed dymanically     <!-- Passed ✅ -->
+-) dots response to lv changes (1-5)    <!-- Passed ✅ -->
+-) tooltips appear on hover             <!-- Passed ✅ -->
+
+
+*Style comes later* we focus on structure and function within this phase. 
+
+###### Last hour of the day
+
+**Summary:** We are going to do as many little tasks as possible, to complete the home page, starting with images. did a little clean up, now downloading images. 
+
+We downloaded the images but because they're figma editted images we got the editted versions instead of raw files, meaning we wouldn't be able to adjust them past what we had. 
+
+While things went fine, we still have that pathing issue. in this case, we couldn't load our hero section background in `home page.css`, we will make one more attempt, but if not, here are the next tasks to focus on in next sesson;
+
+_Emotes for completion & general file smybols:
+❌🗑️✅🟥🟩
+
+- Hero section, image and overlay
+- Introduction, no image
+- contact handler & pop up component, 
+
+once those are complete, likely within next session; we will have four components to complete before this becomes, "place here, style there, edit here" 
+
+no idea how many hours we spent on this but we'll use this file plus the old note files to estimate a range (more of a personal reminder for deadline estimation datasheet)

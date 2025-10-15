@@ -4,61 +4,71 @@
     "backend": "Images/Icons/icons8-server-96 (1).png",
     "tools": "Images/Icons/icons8-toolbox-100.png"
   },
+
   "frontend": {
     "html": {
       "NAME": "html",
       "IMAGE": "Images/Icons/icons8-html-5-100.png",
       "LEVEL": "lv-4",
-      "TOOLTIP": "I've been working with this since 2015"
+      "TOOLTIP": "Advanced / Strong"
     },
     "css": {
       "NAME": "css",
       "IMAGE": "Images/Icons/icons8-css3-100.png",
-      "LEVEL": "lv-3"
+      "LEVEL": "lv-3",
+      "TOOLTIP": "Intermediate / Comfortable"
     },
     "javascript": {
       "NAME": "javascript",
       "IMAGE": "Images/Icons/icons8-javascript-100.png",
-      "LEVEL": "lv-3"
+      "LEVEL": "lv-3",
+      "TOOLTIP": "Intermediate / Comfortable"
     },
     "react": {
       "NAME": "react",
       "IMAGE": "Images/Icons/icons8-react-native-100.png",
-      "LEVEL": "lv-3"
+      "LEVEL": "lv-3",
+      "TOOLTIP": "Intermediate / Comfortable"
     }
   },
   "backend": {
     "nodejs": {
       "NAME": "nodejs",
       "IMAGE": "Images/Icons/icons8-nodejs-96.png",
-      "LEVEL": "lv-2"
+      "LEVEL": "lv-2",
+      "TOOLTIP": "Basic / Working Knowledge"
     },
     "mondodb": {
       "NAME": "mongodb",
       "IMAGE": "Images/Icons/icons8-mongodb-100.png",
-      "LEVEL": "lv-2"
+      "LEVEL": "lv-2",
+      "TOOLTIP": "Basic / Working Knowledge"
     }
   },
   "tools": {
     "git": {
       "NAME": "git",
       "IMAGE": "Images/Icons/icons8-git-100.png",
-      "LEVEL": "lv-3"
+      "LEVEL": "lv-3",
+      "TOOLTIP": "Intermediate / Comfortable"
     },
     "bash": {
       "NAME": "bash",
       "IMAGE": "Images/Icons/icons8-bash-100.png",
-      "LEVEL": "lv-3"
+      "LEVEL": "lv-3",
+      "TOOLTIP": "Intermediate / Comfortable"
     },
     "powershell": {
       "NAME": "powershell",
       "IMAGE": "Images/Icons/icons8-powershell-100.png",
-      "LEVEL": "lv-2"
+      "LEVEL": "lv-2",
+      "TOOLTIP": "Basic / Working Knowledge"
     },
     "docker": {
       "NAME": "docker",
       "IMAGE": "Images/Icons/icons8-docker-logo-96.png",
-      "LEVEL": "lv-1"
+      "LEVEL": "lv-1",
+      "TOOLTIP": "Learning / Exploring"
     }
   }
 }
