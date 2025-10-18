@@ -1,19 +1,19 @@
 // we gotta load in the projects, our old portfolio should have the data file.
 import { useState, useEffect, useRef } from "react";
 import "./project display.css";
-
-async function loadDataFile(path) {
-  // If I used random number I could easily have log infomation every 1/10 runs.
-  try {
-    const response = await fetch(path);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error loading data: ", error);
-    return []; // an empty array isn't acceptable in this moment. but it's how we'll use it as a check
-  }
-  // function from older project, nearly no changes.
-}
+import loadDataFile from "../../Supporting Files/loadfile.js";
+// async function loadDataFile(path) {
+//   // If I used random number I could easily have log infomation every 1/10 runs.
+//   try {
+//     const response = await fetch(path);
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error("Error loading data: ", error);
+//     return []; // an empty array isn't acceptable in this moment. but it's how we'll use it as a check
+//   }
+//   // function from older project, nearly no changes.
+// }
 
 export default function ProjectDisplay(props) {
   const { children } = props;

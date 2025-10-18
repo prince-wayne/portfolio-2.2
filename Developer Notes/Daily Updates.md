@@ -502,3 +502,59 @@ _Emotes for completion & general file smybols:
 once those are complete, likely within next session; we will have four components to complete before this becomes, "place here, style there, edit here" 
 
 no idea how many hours we spent on this but we'll use this file plus the old note files to estimate a range (more of a personal reminder for deadline estimation datasheet)
+
+
+### 2025-10-15 (Wednesday)
+
+Tasks are above, I don't see the value in retyping them with/without copy & paste, we're startign at the top, working our way down, should be download, plug, and play, or just plug and play should we decide those images will work for our goals. 
+
+- pathing issue, for some reason it can't be accessed through the css file within src, leaves me two options, 
+one) jsx import, allows the image to be bundled and used instead of copy, pasted, then attempted to be found, however, it makes our styling more complex at face value because others would have to read notes or find the solution in place - import means the style goes in line which has a higer value than other styles should it need to be adjusted. 
+two) I move style sheets to public, wins: simple and intutiative, losses: the need to restruce the system in place (not much just import adjustments), if both styles and images are in public, either are moved and could be referenced relatively / easily, hard to see many cons in this besides adjustment. 
+
+verdict: going with option two, it preserves scalability the best and removes the need to go into files to fix visual issues (src/a/b/c/d/e/f/g etc.) as project grows and becomes bigger than expected. (growth is nice until it hits non optimized code, then it's work 😭)
+
+-- The new system, large styles remain in public, these would currently be page styles, component styles remain within component folder, these are compondent specific. 
+
+issue: it doesn't seem you can put styles outside of src and import them. so that system just failed, but, what we can do is bring the images to assets within the src and import from them without forcing in line styles. 
+
+- Fixed. 
+we were doing rough styles, a thing we want in this hero section - `home.jsx`, is a fade out visul not an animation but a element that blends the bottom edge of the image with the background, to save the trouble of forgetting how we did it in the design &rarrw; fade from black to full transparent black bottom to top. then none of the image colors impact the smoothness of the transition and there's no longer a rough edge, this would be done on the `hero-section__background` class not a secondary element.
+
+We ended up just handling it from there, we now are actively working in the hero section. 
+
+concurrent tasks, 
+a, intro image isn't loading from assest, why: path finding. it's in src as well so it could be an issue from that. **fixed** &rarr; dumb thing with public / src conflicts. *remeber to see them as static/public & dymanic/src*  - later move all non hero section/background attached Images back to images !Assets.
+
+b, catty btns on overlay, this transfers into tohe two other most complex / unfamilar methods, router and overlays, then we have the contact handler it's self. that said, last time I looked at each they didn't seem that hard. **third**
+
+c, occasional miss on fill, our hero section occasionally leaves a gap between the background image and the wall **Fixed** Html default rules, sometimes overuled somethings not. 
+
+**4-hour mark**
+
+getting back in, moved images back to images (ones we moved eariler being put back in place) aside from what we needed in assets, hero sections/background images.
+
+so, the gap we were seeing in dev tools could've just been the scroll bar acting weird and being hidden without being position: absolute, 
+
+- Contact compontent. 
+
+here's where we learn on our feet, we have an overlay, and we need to figure out how we close it. from my inital attempt, I can see we used isOpen to conditionally render it based on state. We did a couple things now the close btn works, but we want it to close on send, and on losing focus (pressed outside the box)
+
+there is also the issue of the contact being closed and our event listener responding which wouldn't throw an error if it was working but since it's not it's throwing one currently, also if we didn't fix this, we would have pointless triggers and waste of resources.
+
+currently not understanding why onClose() isn't working anywhere besides contacr.jsx. to my knowledge, context works by passing props down without the need for prop drilling (where you continues put props as props of children) 
+
+END OF DAY Laptop is getting dangerous hot. we will be returning tomorrow to pick up where we left. 
+
+### 2025-10-18 (Friday/Saturday)
+
+#### Summary
+
+We should have a working inline skills display with a tooltip on hover, meaning we need to move on to next component, like we did, and update main with last comonent, which we didn't. nothing big change wise to current component, just trouble shooting and review, some code changes, some functional, like the on close method - which I now relize could be a confusing with an event listener and a past thought. 
+
+We will be pushing/rebasing to the main branch, then checking out a new one, to my knowledge it would be clasified as a `Feature/name` though I feel like it should be writen as a main component instead. 
+
+that said, we will be starting now.
+
+#### Review notes
+

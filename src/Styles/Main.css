@@ -1,18 +1,40 @@
 /* Main.css */
 /* This file is used to define global styles for the application. */
+:root {
+  --Home-hero: url(src/Assets/Home Page/Hero%20-%20mobile.png); /* does not work, unsure why, no error but no picture. */
+  /* --Home-hero: url(/Images/Home%20Page/Hero%20-%20mobile.png); */
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #eaeaea;
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #EAEAEA;
-    text-align: center;
+  /* 
+        ========== Color Palette ==========
+        */
+  --primary-background: #121212; /*  (Dark Background)  */
+  --secondary: #1e1e1e; /* (Slightly Lighter Background) */
 
-    
+  /*
+        ========== Colors (estimates) ==========
+        Accent: #BB86FC (Purple Accent)
+        Text Primary: #EAEAEA (Off-White Text)
+        Text Secondary: #A1A1A1 (Gray Text)
+
+        Success: #27AE60 (Green)
+        Warning: #F39C12 (Orange)
+        Error: #E74C3C (Red)
+        Neutral: #B0B0B0 (Light Gray)
+
+        Adjust as needed, this are estimates based on our design file which didn't include color codes.
+        ===================================   
+    */
 }
 
-:root 
-{
-
+body, html {
+    margin: 0;
+    padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  /* color: red !important; */
+  width: 100%; /* ensures we don't have gaps on hero sections and other fill type sections - sections that take the whole screen*/
 }

@@ -5,7 +5,7 @@
       "name": "Attach to Chrome (port 9222)",
       "type": "pwa-chrome",
       "request": "attach",
-      "port": 3000,
+      "port": 9222,
       "webRoot": "${workspaceFolder}/src"
     }
   ]
