@@ -558,3 +558,119 @@ that said, we will be starting now.
 
 #### Review notes
 
+What we need, 
+- isolation of event listener `escape`; remove?
+- The reason `onClose` doesn't work currently everywhere (works in some spots, is scope possible here?)
+- email send to ya boi. third parties are probably the fastest rough version. If we chose to make a custom solution, we would burn effort with little gain. More of a "if we have time" improvement than a must have for functionality.
+
+#### Working through 
+
+##### kobe (isolation)
+
+-0 isOpen was a thought, I believe I tried and it didn't work. Attempting again if so.
+-1 as I looked at that I noticed our submit btn doesn't call onClose() but still onClose runs for fun. (it just runs, no buns) This may be due to line 16 - contact.jsx `handleSubmitContact()` where we see await, reset, and close. 
+-2 comfirmed reason, it closes due to onClose() but, not as intended, it runs onClose due as a development aid. there's no connected api to handle the contact info so catch error always runs error code; however, that means our onClose reaches that scope, good sign 
+-3 Quick structure view, 
+Overlay, Contact form (within file >) - contact.jsx (mention of file to help), 
+
+-4 closer to isolation, but method gives false isOpens
+-5 fixed, kobes on the court (iso is active)
+
+- onClose variation in scope, 
+in short, it should just work everywhere due to useContext, but it doesn't. as I looked I couldn't find a definition for it, but it looks like it was defined in `line 39` inline useing `React.cloneElement onClose: closeOverlay`. could be the source of problem, 
+found something useful, tiredness is kicking in, future me might figure it out. [MDN onClose eventlister](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close_event)
+
+looks like .close()  
+
+I might've found a different way to do this entirely, though the way it's done currently could be 60% finsihed. A comparision may be needed.
+
+Considering React's actual docs show ReactDOM.createPortal(<></>) to do exactly what we're trying, it's probably the best practice or a better one. [link to refernce](https://react.dev/reference/react-dom/createPortal), man, this could've been over so long ago. also this could've been useful for our tooltip but css hover was acceptable I think, it's not complex or logic heavy. 
+
+Also the docs showed a very simlair version to ours, don't be disapointed if it functions the same. (errors and all.)
+
+walking though the example code once we're back. 
+
+Portal.jsx
+import { useState } from 'react';
+import { createPortal } from 'react-dom';
+import ModalContent from './ModalContent.js';
+
+export default function PortalExample() {
+  const [showModal, setShowModal] = useState(false);
+  // if event listener && is open/showModal, or just show Model, then set to false. 
+  return (
+    <>
+      <button onClick={() => setShowModal(true)}>
+        Show modal using a portal
+      </button>
+      {showModal && createPortal(
+        <ModalContent onClose={() => setShowModal(false)} />,
+        document.body
+      )}
+    </>
+  );
+}
+
+context: 
+export default function ModalContent({ onClose }) {
+  return (
+    <div className="modal">
+      <div>I'm a modal dialog</div>
+      <button onClick={onClose}>Close</button>
+    </div>
+  );
+}
+
+so, basically, we would be doing the same thing but instead of the modal, as they call it, being within the parent, it will push it to the same level (I could be wrong on this) and allow the same toggling if not smoother. 
+
+so, onClose passes in the state handler causing the compondent to demount, or remove it's self from the active render states / conditionals. 
+
+Honestly, I think I might mess around with mines, I feel like I'm going to run into the same issues I'm already having considering that I'm running basically the same system but involving useContext.
+
+... Frusration is real, rookie mistake, onClose / type error, all fixed becasue overlay used onclose, even though it defined it within a pass to child. 
+To be fair, this entire page (home) was done when I couldn't run npm start or live test my coding and I had much less knowledge of react back then. 
+
+seems lights helpped.
+
+##### Out of focus event. <!-- done --> 
+
+onclose works now, but add event of mouse not being in conponent (contact box),done within overlay mouse down event, adding listener remover. 
+it's recongizing all clicks, could be class name issue. 
+pretty much is, just not as I said it, it's a selector issue where the selector doesn't see the class becasue we're selecting children. 
+so, we need to ensure the mouse isn't over the overlay instead of trying to select the overlay for comparsion.
+pretty sure theres a children target so we should look for that. like target.children 
+
+no children to select, we may just add a class to all of them (the children).
+
+the best solution isn't currently visible but adding a class to each of those components (overlay + overlay childrem) looks like an acceptable path or at least a tenporary solution. Looking it up didn't bring much help but at this point we're better off finishing a functional item than a perfect item. 
+
+`overlay__child` will be used for this. Works, with some considerations, could be due to no styles but, in the clickable background space we trigger our closeoverlay function. So, for future use, style the componted to center on the document (create portal would've made that easiler) I'm thinking of simplying styling the overlay then filling out how the contact form should be within it. since the overlay is closest to body, 
+also we moved it out of the contact section but if we move it back in to the contact section - which we probably should, using position: fixed could remove our problem of structure relative to the body. 
+
+Seems to be working now, can come back later, liekly just missed the actual content when I was testing earlier
+
+
+##### Reset Form not defined @ contact.jsx line 25. <!-- done -->
+(comment lines included) 
+
+solution, remove entirely, just a helper function/wrapper, nothing changes if the consumer resets within itself (it stull updates context) **worked**
+
+##### Email operation handler. 
+
+Email us. We'll use a third party, so all we need is to connect the api, this will likely involve an evil key.
+
+
+####  End of collective session;
+
+we have almost a fully functional contact component and overlay - which will be usesd later, all we really need is the backend or api route, I dealing with something making it difficult to focus on learning and applying so I'd leave this for my future self. 
+
+##### Tasks for following session
+
+1. Contact component
+
+- node mailer + express to handle sending me the form 
+- styling to be a centered box with a close btn. 
+
+2. Hamburber menu (mobile only) + Navbar overlay.
+
+This should be pretty simlair, it's more of figuring out things like checking for mobile vs desktop, and we could really just use css to hide our hamburger btn and show our nav bar within the screen size ranges.

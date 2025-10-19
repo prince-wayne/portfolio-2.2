@@ -1,15 +1,14 @@
-import React, { useEffect, useState} from 'react';
-import ContactForm from './contact';
+import React, { useEffect, useState } from "react";
 
-
-const Overlay = ({ children, onClose }) => {
+const Overlay = ({ children, onClose, header }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openOverlay = () => setIsOpen(true);
   const closeOverlay = () => setIsOpen(false);
 
   const handleClickOutside = (event) => {
-    if (event.target.className === 'overlay') {
+    const CLASSLIST = event.target.classList;
+    if (!CLASSLIST.contains("overlay__child")) {
       closeOverlay();
     }
   };
@@ -17,28 +16,38 @@ const Overlay = ({ children, onClose }) => {
   // Listen for Escape key so keyboard users can close the popup.
   useEffect(() => {
     const handleKey = (e) => {
-      console.log(isOpen);
-      if (e.key === 'Escape') onClose();
+      if (e.key === "Escape" && isOpen) closeOverlay();
     };
-    document.addEventListener('keydown', handleKey);
-    return () => document.removeEventListener('keydown', handleKey);
-  }, [onClose]);
+    document.addEventListener("keydown", handleKey);
+    document.addEventListener(`mousedown`, handleClickOutside);
+    return () => {
+      document.removeEventListener("keydown", handleKey);
+      document.removeEventListener(`mousedown`, handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
     <div>
-      <button onClick={openOverlay} data-testid="open-overlay-btn">Contact Us</button>
+      <button onClick={openOverlay} data-testid="open-overlay-btn">
+        {header}
+      </button>
       {isOpen && (
         <div
-          className="overlay"
+          className="overlay overlay__child" /* not a true child but prevents close if pressed */
           onClick={handleClickOutside}
           role="dialog"
           aria-modal="true"
           data-testid="overlay"
         >
           {/* Clicking inside the content should not close the popup, so stop propagation. */}
-          <div className="overlay-content" onClick={(e) => e.stopPropagation()}>
-            {React.cloneElement(children, { onClose:  closeOverlay })}
-
+          <div
+            className="overlay-content overlay__child"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {React.cloneElement(children, {
+              onClose: closeOverlay,
+              onClick: (e) => console.log(e),
+            })}
           </div>
         </div>
       )}

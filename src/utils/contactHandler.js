@@ -3,9 +3,9 @@
 // Caller should catch errors and decide how to surface them to the user.
 const submitContact = async (formData) => {
   // Example POST to an API route. Replace '/api/contact' with your endpoint.
-  const url = '/api/contact';
+  const URL = '/api/contact';
   try {
-    const res = await fetch(url, {
+    const res = await fetch(URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),

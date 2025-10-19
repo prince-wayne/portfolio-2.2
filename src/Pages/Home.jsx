@@ -12,8 +12,8 @@ import SkillGroupsInline from "../../src/components/Icons Static/skill groups in
 import ProjectDisplay from "../components/project display/project-display.jsx";
 import Socials from "../components/Icons Static/social icons.jsx";
 
-import Overlay from '../components/popups/Overlay.jsx';
-import ContactForm from '../components/popups/contact.jsx';
+import Overlay from "../components/popups/Overlay.jsx";
+import ContactForm from "../components/popups/contact.jsx";
 
 // path issue, logging for testing & resolution
 
@@ -90,7 +90,7 @@ export default function Home() {
         <h2>Recent Projects & Learning Highlights</h2>
       </ProjectDisplay>
 
-      <section id="contact-section" data-testid="contact-section">
+      <section className="contact-section" data-testid="contact-section">
         <h2>Let's Work Together</h2>
         <img src="" alt="" />
         <p>
@@ -106,15 +106,16 @@ export default function Home() {
         >
           <Socials />
         </div>
-        <div id="contact-btn">
-          {/* to do */}
-          {/* contact overlay */}
-          
-          <Overlay>
-            <ContactForm />
-          </Overlay>
-           
-        </div>
+        <Overlay header="Contact Us" className="contact-overlay">
+          <ContactForm />
+        </Overlay>
+      </section>
+      <section
+        id="footer"
+        data-testid="footer-section"
+        style={{ padding: "25px 0" }}
+      >
+        <p>© 2024 Tyshawn Smith. All rights reserved.</p>
       </section>
     </>
   );
