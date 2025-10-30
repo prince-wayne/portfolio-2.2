@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { FormContext } from "../../context/FormContext";
 import submitContact from "../../utils/contactHandler";
 
+import "./contact.css";
+
 const ContactForm = ({ onClose }) => {
   // Use FormContext to read and update the shared form state.
   // formData shape: { name: string, email: string, message: string }
@@ -32,50 +34,70 @@ const ContactForm = ({ onClose }) => {
   };
   return (
     <div className="contact-form overlay__child" data-testid="contact-form">
-      <h2 className="overlay__child">Contact Us</h2>
       <form className="overlay__child" onSubmit={handleSubmit}>
-        <label className="overlay__child">Name</label>
-        {/* data-testid are kept for tests to target inputs reliably */}
+      <h2 className="overlay__child contact-form__header">Contact Me</h2>
+        <img
+          src="Images/Icons/contact Icons/Phone Icon.png"
+          alt="name icon"
+          className="overlay__child contact-form__name-label"
+        ></img>
         <input
           type="text"
           name="name"
           value={formData.name}
           onChange={handleChange}
           data-testid="name-input"
-          className="overlay__child"
+          className="overlay__child contact-form__name-input"
+          placeholder="(optional phone number)"
         />
-        <label className="overlay__child">Email</label>
+
+        <img
+          src="Images/Icons/contact Icons/Gmail Icon.png"
+          className="overlay__child contact-form__email-label"
+          alt="email icon"
+        />
         <input
+          required
+          placeholder="Someone@gmail.com"
           type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
           data-testid="email-input"
-          className="overlay__child"
+          className="overlay__child contact-form__email-input"
         />
-        <label className="overlay__child">Message</label>
+
+        <img
+          src="Images/Icons/contact Icons/Vector.png"
+          className="overlay__child contact-form__message-label"
+          alt="message icon"
+        />
         <textarea
           name="message"
           value={formData.message}
           onChange={handleChange}
           data-testid="message-input"
-          className="overlay__child"
-        ></textarea>
+          className="overlay__child contact-form__message-input"
+          alt="Message input box"
+          placeholder="Your message here..."
+        />
+
         <button
           type="submit"
           data-testid="submit-btn"
-          className="overlay__child"
+          className="overlay__child btn--primary contact-form__submit-btn"
         >
           Send
         </button>
-        <button
+
+        <img
           type="button"
           onClick={onClose}
           data-testid="close-btn"
-          className="overlay__child"
-        >
-          Close
-        </button>
+          className="overlay__child contact-form__close-btn"
+          alt="Close button"
+          src="Images/Buttons/X Close btn.png"
+        />
       </form>
     </div>
   );

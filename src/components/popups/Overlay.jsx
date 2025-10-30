@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import "./Overlay.css";
+
 
 const Overlay = ({ children, onClose, header }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,12 +30,12 @@ const Overlay = ({ children, onClose, header }) => {
 
   return (
     <div>
-      <button onClick={openOverlay} data-testid="open-overlay-btn">
+      <button onClick={openOverlay} data-testid="open-overlay-btn" className="btn--primary">
         {header}
       </button>
       {isOpen && (
         <div
-          className="overlay overlay__child" /* not a true child but prevents close if pressed */
+          className="overlay" /* not a true child but prevents close if pressed */
           onClick={handleClickOutside}
           role="dialog"
           aria-modal="true"

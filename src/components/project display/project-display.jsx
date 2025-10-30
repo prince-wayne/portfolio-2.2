@@ -239,11 +239,11 @@ export default function ProjectDisplay(props) {
                 </ul>
 
                 <a href={project}>
-                  <button> View Project </button>
+                  <button className="btn--primary"> View Project </button>
                 </a>
 
-                <a href={codebase}>
-                  <button> View Codebase </button>
+                <a href={codebase} >
+                  <button className="btn--secondary"> View Codebase </button>
                 </a>
               </div>
             );
@@ -262,6 +262,7 @@ export default function ProjectDisplay(props) {
             src={null}
             alt={`${btn} button`}
             onClick={() => handleBtnClick(btn)}
+            
           />
         </>
       );

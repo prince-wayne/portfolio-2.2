@@ -36,6 +36,14 @@ we need to review and clean them up, we have no true reason to keep them how the
 
 ## File / Component Specific
 
+### Home page
+
+#### Hero image
+
+it's too zoomed in, for desktop it's a heavy issue and mobile we simply get by but we do want our drink to show on desktop. 
+
+
+
 ### Project display
 
 **Pre-render code execution**

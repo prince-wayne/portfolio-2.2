@@ -674,3 +674,40 @@ we have almost a fully functional contact component and overlay - which will be 
 2. Hamburber menu (mobile only) + Navbar overlay.
 
 This should be pretty simlair, it's more of figuring out things like checking for mobile vs desktop, and we could really just use css to hide our hamburger btn and show our nav bar within the screen size ranges.
+
+## Week 44 (2025-10-26)
+
+### 2025-10-30 (Thursday) 
+
+#### Summary
+
+We started work last week monday, didn't have a place or time to work on this. We are now attempting a new space in the library with hopes of success. **the important part** we will be relying on the last notes to continue as a week break does blur the lines. I hope to accomplish a finished contact feature within this first half of this sesson and the hamburger menu in the next (moblie only)
+
+#### A new Schedule
+
+Sunday through Wednesday/Thursday, depending on overtime in dayjob, we won't touch this. But, we will deciate five hours on two of our three off days for a total of ten hours per week. This means Thursday and Friday or Friday and Saturday will be our software work days. 
+
+#### An idea I had thanks to work
+
+Our tooltips could be better, right now they're fine, they describe the level of each subject pretty cleanly they just lack a true in place description. So, thanks to a work site showing a card flip over to show a description, we decided the site could use that, now it might not be fully worth the effort but I could design it in Figma and have it peer reviewed. 
+
+#### Starting on contact Styles 
+
+(just to have it displayed in a rough draft of what we envisioned.) 
+
+##### Attempt #1 / seession 1 & 2
+likely best solution is just giving it a fixed positon centered on the body, current structure might discourage this but a simply calc should adjust the position well enough. 
+
+positioning worked and we have the blur ready ish, the only issues are:
+our message icon not being centered, (flex - colum fix update: converted to grid)
+the boxes not lining up, doesn't matter much honestly, but converting to grid will give them better lines. decide if it's worth it or if mostly lined up makes a difference (done)
+and the blur box not being a complete fill (fixed)
+
+It's pretty good as is but it's suggested that the elements align with each other so, we will be attempting a flex solution with no structure change if it doesnt go fast then we will convert to grid. (grid isn't a hard conversion. I just don't want to do it for no reason.)
+
+we built btn--primary and --secondary classes for global use within main.  
+
+we seem to be awaiting the actual handler, but our styles are very fine rough draft.
+we could go beyond by using icon btn classes but there's only the ones in project display to do such a thing like that. 
+
+we seem ready to move on, handle emails once were back. we only have a rough hour left. Unless, we, push.

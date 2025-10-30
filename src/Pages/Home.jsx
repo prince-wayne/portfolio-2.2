@@ -39,11 +39,11 @@ export default function Home() {
             {/* This hero section doesn't flow correctly double check the design file for a mistake of headers */}
           </p>
           <div id="hero-section__overlay-btns">
-            <button>
+            <button className="btn--primary"> {/* opens our popup display */}Contact Me</button>
+            <button className="btn--secondary">
               {/* takes us to projects page */}
               Veiw My Work
             </button>
-            <button> {/* opens our popup display */}Contact Me</button>
           </div>
         </div>
         <div className="hero-section__fade-out"></div>
@@ -106,7 +106,7 @@ export default function Home() {
         >
           <Socials />
         </div>
-        <Overlay header="Contact Us" className="contact-overlay">
+        <Overlay header="Contact Me" className="contact-overlay">
           <ContactForm />
         </Overlay>
       </section>

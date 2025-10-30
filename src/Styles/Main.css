@@ -7,13 +7,23 @@
   padding: 0;
   text-align: center;
   color: #eaeaea;
+  border-radius: 25px;
 
   /* 
         ========== Color Palette ==========
         */
   --primary-background: #121212; /*  (Dark Background)  */
-  --secondary: #1e1e1e; /* (Slightly Lighter Background) */
+  --secondary-background: #1e1e1e; /* (Slightly Lighter Background) */
 
+  --btn-primary-color: #1E88E5; 
+  --btn-primary-color-hover: #0f427c;
+  --btn-secondary-color: #206AAB;
+  --btn-secondary-color-hover: #103657;
+
+  /* these are rough guesses, may never be used but could save various ammounts of time if configued*/
+  --btn-padding: 0.75rem 1.5rem;
+  --btn-border-radius: 25px;
+  --btn-font-size: 1rem;
   /*
         ========== Colors (estimates) ==========
         Accent: #BB86FC (Purple Accent)
@@ -37,4 +47,34 @@ body, html {
   background-color: #121212;
   /* color: red !important; */
   width: 100%; /* ensures we don't have gaps on hero sections and other fill type sections - sections that take the whole screen*/
+}
+
+.btn--primary {
+  background-color: var(--btn-primary-color);
+  color: white;
+  padding: var(--btn-padding);
+  border: none;
+  border-radius: var(--btn-border-radius);
+  cursor: pointer;
+  font-size: var(--btn-font-size);
+}
+
+.btn--primary:hover {
+  background-color: var(--btn-primary-color-hover);
+  transition: background-color 0.5s ease;
+}
+
+.btn--secondary {
+  background-color: var(--btn-secondary-color);
+  color: white;
+  padding: var(--btn-padding);
+  border: none;
+  border-radius: var(--btn-border-radius);
+  cursor: pointer;
+  font-size: var(--btn-font-size);
+}
+
+.btn--secondary:hover {
+  background-color: #145d83; /* Darker shade for hover effect */
+  transition: background-color 0.5s ease;
 }
