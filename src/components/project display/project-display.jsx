@@ -227,7 +227,7 @@ export default function ProjectDisplay(props) {
             }
             return (
               <div className="card" key={index}>
-                <img src={null} alt={description.short} />
+                <img src={null} alt={description.short} className="card-image" />
 
                 <h4>{title}</h4>
                 <p>{description.long ? description.long : description.short}</p>

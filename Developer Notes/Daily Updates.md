@@ -711,3 +711,36 @@ we seem to be awaiting the actual handler, but our styles are very fine rough dr
 we could go beyond by using icon btn classes but there's only the ones in project display to do such a thing like that. 
 
 we seem ready to move on, handle emails once were back. we only have a rough hour left. Unless, we, push.
+
+
+Update: we did not come back, so we will make up for it tomorrow;
+
+### 2025-10-31 (Friday)
+
+#### Summary
+
+We didn't do much but styles yesterday, one of the most relaxing software days I've ever had, but, today we will be attacking the contact handler, and hamburger menu (don't forget to make a new branch once we're there)
+
+We will be going with the emailJS path, said to be easy, fast, and okay for low traffic expectations. 
+
+looks pretty plug and play but we always hit walls with those so we should be care
+
+okay, so it's now working, we have a functional submit btn and we do get the whole message. 
+Remember that we are using EmailJS and it's not a direct in email view, we have to go through the actual service to see sometimes. 
+
+before we call it good we need a different icon for the name, a person would be best and the color of the text should be white; icon - done. color done.
+
+we also got rid of that highlight on focus. 
+
+moving on? yes, but we are adding a compondent to acknowledge it's state and inform those under the impression that it's complete. 
+
+changed our mind, idea moved to the later this will just be a hard coded thing to remove on completion
+
+weird style issue, somehow padding our sections creates a gap like the begin of home hero image.
+
+the issue was the hero section getting padding and changing size making the page misinterpet the content size casuing a pushed in visual. 
+
+solution: removing the padding with .hero-section.
+
+
+images are small on desktop, not a current issue, just a reminder to fix later <!-- todo -->

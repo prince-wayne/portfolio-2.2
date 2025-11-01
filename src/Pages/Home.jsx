@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, use, useRef } from "react";
 // import ReactDOM from "react-dom/client";
 // import reportWebVitals from "../reportWebVitals.js";
 
@@ -15,7 +15,11 @@ import Socials from "../components/Icons Static/social icons.jsx";
 import Overlay from "../components/popups/Overlay.jsx";
 import ContactForm from "../components/popups/contact.jsx";
 
-// path issue, logging for testing & resolution
+// an alert to remind viewer pre public that there's only roughed in styles and content as well as not using any personal info within the contact form
+
+const PLACEHOLDERIMAGE =
+  "https://i.etsystatic.com/27443014/r/il/f4638a/4421758331/il_1080xN.4421758331_9bwu.jpg";
+
 
 export default function Home() {
   return (
@@ -39,7 +43,10 @@ export default function Home() {
             {/* This hero section doesn't flow correctly double check the design file for a mistake of headers */}
           </p>
           <div id="hero-section__overlay-btns">
-            <button className="btn--primary"> {/* opens our popup display */}Contact Me</button>
+            <button className="btn--primary">
+              {" "}
+              {/* opens our popup display */}Contact Me
+            </button>
             <button className="btn--secondary">
               {/* takes us to projects page */}
               Veiw My Work
@@ -85,14 +92,19 @@ export default function Home() {
           skills that enable me to adapt to diverse challenges.
         </p>
       </section>
-
-      <ProjectDisplay data-testid="project-display">
-        <h2>Recent Projects & Learning Highlights</h2>
-      </ProjectDisplay>
+      <section>
+        <ProjectDisplay data-testid="project-display">
+          <h2>Recent Projects & Learning Highlights</h2>
+        </ProjectDisplay>
+      </section>
 
       <section className="contact-section" data-testid="contact-section">
         <h2>Let's Work Together</h2>
-        <img src="" alt="" />
+        <img
+          src="Images/Home Page/contact - home page.png"
+          alt="contact sectional display of skyscrapers in an upward veiw from the ground"
+          className="section-image"
+        />
         <p>
           Whether you’re interested in hiring me for a full-time position,
           collaborating on a project, or just want to say hi, feel free to reach
@@ -110,13 +122,13 @@ export default function Home() {
           <ContactForm />
         </Overlay>
       </section>
-      <section
+      <footer
         id="footer"
         data-testid="footer-section"
-        style={{ padding: "25px 0" }}
+        className="footer-section"
       >
         <p>© 2024 Tyshawn Smith. All rights reserved.</p>
-      </section>
+      </footer>
     </>
   );
 }

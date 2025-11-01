@@ -1,30 +1,31 @@
-// submitContact(formData) handles the network request for the contact form.
-// It returns parsed JSON on success and throws on network or server error.
-// Caller should catch errors and decide how to surface them to the user.
+import emailjs from "@emailjs/browser";
+
+// submitContact(formData) handles sending form data via EmailJS.
+// Returns the EmailJS response object or throws on failure.
 const submitContact = async (formData) => {
-  // Example POST to an API route. Replace '/api/contact' with your endpoint.
-  const URL = '/api/contact';
+  const { name, email, message } = formData;
+
+  const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+  const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+  const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
   try {
-    const res = await fetch(URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
+    const result = await emailjs.send(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      {
+        from_name: name,
+        from_email: email,
+        message,
+      },
+      PUBLIC_KEY
+    );
 
-    // Treat non-2xx as errors so callers can catch and handle them cleanly.
-    if (!res.ok) {
-      const text = await res.text().catch(() => '');
-      const err = new Error(`Request failed with status ${res.status}: ${text}`);
-      err.status = res.status;
-      throw err;
-    }
-
-    // Parse response body as JSON and return it to the caller.
-    return await res.json();
+    console.log("EmailJS result:", result.text);
+    return { success: true, message: "Email sent successfully!" };
   } catch (err) {
-    // Keep a clear, consistent log message for debugging.
-    console.error('submitContact error:', err);
-    throw err;
+    console.error("submitContact error:", err);
+    throw new Error("Failed to send email. Please try again later.");
   }
 };
 

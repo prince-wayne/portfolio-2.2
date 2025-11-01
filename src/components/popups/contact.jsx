@@ -37,7 +37,7 @@ const ContactForm = ({ onClose }) => {
       <form className="overlay__child" onSubmit={handleSubmit}>
       <h2 className="overlay__child contact-form__header">Contact Me</h2>
         <img
-          src="Images/Icons/contact Icons/Phone Icon.png"
+          src="Images/Icons/contact Icons/icons8-person-25.png"
           alt="name icon"
           className="overlay__child contact-form__name-label"
         ></img>
@@ -48,7 +48,7 @@ const ContactForm = ({ onClose }) => {
           onChange={handleChange}
           data-testid="name-input"
           className="overlay__child contact-form__name-input"
-          placeholder="(optional phone number)"
+          placeholder="Name please."
         />
 
         <img
