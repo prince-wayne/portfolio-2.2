@@ -22,7 +22,7 @@
 }
 
 /* 
-  ========== Overlay Styles ==========
+  ========== Hero Overlay Styles ==========
 */
 
 .hero-section__overlay {
@@ -49,9 +49,6 @@
   padding: 0 1rem;
 }
 
-/* 
-  ========== Overlay Buttons ==========
-*/
 
 
 /* 
@@ -67,8 +64,6 @@
   background: linear-gradient(to bottom,
       transparent,
       var(--primary-background) 20%);
-  /* adjust colors as needed */
-  /* border: red, solid, 1px; */
 }
 
 /* 
@@ -79,4 +74,6 @@
   margin: 50px auto;
   padding: 20px;
 
-}
+} 
+
+/* Might be removed later, due to main css addressing sections */

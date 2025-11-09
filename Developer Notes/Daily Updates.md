@@ -384,11 +384,7 @@ Just the colors, it already works as intented aside form color scale.
 
 This is basically complete, literally just changing colors;
 
-
-
-adding hover affect <!-- todo  -->
-
-
+adding hover affect 
 
 issues in case of miss
 
@@ -418,7 +414,7 @@ remaining tasks from earlier:
 as we get in here, we might not do much coding, but we will be reviewing and planning. To start, we will have a new system to keep track of tasks, we will mark the files with to dos, then call them complete once finished. 
 In short, our tack system will require us to build a rough file with placeholder code, then tack places where things will go, and call a file complete once those are removed. I think this will help with quick view of what we need within files for when we come back.
 
-**Tasks** <!-- active task will be mared todo -->
+**Tasks** <!-- active task will be mared to-do -->
 <!-- For copy and paste  -->
 ✅  
 - Builidng a external data source, why? because for scale, icons/skill are shared and if we wanted to change them in x, we'd have to follow with y and z. ✅
@@ -726,21 +722,36 @@ We will be going with the emailJS path, said to be easy, fast, and okay for low 
 looks pretty plug and play but we always hit walls with those so we should be care
 
 okay, so it's now working, we have a functional submit btn and we do get the whole message. 
-Remember that we are using EmailJS and it's not a direct in email view, we have to go through the actual service to see sometimes. 
+Remember that we are using EmailJS and it's not a direct in email view, we have to go through the actual service to see sometimes. I lied, we get them directly to our inbox. 
 
 before we call it good we need a different icon for the name, a person would be best and the color of the text should be white; icon - done. color done.
 
-we also got rid of that highlight on focus. 
+we also got rid of that highlight on focus. <!-- We did. -->
 
-moving on? yes, but we are adding a compondent to acknowledge it's state and inform those under the impression that it's complete. 
+moving on? yes, but we are adding a compondent to acknowledge it's state and inform those under the impression that it's complete. <!-- We did -->
 
-changed our mind, idea moved to the later this will just be a hard coded thing to remove on completion
+changed our mind, idea moved to the later this will just be a hard coded thing to remove on completion <!-- As mentioned above, It's a simple true flase statment. -->
 
 weird style issue, somehow padding our sections creates a gap like the begin of home hero image.
 
-the issue was the hero section getting padding and changing size making the page misinterpet the content size casuing a pushed in visual. 
+the issue was the hero section getting/had padding and changed it's size making the page misinterpet the content size casuing a pushed in visual. 
 
 solution: removing the padding with .hero-section.
 
-
 images are small on desktop, not a current issue, just a reminder to fix later <!-- todo -->
+
+## Week 46
+
+### Start of week
+
+We have made some adjustments and completed some work I believe, but I can't comfirm it. We just started work three weeks ago, and we're building the consistency over the weekends, however, this last one we needed to leave the city 😭. 
+
+Our goals for this week, 
+<p style="{color: red; font-size: 2px;}">
+We'd later put images within this to help visualize what we're thinking of.
+</p>
+
+1. build the hamburger menu, (empty page links for now - physical pages with nothing but a header content)
+2. Finish `project display.jsx`, nothing major; just adding in the images and building the style to restrict the card sections from changing (some cards longer, others shorter)
+3. decide if we want to start builidng the other pages, or 
+build the responsive functions (media, card size, etc). 
