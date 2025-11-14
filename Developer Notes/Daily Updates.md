@@ -755,3 +755,24 @@ We'd later put images within this to help visualize what we're thinking of.
 2. Finish `project display.jsx`, nothing major; just adding in the images and building the style to restrict the card sections from changing (some cards longer, others shorter)
 3. decide if we want to start builidng the other pages, or 
 build the responsive functions (media, card size, etc). 
+
+### 2025-11-14 (Thursday) 
+
+A few notes, us getting the project display might be less of a now thing, I say this becasue we we're focused on structure, function, then style and we do currently have the first two on those just not the linked sites or images, which require us to link a second domain to them, or convert each project into a react compondent/page. Which now that I think about it wouldn't be hard, just a lot of small things that feels like it'd add up. 
+Building the hamburger menu means moving on from this branch. So, we would need to double check again that it functions correctly. 
+the other pages will probably come in after the hamburger menu (considering that's the usage of the menu.)
+
+#### Getting started with McDonald's Hamburger
+
+img or self styled element? Image is faster but Element gives us far more control where we could show our design related developing skill. **future update likely**
+Code
+
+<!overlay>
+  <br> 
+  Hamburger 
+  <br>
+</!overlay>
+
+for us to swap betewn btn and image based events (clicking on a btn vs a img) we will need to adjust overlay or make a second version (doesn't sound smart for this).
+
+unadjusted comparsion, the form is what opens while the btn just activates it, so, our image/btn would only need to be swaped in, and we could just give a rough promt pass to switch usage like we intented in the original social icons component. 
