@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, use, useRef } from "react";
 // import ReactDOM from "react-dom/client";
 // import reportWebVitals from "../reportWebVitals.js";
 
@@ -12,10 +12,14 @@ import SkillGroupsInline from "../../src/components/Icons Static/skill groups in
 import ProjectDisplay from "../components/project display/project-display.jsx";
 import Socials from "../components/Icons Static/social icons.jsx";
 
-import Overlay from '../components/popups/Overlay.jsx';
-import ContactForm from '../components/popups/contact.jsx';
+import Overlay from "../components/popups/Overlay.jsx";
+import ContactForm from "../components/popups/contact.jsx";
 
-// path issue, logging for testing & resolution
+// an alert to remind viewer pre public that there's only roughed in styles and content as well as not using any personal info within the contact form
+
+const PLACEHOLDERIMAGE =
+  "https://i.etsystatic.com/27443014/r/il/f4638a/4421758331/il_1080xN.4421758331_9bwu.jpg";
+
 
 export default function Home() {
   return (
@@ -39,11 +43,14 @@ export default function Home() {
             {/* This hero section doesn't flow correctly double check the design file for a mistake of headers */}
           </p>
           <div id="hero-section__overlay-btns">
-            <button>
+            <button className="btn--primary">
+              {" "}
+              {/* opens our popup display */}Contact Me
+            </button>
+            <button className="btn--secondary">
               {/* takes us to projects page */}
               Veiw My Work
             </button>
-            <button> {/* opens our popup display */}Contact Me</button>
           </div>
         </div>
         <div className="hero-section__fade-out"></div>
@@ -85,14 +92,19 @@ export default function Home() {
           skills that enable me to adapt to diverse challenges.
         </p>
       </section>
+      <section>
+        <ProjectDisplay data-testid="project-display">
+          <h2>Recent Projects & Learning Highlights</h2>
+        </ProjectDisplay>
+      </section>
 
-      <ProjectDisplay data-testid="project-display">
-        <h2>Recent Projects & Learning Highlights</h2>
-      </ProjectDisplay>
-
-      <section id="contact-section" data-testid="contact-section">
+      <section className="contact-section" data-testid="contact-section">
         <h2>Let's Work Together</h2>
-        <img src="" alt="" />
+        <img
+          src="Images/Home Page/contact - home page.png"
+          alt="contact sectional display of skyscrapers in an upward veiw from the ground"
+          className="section-image"
+        />
         <p>
           Whether you’re interested in hiring me for a full-time position,
           collaborating on a project, or just want to say hi, feel free to reach
@@ -106,16 +118,17 @@ export default function Home() {
         >
           <Socials />
         </div>
-        <div id="contact-btn">
-          {/* to do */}
-          {/* contact overlay */}
-          
-          <Overlay>
-            <ContactForm />
-          </Overlay>
-           
-        </div>
+        <Overlay header="Contact Me" className="contact-overlay">
+          <ContactForm />
+        </Overlay>
       </section>
+      <footer
+        id="footer"
+        data-testid="footer-section"
+        className="footer-section"
+      >
+        <p>© 2024 Tyshawn Smith. All rights reserved.</p>
+      </footer>
     </>
   );
 }

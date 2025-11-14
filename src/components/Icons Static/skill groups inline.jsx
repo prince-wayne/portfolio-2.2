@@ -67,7 +67,7 @@ export default function SkillGroupsInline() {
               alt="backend skills group icon - a server cluster"
             />
 
-            <h3 className="backend-section__header skill-group-section__header">
+            <h3 className="backend-section__5eader skill-group-section__header">
               Backend Development
             </h3>
             <div className="backend-section__skills">
