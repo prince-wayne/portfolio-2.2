@@ -14,22 +14,16 @@ import Socials from "../components/Icons Static/social icons.jsx";
 
 import Overlay from "../components/popups/Overlay.jsx";
 import ContactForm from "../components/popups/contact.jsx";
+import HamburgerMenu from "../components/popups/Hamburger Menu/Hamburger Menu.jsx";
 
 // an alert to remind viewer pre public that there's only roughed in styles and content as well as not using any personal info within the contact form
 
-const PLACEHOLDERIMAGE =
-  "https://i.etsystatic.com/27443014/r/il/f4638a/4421758331/il_1080xN.4421758331_9bwu.jpg";
-
-
+console.log(window.innerWidth);
+const isMobile = window.innerWidth <= 768;
+console.log("Is mobile:", isMobile);
 export default function Home() {
   return (
     <>
-      {/* to do */}
-      {/* 
-          background image - done
-          Call to action buttons - a basic overlay box with a header, short paragraph, and two buttons.
-
-       */}
       <section
         id="home-hero-section"
         className="hero-section hero-section__background"
@@ -44,11 +38,9 @@ export default function Home() {
           </p>
           <div id="hero-section__overlay-btns">
             <button className="btn--primary">
-              {" "}
-              {/* opens our popup display */}Contact Me
+              Contact Me
             </button>
             <button className="btn--secondary">
-              {/* takes us to projects page */}
               Veiw My Work
             </button>
           </div>
@@ -122,6 +114,10 @@ export default function Home() {
           <ContactForm />
         </Overlay>
       </section>
+
+      <Overlay className="hamburger--menu__Image" type="Image" source="Images/Icons/Hamburger Icons/icons8-menu-24.png">
+        <HamburgerMenu/>
+      </Overlay>
       <footer
         id="footer"
         data-testid="footer-section"

@@ -25,7 +25,7 @@
   --btn-padding: 0.50rem 1rem;
   --btn-border-radius: 25px;
   --btn-font-size: 1rem;
-  
+
 }
 
 body,
@@ -77,11 +77,28 @@ html {
 .section-image,
 .card-image {
   border-radius: 25px;
+  /* contain: size; */
+  max-width: 100%;
 }
 
 body section:not(.hero-section) {
   margin-bottom: 10rem;
   padding: 1rem 2rem;
+}
+
+/* Hamburger Menu Styles */
+.hamburger--menu__Image {
+  position: fixed;
+  bottom: 50px;
+  left: 30px;
+
+  height: 50px;
+  width: 50px;
+
+  border-radius: 10px;
+  padding: 0.75rem;
+  
+  cursor: pointer;
 }
 
 

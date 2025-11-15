@@ -776,3 +776,39 @@ Code
 for us to swap betewn btn and image based events (clicking on a btn vs a img) we will need to adjust overlay or make a second version (doesn't sound smart for this).
 
 unadjusted comparsion, the form is what opens while the btn just activates it, so, our image/btn would only need to be swaped in, and we could just give a rough promt pass to switch usage like we intented in the original social icons component. 
+
+##### Attempt One
+
+made a folder for the project, got to wrap it within overlay, chosing to do so on home page (where else would we do it?)
+
+seeing the site at differrent sizes makes me want a few stylistic changes, such as our skill groups, we should have a altering stack going left right left or vise versa. 
+
+Okay, some real o'bullshit, overlay -> clone element, can't handle arrays and a second character within the wrapper can throw an error, meaning no comments or secondary items within the component. 
+
+_overlay_
+  _child_
+_/overlay_
+
+&uarr; correct, &darr; incorrect. 
+
+_overlay_ 
+_child_ _comment_
+_/overlay_
+
+Got to watch out for those fredd.
+
+As we reach the end of our interperted timeframe, we went from home, to mothers job, to her firends house, to the gas station, to fast food place, to home.. we got our overlay working and we are starting to place our content within the overlay. 
+
+#### What's next
+
+page route thing plus empty temp pages to load on click. 
+then styles to place images inline with the h1 content
+
+weird issue we thought we already fixed, the damn thing isn't responding to position rules (position left, etc.)
+
+weird but alt messages can break page structure. project display is where we see this. 
+max width fixed it. . 
+
+#### End of day, where we left off
+
+We got the basic layout down and the images in, now once we get the router set up this should be done. 

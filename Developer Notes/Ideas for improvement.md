@@ -85,3 +85,14 @@ In short, later use nodeMailer to improve readibility for others and display ful
 ### home page hero section; 
 
 the header is too much for mobile but fine on desktop. 
+
+### Skill grop icons
+
+#### Home page 
+
+it's not bad considering we haven't made any media qearies but we should adjust the tablet range to have a alternating left and right stack, that way it actually takes up the screens spacing. 
+
+it can remain that way for all sizes besides mobile, so suggested method is min width of container, then flex-align methods to place the boxes. 
+
+reminder that the desktop version will have the groups in a half colom next to the text content of the section. 
+
