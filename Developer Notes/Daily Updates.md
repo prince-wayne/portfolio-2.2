@@ -812,3 +812,51 @@ max width fixed it. .
 #### End of day, where we left off
 
 We got the basic layout down and the images in, now once we get the router set up this should be done. 
+
+## Week 47
+
+### Topics 
+
+- router
+- project display images & style box (grid to keep things placed and sized consistently)
+- Pages. 
+
+### 2025-11-17 (Monday)
+
+**Notes before start of dayjob**
+
+Currently waiting for work to began, but last night we saw it's as simple as placing our nav bars at the top level and wraping the pages into it, so:
+
+const NavBar = () => {
+  return (
+    <nav>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
+      </ul>
+    </nav>
+  );
+};
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import App from './App';
+import Home from './components/Home';
+import About from './components/About';
+import NavBar from './components/NavBar';
+
+ReactDOM.render(
+  <Router>
+    <NavBar />
+    <Switch>
+      <Route path="/" exact component={Home} />
+      <Route path="/about" component={About} />
+    </Switch>
+  </Router>,
+  document.getElementById('root')
+);
+
+Then it should be functional. 
+Additionally we will need a screen size check to chose which menu we render. should be very simple, wrap in external functions for readability and repeatability please. Also that is template code that we found, adjust for our usage and trouble shoot accordingly.
+
