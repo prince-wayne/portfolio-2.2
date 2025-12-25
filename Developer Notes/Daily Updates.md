@@ -842,6 +842,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import App from './App';
+
 import Home from './components/Home';
 import About from './components/About';
 import NavBar from './components/NavBar';
@@ -860,3 +861,26 @@ ReactDOM.render(
 Then it should be functional. 
 Additionally we will need a screen size check to chose which menu we render. should be very simple, wrap in external functions for readability and repeatability please. Also that is template code that we found, adjust for our usage and trouble shoot accordingly.
 
+
+### 2025-11-21 (Friday)
+
+#### Short and Fast development
+
+We are in a driveway waiting for our uncle, seeing about building the router part which looked pretty straight forward. We will also be dashing today and working during downtime. 
+Light and easy topics will likely be covered today. 
+
+I don't remember what was done, but I feel like we didn't do much outside of review. (Chrismas update)
+
+## Week 52 (Chrismas)
+
+### 2025-12-25 (Thursday)
+
+#### Where we left
+
+Where we left: Building the page/router. It seems the version I used initially has been depreicated, so we will be needing to learn the up to date version and hoping it lasts. 
+
+#### Goals 
+
+1) Write out what's left to complete to help map through the remaining. 
+2) rework hamburger menu to implement changing pages. 
+3) write our nav bar for desktop version. 

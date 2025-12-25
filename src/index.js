@@ -1,17 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import './index.css';
-import Home from './Pages/Home';
-import { FormProvider } from './context/FormContext';
-// Importing the FormProvider from context/FormContext
-// to provide form state management to the Home component
-// and its children components.
-// This allows us to manage form state globally within the application.
-// The FormProvider wraps the Home component to ensure that
-// all components within Home can access the form context.  
+// style sheets
+import "./index.css";
 
-import reportWebVitals from './reportWebVitals';
+// pages
+import Home from "./Pages/Home.jsx";
+// import Projects from "./Pages/projects";
+
+import reportWebVitals from "./reportWebVitals";
+import { FormProvider } from "./context/FormContext";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// compondents,
+
+import HamburgerMenu from "./components/popups/Hamburger Menu/Hamburger Menu";
 
 const DEVELOPMENTAL = false;
 if (DEVELOPMENTAL) {
@@ -20,13 +22,21 @@ if (DEVELOPMENTAL) {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+console.log("ReachDom", ReactDOM.createRoot);
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <FormProvider>
-        <Home/>
-      </FormProvider>
-
+      <BrowserRouter>
+        <HamburgerMenu />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {/* <Route path="/projects" element={<Projects />} /> */}
+          {/* <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} /> */}
+        </Routes>
+      </BrowserRouter>
+    </FormProvider>
   </React.StrictMode>
 );
 
