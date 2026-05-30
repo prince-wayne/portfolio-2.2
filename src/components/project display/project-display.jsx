@@ -2,18 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./project display.css";
 import loadDataFile from "../../Supporting Files/loadfile.js";
-// async function loadDataFile(path) {
-//   // If I used random number I could easily have log infomation every 1/10 runs.
-//   try {
-//     const response = await fetch(path);
-//     const data = await response.json();
-//     return data;
-//   } catch (error) {
-//     console.error("Error loading data: ", error);
-//     return []; // an empty array isn't acceptable in this moment. but it's how we'll use it as a check
-//   }
-//   // function from older project, nearly no changes.
-// }
+
 
 export default function ProjectDisplay(props) {
   const { children } = props;
@@ -44,55 +33,55 @@ export default function ProjectDisplay(props) {
     resize.current = false; // reset the resize to false so we don't infinity render this value. (calulate every rerender)
   } // sets the clicks only on rerender when the clicks are changed... we
 
-  // DEVELOPMENT AIDS
+  // //DEVELOPMENT AIDS
 
-  // log working data to console
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "d") {
-        console.log(
-          "Project Data: ",
-          projectData.current || "No data loaded yet."
-        );
-      }
-    };
-    window.removeEventListener("keydown", handleKeyDown);
-    return () => window.addEventListener("keydown", handleKeyDown);
-  }, []);
-  // n => next 10 times
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "n") {
-        let count = 0;
-        const intervalId = setInterval(() => {
-          handleBtnClick("next");
-          count++;
-          if (count >= 10) clearInterval(intervalId);
-        }, 1000); // 1 seconds
-      }
-    };
+  // // log working data to console
+  // useEffect(() => {
+  //   const handleKeyDown = (e) => {
+  //     if (e.key === "d") {
+  //       console.log(
+  //         "Project Data: ",
+  //         projectData.current || "No data loaded yet."
+  //       );
+  //     }
+  //   };
+  //   window.removeEventListener("keydown", handleKeyDown);
+  //   return () => window.addEventListener("keydown", handleKeyDown);
+  // }, []);
+  // // n => next 10 times
+  // useEffect(() => {
+  //   const handleKeyDown = (e) => {
+  //     if (e.key === "n") {
+  //       let count = 0;
+  //       const intervalId = setInterval(() => {
+  //         handleBtnClick("next");
+  //         count++;
+  //         if (count >= 10) clearInterval(intervalId);
+  //       }, 1000); // 1 seconds
+  //     }
+  //   };
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-  // b => back 10 times
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "b") {
-        let count = 0;
-        const intervalId = setInterval(() => {
-          handleBtnClick("back");
-          count++;
-          if (count >= 10) clearInterval(intervalId);
-        }, 1000); // 2 seconds
-      }
-    };
+  //   window.addEventListener("keydown", handleKeyDown);
+  //   return () => window.removeEventListener("keydown", handleKeyDown);
+  // }, []);
+  // // b => back 10 times
+  // useEffect(() => {
+  //   const handleKeyDown = (e) => {
+  //     if (e.key === "b") {
+  //       let count = 0;
+  //       const intervalId = setInterval(() => {
+  //         handleBtnClick("back");
+  //         count++;
+  //         if (count >= 10) clearInterval(intervalId);
+  //       }, 1000); // 2 seconds
+  //     }
+  //   };
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  //   window.addEventListener("keydown", handleKeyDown);
+  //   return () => window.removeEventListener("keydown", handleKeyDown);
+  // }, []);
 
-  // END OF DEVELOPMENT AIDS
+  // // END OF DEVELOPMENT AIDS
 
   // loading data file
   useEffect(() => {
@@ -238,7 +227,7 @@ export default function ProjectDisplay(props) {
             }
             return (
               <div className="card" key={index}>
-                <img src={null} alt={description.short} />
+                <img src={null} alt={description.short} className="card-image" />
 
                 <h4>{title}</h4>
                 <p>{description.long ? description.long : description.short}</p>
@@ -250,11 +239,11 @@ export default function ProjectDisplay(props) {
                 </ul>
 
                 <a href={project}>
-                  <button> View Project </button>
+                  <button className="btn--primary"> View Project </button>
                 </a>
 
-                <a href={codebase}>
-                  <button> View Codebase </button>
+                <a href={codebase} >
+                  <button className="btn--secondary"> View Codebase </button>
                 </a>
               </div>
             );
@@ -273,6 +262,7 @@ export default function ProjectDisplay(props) {
             src={null}
             alt={`${btn} button`}
             onClick={() => handleBtnClick(btn)}
+            
           />
         </>
       );

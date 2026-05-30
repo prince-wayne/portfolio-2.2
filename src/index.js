@@ -13,6 +13,13 @@ import { FormProvider } from './context/FormContext';
 
 import reportWebVitals from './reportWebVitals';
 
+const DEVELOPMENTAL = false;
+if (DEVELOPMENTAL) {
+  alert(
+    "Portfolio is in development. Styles and content are not final. No personal information is used in the contact form."
+  );
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

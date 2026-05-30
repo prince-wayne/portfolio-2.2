@@ -384,11 +384,7 @@ Just the colors, it already works as intented aside form color scale.
 
 This is basically complete, literally just changing colors;
 
-
-
-adding hover affect <!-- todo  -->
-
-
+adding hover affect 
 
 issues in case of miss
 
@@ -418,7 +414,7 @@ remaining tasks from earlier:
 as we get in here, we might not do much coding, but we will be reviewing and planning. To start, we will have a new system to keep track of tasks, we will mark the files with to dos, then call them complete once finished. 
 In short, our tack system will require us to build a rough file with placeholder code, then tack places where things will go, and call a file complete once those are removed. I think this will help with quick view of what we need within files for when we come back.
 
-**Tasks** <!-- active task will be mared todo -->
+**Tasks** <!-- active task will be mared to-do -->
 <!-- For copy and paste  -->
 ✅  
 - Builidng a external data source, why? because for scale, icons/skill are shared and if we wanted to change them in x, we'd have to follow with y and z. ✅
@@ -558,3 +554,225 @@ that said, we will be starting now.
 
 #### Review notes
 
+What we need, 
+- isolation of event listener `escape`; remove?
+- The reason `onClose` doesn't work currently everywhere (works in some spots, is scope possible here?)
+- email send to ya boi. third parties are probably the fastest rough version. If we chose to make a custom solution, we would burn effort with little gain. More of a "if we have time" improvement than a must have for functionality.
+
+#### Working through 
+
+##### kobe (isolation)
+
+-0 isOpen was a thought, I believe I tried and it didn't work. Attempting again if so.
+-1 as I looked at that I noticed our submit btn doesn't call onClose() but still onClose runs for fun. (it just runs, no buns) This may be due to line 16 - contact.jsx `handleSubmitContact()` where we see await, reset, and close. 
+-2 comfirmed reason, it closes due to onClose() but, not as intended, it runs onClose due as a development aid. there's no connected api to handle the contact info so catch error always runs error code; however, that means our onClose reaches that scope, good sign 
+-3 Quick structure view, 
+Overlay, Contact form (within file >) - contact.jsx (mention of file to help), 
+
+-4 closer to isolation, but method gives false isOpens
+-5 fixed, kobes on the court (iso is active)
+
+- onClose variation in scope, 
+in short, it should just work everywhere due to useContext, but it doesn't. as I looked I couldn't find a definition for it, but it looks like it was defined in `line 39` inline useing `React.cloneElement onClose: closeOverlay`. could be the source of problem, 
+found something useful, tiredness is kicking in, future me might figure it out. [MDN onClose eventlister](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close_event)
+
+looks like .close()  
+
+I might've found a different way to do this entirely, though the way it's done currently could be 60% finsihed. A comparision may be needed.
+
+Considering React's actual docs show ReactDOM.createPortal(<></>) to do exactly what we're trying, it's probably the best practice or a better one. [link to refernce](https://react.dev/reference/react-dom/createPortal), man, this could've been over so long ago. also this could've been useful for our tooltip but css hover was acceptable I think, it's not complex or logic heavy. 
+
+Also the docs showed a very simlair version to ours, don't be disapointed if it functions the same. (errors and all.)
+
+walking though the example code once we're back. 
+
+Portal.jsx
+import { useState } from 'react';
+import { createPortal } from 'react-dom';
+import ModalContent from './ModalContent.js';
+
+export default function PortalExample() {
+  const [showModal, setShowModal] = useState(false);
+  // if event listener && is open/showModal, or just show Model, then set to false. 
+  return (
+    <>
+      <button onClick={() => setShowModal(true)}>
+        Show modal using a portal
+      </button>
+      {showModal && createPortal(
+        <ModalContent onClose={() => setShowModal(false)} />,
+        document.body
+      )}
+    </>
+  );
+}
+
+context: 
+export default function ModalContent({ onClose }) {
+  return (
+    <div className="modal">
+      <div>I'm a modal dialog</div>
+      <button onClick={onClose}>Close</button>
+    </div>
+  );
+}
+
+so, basically, we would be doing the same thing but instead of the modal, as they call it, being within the parent, it will push it to the same level (I could be wrong on this) and allow the same toggling if not smoother. 
+
+so, onClose passes in the state handler causing the compondent to demount, or remove it's self from the active render states / conditionals. 
+
+Honestly, I think I might mess around with mines, I feel like I'm going to run into the same issues I'm already having considering that I'm running basically the same system but involving useContext.
+
+... Frusration is real, rookie mistake, onClose / type error, all fixed becasue overlay used onclose, even though it defined it within a pass to child. 
+To be fair, this entire page (home) was done when I couldn't run npm start or live test my coding and I had much less knowledge of react back then. 
+
+seems lights helpped.
+
+##### Out of focus event. <!-- done --> 
+
+onclose works now, but add event of mouse not being in conponent (contact box),done within overlay mouse down event, adding listener remover. 
+it's recongizing all clicks, could be class name issue. 
+pretty much is, just not as I said it, it's a selector issue where the selector doesn't see the class becasue we're selecting children. 
+so, we need to ensure the mouse isn't over the overlay instead of trying to select the overlay for comparsion.
+pretty sure theres a children target so we should look for that. like target.children 
+
+no children to select, we may just add a class to all of them (the children).
+
+the best solution isn't currently visible but adding a class to each of those components (overlay + overlay childrem) looks like an acceptable path or at least a tenporary solution. Looking it up didn't bring much help but at this point we're better off finishing a functional item than a perfect item. 
+
+`overlay__child` will be used for this. Works, with some considerations, could be due to no styles but, in the clickable background space we trigger our closeoverlay function. So, for future use, style the componted to center on the document (create portal would've made that easiler) I'm thinking of simplying styling the overlay then filling out how the contact form should be within it. since the overlay is closest to body, 
+also we moved it out of the contact section but if we move it back in to the contact section - which we probably should, using position: fixed could remove our problem of structure relative to the body. 
+
+Seems to be working now, can come back later, liekly just missed the actual content when I was testing earlier
+
+
+##### Reset Form not defined @ contact.jsx line 25. <!-- done -->
+(comment lines included) 
+
+solution, remove entirely, just a helper function/wrapper, nothing changes if the consumer resets within itself (it stull updates context) **worked**
+
+##### Email operation handler. 
+
+Email us. We'll use a third party, so all we need is to connect the api, this will likely involve an evil key.
+
+
+####  End of collective session;
+
+we have almost a fully functional contact component and overlay - which will be usesd later, all we really need is the backend or api route, I dealing with something making it difficult to focus on learning and applying so I'd leave this for my future self. 
+
+##### Tasks for following session
+
+1. Contact component
+
+- node mailer + express to handle sending me the form 
+- styling to be a centered box with a close btn. 
+
+2. Hamburber menu (mobile only) + Navbar overlay.
+
+This should be pretty simlair, it's more of figuring out things like checking for mobile vs desktop, and we could really just use css to hide our hamburger btn and show our nav bar within the screen size ranges.
+
+## Week 44 (2025-10-26)
+
+### 2025-10-30 (Thursday) 
+
+#### Summary
+
+We started work last week monday, didn't have a place or time to work on this. We are now attempting a new space in the library with hopes of success. **the important part** we will be relying on the last notes to continue as a week break does blur the lines. I hope to accomplish a finished contact feature within this first half of this sesson and the hamburger menu in the next (moblie only)
+
+#### A new Schedule
+
+Sunday through Wednesday/Thursday, depending on overtime in dayjob, we won't touch this. But, we will deciate five hours on two of our three off days for a total of ten hours per week. This means Thursday and Friday or Friday and Saturday will be our software work days. 
+
+#### An idea I had thanks to work
+
+Our tooltips could be better, right now they're fine, they describe the level of each subject pretty cleanly they just lack a true in place description. So, thanks to a work site showing a card flip over to show a description, we decided the site could use that, now it might not be fully worth the effort but I could design it in Figma and have it peer reviewed. 
+
+#### Starting on contact Styles 
+
+(just to have it displayed in a rough draft of what we envisioned.) 
+
+##### Attempt #1 / seession 1 & 2
+likely best solution is just giving it a fixed positon centered on the body, current structure might discourage this but a simply calc should adjust the position well enough. 
+
+positioning worked and we have the blur ready ish, the only issues are:
+our message icon not being centered, (flex - colum fix update: converted to grid)
+the boxes not lining up, doesn't matter much honestly, but converting to grid will give them better lines. decide if it's worth it or if mostly lined up makes a difference (done)
+and the blur box not being a complete fill (fixed)
+
+It's pretty good as is but it's suggested that the elements align with each other so, we will be attempting a flex solution with no structure change if it doesnt go fast then we will convert to grid. (grid isn't a hard conversion. I just don't want to do it for no reason.)
+
+we built btn--primary and --secondary classes for global use within main.  
+
+we seem to be awaiting the actual handler, but our styles are very fine rough draft.
+we could go beyond by using icon btn classes but there's only the ones in project display to do such a thing like that. 
+
+we seem ready to move on, handle emails once were back. we only have a rough hour left. Unless, we, push.
+
+
+Update: we did not come back, so we will make up for it tomorrow;
+
+### 2025-10-31 (Friday)
+
+#### Summary
+
+We didn't do much but styles yesterday, one of the most relaxing software days I've ever had, but, today we will be attacking the contact handler, and hamburger menu (don't forget to make a new branch once we're there)
+
+We will be going with the emailJS path, said to be easy, fast, and okay for low traffic expectations. 
+
+looks pretty plug and play but we always hit walls with those so we should be care
+
+okay, so it's now working, we have a functional submit btn and we do get the whole message. 
+Remember that we are using EmailJS and it's not a direct in email view, we have to go through the actual service to see sometimes. I lied, we get them directly to our inbox. 
+
+before we call it good we need a different icon for the name, a person would be best and the color of the text should be white; icon - done. color done.
+
+we also got rid of that highlight on focus. <!-- We did. -->
+
+moving on? yes, but we are adding a compondent to acknowledge it's state and inform those under the impression that it's complete. <!-- We did -->
+
+changed our mind, idea moved to the later this will just be a hard coded thing to remove on completion <!-- As mentioned above, It's a simple true flase statment. -->
+
+weird style issue, somehow padding our sections creates a gap like the begin of home hero image.
+
+the issue was the hero section getting/had padding and changed it's size making the page misinterpet the content size casuing a pushed in visual. 
+
+solution: removing the padding with .hero-section.
+
+images are small on desktop, not a current issue, just a reminder to fix later <!-- todo -->
+
+## Week 46
+
+### Start of week
+
+We have made some adjustments and completed some work I believe, but I can't comfirm it. We just started work three weeks ago, and we're building the consistency over the weekends, however, this last one we needed to leave the city 😭. 
+
+Our goals for this week, 
+<p style="{color: red; font-size: 2px;}">
+We'd later put images within this to help visualize what we're thinking of.
+</p>
+
+1. build the hamburger menu, (empty page links for now - physical pages with nothing but a header content)
+2. Finish `project display.jsx`, nothing major; just adding in the images and building the style to restrict the card sections from changing (some cards longer, others shorter)
+3. decide if we want to start builidng the other pages, or 
+build the responsive functions (media, card size, etc). 
+
+### 2025-11-14 (Thursday) 
+
+A few notes, us getting the project display might be less of a now thing, I say this becasue we we're focused on structure, function, then style and we do currently have the first two on those just not the linked sites or images, which require us to link a second domain to them, or convert each project into a react compondent/page. Which now that I think about it wouldn't be hard, just a lot of small things that feels like it'd add up. 
+Building the hamburger menu means moving on from this branch. So, we would need to double check again that it functions correctly. 
+the other pages will probably come in after the hamburger menu (considering that's the usage of the menu.)
+
+#### Getting started with McDonald's Hamburger
+
+img or self styled element? Image is faster but Element gives us far more control where we could show our design related developing skill. **future update likely**
+Code
+
+<!overlay>
+  <br> 
+  Hamburger 
+  <br>
+</!overlay>
+
+for us to swap betewn btn and image based events (clicking on a btn vs a img) we will need to adjust overlay or make a second version (doesn't sound smart for this).
+
+unadjusted comparsion, the form is what opens while the btn just activates it, so, our image/btn would only need to be swaped in, and we could just give a rough promt pass to switch usage like we intented in the original social icons component. 

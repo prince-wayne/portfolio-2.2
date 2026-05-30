@@ -21,7 +21,7 @@
 }
 
 .card {
-  border: red 1px solid;
+  /* varying content sizes / placement.  */
   margin: 15px 0;
 
   width: 400px;

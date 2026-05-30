@@ -7,7 +7,7 @@ import React, { createContext, useState } from 'react';
 export const FormContext = createContext({
   formData: { name: '', email: '', message: '' },
   setFormData: () => {},
-  resetForm: () => {},
+  resetForm: () => {}
 });
 
 export const FormProvider = ({ children }) => {

@@ -1,21 +1,19 @@
 /* Home.css */
 /* Page style */
+.hero-section {
+  padding: 0;
+}
 
 .hero-section__background {
   position: relative;
   display: flex;
-  /* margin: 25px; */
-  width: 100%; /* will push it out of screen without  */
+  width: 100%;
   height: 650px;
   justify-content: center;
-  /* left: calc(50% - 945.97px / 2 - 0.02px); */
-  /* top: 0px; */
 
-  background: linear-gradient(
-      0deg,
+  background: linear-gradient(0deg,
       rgba(255, 251, 251, 0.05),
-      rgba(255, 251, 251, 0.05)
-    ),
+      rgba(255, 251, 251, 0.05)),
     var(--Home-hero);
   background-repeat: no-repeat;
   background-size: cover;
@@ -24,7 +22,7 @@
 }
 
 /* 
-  ========== Overlay Styles ==========
+  ========== Hero Overlay Styles ==========
 */
 
 .hero-section__overlay {
@@ -32,24 +30,25 @@
   position: absolute;
   top: 40%;
   margin: 0;
-  padding: 10px;
+  padding: 1rem;
   width: 80%;
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.3);
-  background-color: #000000d0; /* black with opacity */
+  background-color: #000000d0;
+  /* black with opacity */
 }
 
 .hero-section__overlay h1 {
   display: inline-block;
-  font-size: 2.5rem;
   margin-bottom: 1rem;
   margin-top: 0;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
 }
 
-/* 
-  ========== Overlay Buttons ==========
-*/
+.hero-section__overlay p {
+  padding: 0 1rem;
+}
+
 
 
 /* 
@@ -62,12 +61,9 @@
   bottom: -10px;
   width: 100%;
   height: 50px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--primary-background) 20%
-  ); /* adjust colors as needed */
-  /* border: red, solid, 1px; */
+  background: linear-gradient(to bottom,
+      transparent,
+      var(--primary-background) 20%);
 }
 
 /* 
@@ -78,4 +74,6 @@
   margin: 50px auto;
   padding: 20px;
 
-}
+} 
+
+/* Might be removed later, due to main css addressing sections */
