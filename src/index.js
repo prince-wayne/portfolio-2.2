@@ -14,30 +14,33 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // compondents,
 
 import HamburgerMenu from "./components/popups/Hamburger Menu/Hamburger Menu";
+import Overlay from "./components/popups/Overlay";
 
 const DEVELOPMENTAL = false;
 if (DEVELOPMENTAL) {
   alert(
-    "Portfolio is in development. Styles and content are not final. No personal information is used in the contact form."
+    "Portfolio is in development. Styles and content are not final. No personal information is used in the contact form.",
   );
 }
 
-console.log("ReachDom", ReactDOM.createRoot);
+// console.log("ReachDom", ReactDOM.createRoot);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <FormProvider>
       <BrowserRouter>
-        <HamburgerMenu />
+        <Overlay>
+          <HamburgerMenu />
+        </Overlay>
         <Routes>
           <Route path="/" element={<Home />} />
           {/* <Route path="/projects" element={<Projects />} /> */}
-          {/* <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} /> */}
+          {/* {/* <Route path="/about" element={<About />} /> */}
+          {/* <Route path="/contact" element={<Contact />} /> */}
         </Routes>
       </BrowserRouter>
     </FormProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

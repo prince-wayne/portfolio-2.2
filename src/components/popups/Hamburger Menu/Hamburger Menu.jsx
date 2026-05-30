@@ -1,22 +1,28 @@
 // this wouldn't be the btn, this is the actual menu that shows, for us to use the btn, we much adjust overlay.jsx to accept an image.
+import { useEffect } from "react";
 import "./Hamburger Menu.css";
+import { Link } from "react-router-dom";
 
-export default function HamburgerMenu() {
+// const ContactForm = ({ onClose }) => {
+const HamburgerMenu = ({onClose}) => {
+  // useEffect(() => {
+  //   onClose();
+  // }, []);
   return (
     <>
-      <div className="hamburger-menu__container overlay__child">
-        <link to="/contact">
+      <div className="hamburger-menu__container overlay__child" >
+        <Link to="/contact" onClick={onClose}>
           <div className="hamburger-menu__item overlay__child">
             <img
               className="overlay__child"
               src="/Images/Icons/Hamburger Icons/Contact.png"
-              alt="Contact Icon link, opens our contact page for more information."
+              alt="Contact Icon Link, opens our contact page for more information."
             />
             <h3 className="overlay__child"> Contact</h3>
           </div>
-        </link>
+        </Link>
 
-        <link to="/projects">
+        <Link to="/projects" onClick={onClose}>
           <div className="hamburger-menu__item overlay__child">
             <img
               className="overlay__child"
@@ -25,9 +31,9 @@ export default function HamburgerMenu() {
             />
             <h3 className="overlay__child">Projects</h3>
           </div>
-        </link>
+        </Link>
 
-        <link to="/about">
+        <Link to="/about" onClick={onClose}>
           <div className="hamburger-menu__item overlay__child">
             <img
               className="overlay__child"
@@ -36,8 +42,8 @@ export default function HamburgerMenu() {
             />
             <h3 className="overlay__child">About</h3>
           </div>
-        </link>
-        <link to="/">
+        </Link>
+        <Link to="/" onClick={onClose}>
           <div className="hamburger-menu__item overlay__child">
             <img
               className="overlay__child"
@@ -46,8 +52,10 @@ export default function HamburgerMenu() {
             />
             <h3 className="overlay__child">Home</h3>
           </div>
-        </link>
+        </Link>
       </div>
     </>
   );
 }
+
+export default HamburgerMenu;
