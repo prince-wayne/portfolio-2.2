@@ -78,6 +78,41 @@ we fixed it but for future reference, overlay is either struggling when used wit
 - reviewed notes, mentioned issue, need to organize what's going in terms of what each note is and routinely update notes like `Tasks.md`
 - fixed slight hamburger issues, operationally should be fine. 
 - wrote a function to switch navigation components, `hamburger menu` and `Nav bar` in `navigationSelector()` index.js. 
+this function will need an event listener to resize, and the resizing would eventually need to be moved to a css query. but until we need optimal code, it will be fine.
 - build Nav bar, functionally fine, we want to do the styles, likely going to move on and come back. by starting the projects page or about page. 
 
+### Later same day*
+
+It's 6/1 techanically but we are within the day of work.
+
+#### Targets
+
+- projects page skeleton, structure, function, then styles
+- about page SSFS ^
+
+-- remember npm start, cra, npm run dev, vite. 
+
+#### hero img of projects
+
+- we didn't realize we used the same img from our introduction in the home page, considering changing it. 
+
+#### Skill Icons grid
+
+could've been a compondent. we will make it into a imaged based on instead... if we need it to change, we'd change it to code later...
+
+#### Study, Community, Personal project sections. 
+
+we added placeholder compondents that don't have a fliter on them. We will later come back to add the values, as the function is already there to do so. 
+
+
+### End of Session and Day
+
+- built the projects page to near completion, rough draft that is compondent an global style heavy.
+- noticed reuse of image, intro image of home page = current hero image of projects page (hero, intro, sections, footer, is the general flow of these)
+- applied hero section global, home page will likely be the only exception. 
+- instead of building "skill icons grid" I let it be a image based component, if we ever need change  it could be converted to code or another image later.
+
+#### next steps
+
+- about page, likely to be the most styles heavy page. shouldn't be to difficult however. 
 

@@ -36,7 +36,8 @@
 
 .nav--bar__Link-container:hover {
     background-color: white;
-    transition: background-color 0.3s ease;
+    color: black;
+    transition: background-color 0.7s ease-in;
 }
 
 a {

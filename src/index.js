@@ -6,7 +6,7 @@ import "./index.css";
 
 // pages
 import Home from "./Pages/Home.jsx";
-// import Projects from "./Pages/projects";
+import Projects from "./Pages/projects.jsx";
 
 import reportWebVitals from "./reportWebVitals";
 import { FormProvider } from "./context/FormContext";
@@ -40,7 +40,6 @@ if (innerWidth <= 768) {
 
 const navigationSelector = () => {
   if (window.innerWidth <= 768) {
-    console.log("Rendering Hamburger Menu for mobile.");
     return (
       <Overlay
         className="hamburger--menu__Image"
@@ -52,7 +51,6 @@ const navigationSelector = () => {
       </Overlay>
     );
   } else {
-    console.log("Rendering NavBar for desktop.");
     return <NavBar />;
   }
 };
@@ -65,7 +63,7 @@ root.render(
         {navigationSelector()}
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/projects" element={<Projects />} /> */}
+          <Route path="/projects" element={<Projects />} />
           {/* {/* <Route path="/about" element={<About />} /> */}
           {/* <Route path="/contact" element={<Contact />} /> */}
         </Routes>
