@@ -115,9 +115,7 @@ export default function Home() {
         </Overlay>
       </section>
 
-      <Overlay className="hamburger--menu__Image" type="Image" source="Images/Icons/Hamburger Icons/icons8-menu-24.png">
-        <HamburgerMenu/>
-      </Overlay>
+      
       <footer
         id="footer"
         data-testid="footer-section"

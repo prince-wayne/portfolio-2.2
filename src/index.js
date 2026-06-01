@@ -14,6 +14,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // compondents,
 
 import HamburgerMenu from "./components/popups/Hamburger Menu/Hamburger Menu";
+import NavBar from "./components/Navigation Bar/Nav bar.jsx";
 import Overlay from "./components/popups/Overlay";
 
 const DEVELOPMENTAL = false;
@@ -25,13 +26,43 @@ if (DEVELOPMENTAL) {
 
 // console.log("ReachDom", ReactDOM.createRoot);
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+const five = 5;
+console.log("Five check:", five);
+const innerWidth = window.innerWidth;
+console.log("Window inner width check:", innerWidth);
+
+if (innerWidth <= 768) {
+  console.log("Mobile view detected.");
+} else if (innerWidth > 768) {
+  console.log("Desktop view detected.");
+}
+
+const navigationSelector = () => {
+  if (window.innerWidth <= 768) {
+    console.log("Rendering Hamburger Menu for mobile.");
+    return (
+      <Overlay
+        className="hamburger--menu__Image"
+        type="Image"
+        source="Images/Icons/Hamburger Icons/icons8-menu-24.png"
+      >
+        {/* declaring that this overlay is a btn */}
+        <HamburgerMenu />
+      </Overlay>
+    );
+  } else {
+    console.log("Rendering NavBar for desktop.");
+    return <NavBar />;
+  }
+};
+
+console.log("root log check");
 root.render(
   <React.StrictMode>
     <FormProvider>
       <BrowserRouter>
-        <Overlay>
-          <HamburgerMenu />
-        </Overlay>
+        {navigationSelector()}
         <Routes>
           <Route path="/" element={<Home />} />
           {/* <Route path="/projects" element={<Projects />} /> */}

@@ -64,6 +64,8 @@
   background: linear-gradient(to bottom,
       transparent,
       var(--primary-background) 20%);
+
+  /* this isn't a fade out but an element that's fading the bottom of the image into the website */
 }
 
 /* 

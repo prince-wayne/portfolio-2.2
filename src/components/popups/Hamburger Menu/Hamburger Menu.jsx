@@ -1,13 +1,10 @@
-// this wouldn't be the btn, this is the actual menu that shows, for us to use the btn, we much adjust overlay.jsx to accept an image.
-import { useEffect } from "react";
 import "./Hamburger Menu.css";
 import { Link } from "react-router-dom";
+// this wouldn't be the btn, this is the actual menu that shows, for us to use the btn, we much adjust overlay.jsx to accept an image.
 
 // const ContactForm = ({ onClose }) => {
 const HamburgerMenu = ({onClose}) => {
-  // useEffect(() => {
-  //   onClose();
-  // }, []);
+
   return (
     <>
       <div className="hamburger-menu__container overlay__child" >

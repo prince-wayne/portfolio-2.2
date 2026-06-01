@@ -6,6 +6,20 @@
 
 ## Global Improvement
 
+### Notes are messy at face value
+
+- we need to build the readme file for the project base and organize these notes, basically everything in this folder distracts someone who isn't familiar with the base. 
+- build the classes.md file to be accurate, AI could probably handle that, might be too much which could cause the AI to generate classes. worth double looking
+- Tasks.md has never been used how it seems it should, either remove it or start updating it every session. 
+- Working notes.md, we got ice cream... that's not a file. 
+- daily updates, context heavy, not something that should be in production as is, 
+
+#### Conclusion, <!-- todo -->
+
+- Combine and organize Dev notes p2 (just started 5/30/26) and Daily Updates
+- Begin regularly updating Weekly Review, Tasks, and Classes.md
+- Stucture notes better for quick review. 
+
 ### Prerender, suspend, lazy
 
 **Summary:** A prerender would save upwards of 3 renders per loadfile call, roughly, and lazy loading is a simple improvement that reduces inital time along side memory usage. 
@@ -95,4 +109,5 @@ it's not bad considering we haven't made any media qearies but we should adjust 
 it can remain that way for all sizes besides mobile, so suggested method is min width of container, then flex-align methods to place the boxes. 
 
 reminder that the desktop version will have the groups in a half colom next to the text content of the section. 
+
 
