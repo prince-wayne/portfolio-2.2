@@ -41,7 +41,7 @@ We fixed the contact issue and hamburger isse our next steps will be to review p
 we fixed an issue we was fighting for seemingly have a week, 24 hours worth of effort for something we fixed in 1.5 hours... gotta love it
 Now, we are unsure of next step and after we review the running site, we will go from there. (current session)
 
-### Today
+### Today <!-- Was Sunday -->
 
 As mentioned, checking functionality, fixing anything wrong (starting with the overlay wrapper, wrapping hamburger, showing in home page.)
 
