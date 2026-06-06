@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Overlay.css";
+import "./Hamburger Menu/Hamburger Menu.jsx";
 
-
-const Overlay = ({ children, onClose, header }) => {
+const Overlay = ({ children, onClose, header, type, source }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openOverlay = () => setIsOpen(true);
   const closeOverlay = () => setIsOpen(false);
+  const ISIMAGETYPE = type === "Image";
 
   const handleClickOutside = (event) => {
     const CLASSLIST = event.target.classList;
@@ -30,9 +31,22 @@ const Overlay = ({ children, onClose, header }) => {
 
   return (
     <div>
-      <button onClick={openOverlay} data-testid="open-overlay-btn" className="btn--primary">
-        {header}
-      </button>
+      {ISIMAGETYPE ? (
+        <img
+          src={source}
+          alt="Overlay Background"
+          className="hamburger--menu__Image"
+          onClick={openOverlay}
+        />
+      ) : (
+        <button
+          onClick={openOverlay}
+          data-testid="open-overlay-btn"
+          className="btn--primary"
+        >
+          {header}
+        </button>
+      )}
       {isOpen && (
         <div
           className="overlay" /* not a true child but prevents close if pressed */

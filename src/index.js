@@ -1,33 +1,64 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import './index.css';
-import Home from './Pages/Home';
-import { FormProvider } from './context/FormContext';
-// Importing the FormProvider from context/FormContext
-// to provide form state management to the Home component
-// and its children components.
-// This allows us to manage form state globally within the application.
-// The FormProvider wraps the Home component to ensure that
-// all components within Home can access the form context.  
+// style sheets
+import "./index.css";
 
-import reportWebVitals from './reportWebVitals';
+// pages
+import Home from "./Pages/Home.jsx";
+import Projects from "./Pages/projects.jsx";
+import About from "./Pages/About.jsx";
+// import Contact from "./Pages/Contact.jsx";
+
+import reportWebVitals from "./reportWebVitals";
+import { FormProvider } from "./context/FormContext";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// compondents,
+
+import HamburgerMenu from "./components/popups/Hamburger Menu/Hamburger Menu";
+import NavBar from "./components/Navigation Bar/Nav bar.jsx";
+import Overlay from "./components/popups/Overlay";
 
 const DEVELOPMENTAL = false;
 if (DEVELOPMENTAL) {
   alert(
-    "Portfolio is in development. Styles and content are not final. No personal information is used in the contact form."
+    "Portfolio is in development. Styles and content are not final. No personal information is used in the contact form.",
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+const navigationSelector = () => {
+  if (window.innerWidth <= 768) {
+    return (
+      <Overlay
+        className="hamburger--menu__Image"
+        type="Image"
+        source="Images/Icons/Hamburger Icons/icons8-menu-24.png"
+      >
+        {/* declaring that this overlay is a btn */}
+        <HamburgerMenu />
+      </Overlay>
+    );
+  } else {
+    return <NavBar />;
+  }
+};
+
 root.render(
   <React.StrictMode>
     <FormProvider>
-        <Home/>
-      </FormProvider>
-
-  </React.StrictMode>
+      <BrowserRouter>
+        {navigationSelector()}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/about" element={<About />} />
+          {/* <Route path="/contact" element={<Contact />} /> */}
+        </Routes>
+      </BrowserRouter>
+    </FormProvider>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

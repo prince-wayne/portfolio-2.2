@@ -23,7 +23,7 @@ const ContactForm = ({ onClose }) => {
     // Delegate network / submission logic to a small helper to keep the component focused on UI.
     try {
       // submitContact returns parsed JSON or throws on network/error status.
-      await submitContact(formData); // todo
+      await submitContact(formData);
       // On success, clear the form and close the popup.
       resetForm();
       onClose();

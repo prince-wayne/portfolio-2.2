@@ -25,7 +25,7 @@
   --btn-padding: 0.50rem 1rem;
   --btn-border-radius: 25px;
   --btn-font-size: 1rem;
-  
+
 }
 
 body,
@@ -72,11 +72,69 @@ html {
   transition: background-color 0.5s ease;
 }
 
+/* === Links === */
+
+.Inline-link {
+  /* color : var(--btn-secondary-color-hover); */
+  text-decoration: underline;
+  background-color: var(--secondary-background);
+  padding : 2px 7px;
+  border-radius: 25%;
+  margin : 0 5px;
+  font-weight: bold;
+
+}
+
 /* ======= Sections ======= */
+
+
+/* === Hero Sections === */
+.hero-section {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-clip: border-box;
+}
+.hero-section__overlay {
+  /* display: flex; */
+  position: absolute;
+  top: 40%;
+  margin: 0;
+  padding: 1rem;
+  width: 80%;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.3);
+  background-color: #000000d0;
+  /* black with opacity */
+}
+
+.hero-section__overlay h1 {
+  display: inline-block;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.hero-section__overlay p {
+  padding: 0 1rem;
+}
+
+.hero-section img {
+  border-radius: 25px;
+  /* contain: size; */
+  max-width: 100%;
+}
+
 
 .section-image,
 .card-image {
   border-radius: 25px;
+  /* contain: size; */
+  max-width: 100%;
 }
 
 body section:not(.hero-section) {
@@ -84,8 +142,37 @@ body section:not(.hero-section) {
   padding: 1rem 2rem;
 }
 
+/* Hamburger Menu Styles */
+.hamburger--menu__Image {
+  position: fixed;
+  bottom: 50px;
+  left: 30px;
+
+  height: 50px;
+  width: 50px;
+
+  border-radius: 10px;
+  padding: 0.75rem;
+  
+  cursor: pointer;
+}
+
+.skill-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+
+  min-width: 225px;
+  width: 50%;
+  max-width: 400px;
+
+  margin: 0 auto;
+
+}
 
 /* == Footer == */
+
 .footer-section {
   background-color: var(--secondary-background);
   padding: 2rem 0;

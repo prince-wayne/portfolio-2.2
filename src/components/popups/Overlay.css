@@ -8,18 +8,9 @@
   margin: 0;
   padding: 0;
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px); /* for Safari support */
-
-  /* 👇 subtle transparent tint on top of blur */
+  -webkit-backdrop-filter: blur(8px); 
   background-color: rgba(0, 0, 0, 0.8);
 
-}
+  z-index: 1000;
 
-.overlay-content {
-  /* position: fixed; */
-  /* top: 50vh;
-    left: 50vw;
-    transform: translate(-50%, -50%); */
-
-  /* We didn't handle position here becuase it would be adjusted for each and it took our contact off center as well. */
 }

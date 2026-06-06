@@ -25,30 +25,6 @@
   ========== Hero Overlay Styles ==========
 */
 
-.hero-section__overlay {
-  /* display: flex; */
-  position: absolute;
-  top: 40%;
-  margin: 0;
-  padding: 1rem;
-  width: 80%;
-  border-radius: 15px;
-  background-color: rgba(255, 255, 255, 0.3);
-  background-color: #000000d0;
-  /* black with opacity */
-}
-
-.hero-section__overlay h1 {
-  display: inline-block;
-  margin-bottom: 1rem;
-  margin-top: 0;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-}
-
-.hero-section__overlay p {
-  padding: 0 1rem;
-}
-
 
 
 /* 
@@ -64,6 +40,8 @@
   background: linear-gradient(to bottom,
       transparent,
       var(--primary-background) 20%);
+
+  /* this isn't a fade out but an element that's fading the bottom of the image into the website */
 }
 
 /* 
