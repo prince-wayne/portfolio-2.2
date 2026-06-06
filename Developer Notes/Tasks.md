@@ -25,6 +25,7 @@
 
 ## Backlog
 
+- [x] Add styles/css to widen gap between hero section and intro section on About page. - hero-section-TBSS (top-n-bottom-side-by-side
 - Build the desktop css versions - #45, later importance.
 
 - Build an "Under contruction" component and Image, to allow us to display publicly during finishing / polishing. - 6-5-2026/#45

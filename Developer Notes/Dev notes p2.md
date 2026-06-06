@@ -116,15 +116,39 @@ we added placeholder compondents that don't have a fliter on them. We will later
 
 - about page, likely to be the most styles heavy page. shouldn't be to difficult however. 
 
+### Saturday
+
+#### goals
+
+- mentioned above, we'd be working on the About page now. 
 
 
-### Friday 
+#### A note about project page
 
-#### **A quick note structure note** 
+Styles for the intro section will need to be adjusted for mobile. 
 
-From today and onwards, our headline structure should be Week XX > Today > Topics, as this one will be. 
+#### About Page - structure 
 
-#### Goals 
+![Intro section and backstory](image.png)
 
-    - About Page, Structure and layout, rough and meant to hold place
-    
+We're going to use a grid to place them into a 2d box (2 directions in control). on mobile it's a simple downward push, on desktop it's an image centered infographic, for lack of better terms. 
+
+**Reminder,** background images must me in assets, regular images should remain in Images\Public
+
+back ground = import, src = "Images"
+
+With us putting the hero img into the main.css/index.css, it may cause a slight issue but I remmeber it working fine when we did projects. 
+
+Slight clean ups on unneded code and logs. "shouldn't" affect anything. 
+
+#### About Page - What's left
+
+- styles, mostly fine, desktop version to be built, and slight adjustment of hero section image and overlay. - overflow : hidden or cliped should work [x] 
+
+- [ ] Desktop design
+
+#### Contact page. 
+
+##### Thoughts 
+
+This should be incredibly easy, it's basically just a form. 

@@ -10,7 +10,7 @@ export default function Projects() {
   return (
     <>
       {/* hero section */}
-      <div className="hero-section">
+      <div className="hero-section hero-section-TBSS">
         <div className="hero-section__overlay">
           <h1>My Work</h1>
           <p>
@@ -20,7 +20,7 @@ export default function Projects() {
         </div>
         <img
           className="projects--hero__image"
-          src="/Images/Projects/Projects page Image Desktop.png"
+          src="/Images/Pages/Projects/Projects page Image Desktop.png"
           alt="Projects hero"
         />
       </div>
