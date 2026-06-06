@@ -152,3 +152,31 @@ Slight clean ups on unneded code and logs. "shouldn't" affect anything.
 ##### Thoughts 
 
 This should be incredibly easy, it's basically just a form. 
+
+We should adjust the "Not hero" section css, it's adding margins that don't initially seem reasonable.
+
+##### Issue
+
+##### Style inconsistency
+structure and functoin fine, but style may require redisign, I'm going to make this as a style issue and not commit more time to it until our final polish push.
+
+these dogs hot ass breath is making this session difficult.
+
+hero section also displays weird.
+
+- Class mismatch, we solved the main issue, 
+
+#### Accomplished 
+
+- nearly built Contact page style polish needed. 
+- new form only component made for contact form, will only be used within the contact page however. 
+
+#### Reminding tasks
+
+- responsive design / media queries for desktop and tablets
+- clean up and css review
+- project diplay,
+image uploads, project homes/repo linking + Docker setup
+- console.error to err log for dev use. 
+
+

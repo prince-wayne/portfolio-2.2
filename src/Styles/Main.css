@@ -99,6 +99,21 @@ html {
   background-position: center;
   background-clip: border-box;
 }
+
+section:not(.hero-section) {
+  margin-bottom: 10rem;
+  padding: 1rem 2rem;
+}
+
+.hero-section-TBSS {
+    /* padding : 35% 0; */
+    top: 250px;
+    /* calculation of total size */;
+    margin-bottom: 70vh; 
+}
+
+
+
 .hero-section__overlay {
   /* display: flex; */
   position: absolute;
@@ -124,9 +139,11 @@ html {
 }
 
 .hero-section img {
-  border-radius: 25px;
+  /* border-radius: 25px; */
   /* contain: size; */
-  max-width: 100%;
+  width: 100%;
+  overflow-x: hidden;
+
 }
 
 
@@ -137,10 +154,8 @@ html {
   max-width: 100%;
 }
 
-body section:not(.hero-section) {
-  margin-bottom: 10rem;
-  padding: 1rem 2rem;
-}
+
+
 
 /* Hamburger Menu Styles */
 .hamburger--menu__Image {

@@ -6,9 +6,9 @@ import "./index.css";
 
 // pages
 import Home from "./Pages/Home.jsx";
-import Projects from "./Pages/projects.jsx";
+import Projects from "./Pages/Projects.jsx";
 import About from "./Pages/About.jsx";
-// import Contact from "./Pages/Contact.jsx";
+import Contact from "./Pages/Contact.jsx";
 
 import reportWebVitals from "./reportWebVitals";
 import { FormProvider } from "./context/FormContext";
@@ -54,7 +54,7 @@ root.render(
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/about" element={<About />} />
-          {/* <Route path="/contact" element={<Contact />} /> */}
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </BrowserRouter>
     </FormProvider>

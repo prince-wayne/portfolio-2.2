@@ -29,6 +29,35 @@
 }
 
 
+/* Contact page version */
+.Contact-section-wrapper {
+  width: 75%;
+}
+
+.contact-section__FLAT {
+  display: flex;
+  /* width: 100%; */
+  align-items: center;
+  justify-content: center;
+
+}
+
+
+
+.contact-section__Flat form {
+  display: grid;
+  grid-template-columns: 25px 1fr; /* icons fixed, inputs flexible */
+  grid-template-rows: repeat(7, auto); 
+
+  gap: 1rem 2rem; /* vertical / horizontal spacing */
+  align-items: center;
+}
+
+
+
+
+
+
 /* ==================
  == Grid Positions ==
  ==================== */

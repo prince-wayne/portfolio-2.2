@@ -50,7 +50,7 @@ export default function Home() {
         className="introduction-section"
       >
         <img
-          src={`/Images/Home Page/Intro - mobile.png`}
+          src={`/Images/Pages/Home Page/Intro - mobile.png`}
           alt="A wireframe style illustration of a website."
         />
         <h2>Hi, I'm Tyshawn, a Passionate Front-End developer</h2>
@@ -89,7 +89,7 @@ export default function Home() {
       <section className="contact-section" data-testid="contact-section">
         <h2>Let's Work Together</h2>
         <img
-          src="Images/Home Page/contact - home page.png"
+          src="Images/Pages/Home Page/contact - home page.png"
           alt="contact sectional display of skyscrapers in an upward veiw from the ground"
           className="section-image"
         />
