@@ -14,3 +14,5 @@
 ## Completed
 
 ## Backlog
+
+- [ ] Add styles/css to widen gap between hero section and intro section on projects page. 

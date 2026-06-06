@@ -7,6 +7,8 @@ import "./index.css";
 // pages
 import Home from "./Pages/Home.jsx";
 import Projects from "./Pages/projects.jsx";
+import About from "./Pages/About.jsx";
+// import Contact from "./Pages/Contact.jsx";
 
 import reportWebVitals from "./reportWebVitals";
 import { FormProvider } from "./context/FormContext";
@@ -24,19 +26,7 @@ if (DEVELOPMENTAL) {
   );
 }
 
-// console.log("ReachDom", ReactDOM.createRoot);
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
-const five = 5;
-console.log("Five check:", five);
-const innerWidth = window.innerWidth;
-console.log("Window inner width check:", innerWidth);
-
-if (innerWidth <= 768) {
-  console.log("Mobile view detected.");
-} else if (innerWidth > 768) {
-  console.log("Desktop view detected.");
-}
 
 const navigationSelector = () => {
   if (window.innerWidth <= 768) {
@@ -55,7 +45,6 @@ const navigationSelector = () => {
   }
 };
 
-console.log("root log check");
 root.render(
   <React.StrictMode>
     <FormProvider>
@@ -64,7 +53,7 @@ root.render(
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
-          {/* {/* <Route path="/about" element={<About />} /> */}
+          <Route path="/about" element={<About />} />
           {/* <Route path="/contact" element={<Contact />} /> */}
         </Routes>
       </BrowserRouter>

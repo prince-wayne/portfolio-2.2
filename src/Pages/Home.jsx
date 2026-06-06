@@ -14,13 +14,9 @@ import Socials from "../components/Icons Static/social icons.jsx";
 
 import Overlay from "../components/popups/Overlay.jsx";
 import ContactForm from "../components/popups/contact.jsx";
-import HamburgerMenu from "../components/popups/Hamburger Menu/Hamburger Menu.jsx";
 
 // an alert to remind viewer pre public that there's only roughed in styles and content as well as not using any personal info within the contact form
 
-console.log(window.innerWidth);
-const isMobile = window.innerWidth <= 768;
-console.log("Is mobile:", isMobile);
 export default function Home() {
   return (
     <>
